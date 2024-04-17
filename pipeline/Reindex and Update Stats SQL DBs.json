@@ -1,0 +1,345 @@
+{
+	"name": "Reindex and Update Stats SQL DBs",
+	"properties": {
+		"activities": [
+			{
+				"name": "Run IOC SQL Maintenance Job",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Run COEUR SQL Maintenance Job",
+						"dependencyConditions": [
+							"Succeeded",
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[AzureSQLMaintenance]",
+					"storedProcedureParameters": {
+						"operation": {
+							"value": "ALL",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureProdIOC",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Run CanRoy SQL Maintenance Job",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Run Malartic SQL Maintenance Job",
+						"dependencyConditions": [
+							"Succeeded",
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[AzureSQLMaintenance]",
+					"storedProcedureParameters": {
+						"operation": {
+							"value": "ALL",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureProdCanRoy",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Run Malartic SQL Maintenance Job",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Run RTC SQL Maintenance Job",
+						"dependencyConditions": [
+							"Succeeded",
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[AzureSQLMaintenance]",
+					"storedProcedureParameters": {
+						"operation": {
+							"value": "ALL",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureProdMalartic",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Run Vegpro SQL Maintenance Job",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[AzureSQLMaintenance]",
+					"storedProcedureParameters": {
+						"operation": {
+							"value": "ALL",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureProdVegPro",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Run RTC SQL Maintenance Job",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Run ROBEX SQL Maintenance Job",
+						"dependencyConditions": [
+							"Succeeded",
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[AzureSQLMaintenance]",
+					"storedProcedureParameters": {
+						"operation": {
+							"value": "ALL",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureProdRTC",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Run ROBEX SQL Maintenance Job",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Run IOC SQL Maintenance Job",
+						"dependencyConditions": [
+							"Succeeded",
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[AzureSQLMaintenance]",
+					"storedProcedureParameters": {
+						"operation": {
+							"value": "ALL",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureProdRobex",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Run COEUR SQL Maintenance Job",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Run Vegpro SQL Maintenance Job",
+						"dependencyConditions": [
+							"Succeeded",
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[AzureSQLMaintenance]",
+					"storedProcedureParameters": {
+						"operation": {
+							"value": "ALL",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureProdCoeur",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Run Sayona SQL Maintenance Job",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Run CanRoy SQL Maintenance Job",
+						"dependencyConditions": [
+							"Succeeded",
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[AzureSQLMaintenance]",
+					"storedProcedureParameters": {
+						"operation": {
+							"value": "ALL",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureProdSAYONA",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Run Cerrejon SQL Maintenance Job",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Run Sayona SQL Maintenance Job",
+						"dependencyConditions": [
+							"Succeeded",
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[AzureSQLMaintenance]",
+					"storedProcedureParameters": {
+						"operation": {
+							"value": "ALL",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureProdCerrejon",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Run Amman SQL Maintenance Job",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Run Cerrejon SQL Maintenance Job",
+						"dependencyConditions": [
+							"Succeeded",
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[AzureSQLMaintenance]",
+					"storedProcedureParameters": {
+						"operation": {
+							"value": "ALL",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureProdAmman",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "DBA Jobs"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-12-19T17:31:01Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

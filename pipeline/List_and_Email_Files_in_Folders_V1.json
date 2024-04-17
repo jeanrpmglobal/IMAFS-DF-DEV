@@ -1,0 +1,209 @@
+{
+	"name": "List_and_Email_Files_in_Folders_V1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get_Amman_AMT_List",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "Blob_Amman_AMT_Import",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "ForEachFiles",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get_Amman_AMT_List",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get_Amman_AMT_List').output.childItems",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "GetFileDetail",
+							"type": "GetMetadata",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "Blob_Amman_AMT_Import_PROD_per_File",
+									"type": "DatasetReference",
+									"parameters": {
+										"FileName": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
+								},
+								"fieldList": [
+									"itemName",
+									"lastModified"
+								],
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							}
+						},
+						{
+							"name": "AppendFilesList",
+							"type": "AppendVariable",
+							"dependsOn": [
+								{
+									"activity": "GetFileDetail",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "Amman_AMT_List",
+								"value": {
+									"value": "@concat(activity('GetFileDetail').output.itemName,' , ',activity('GetFileDetail').output.lastModified)\n",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "StoreFileDetail",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "GetFileDetail",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "Amman_AMT_Files",
+								"value": {
+									"value": "@concat(activity('GetFileDetail').output.itemName,' , ',activity('GetFileDetail').output.lastModified)",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Send email",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "ForEachFiles",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+					"body": {
+						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} List of Files in AMT Blob folder\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"List Blob Folderactivity('GetFileDetail').output.pipelineReturnValue\",\n    \"Message\": \"IMAFSCSVExport-2023-09-21.csv , 2023-09-21T03:05:15Z , IMAFSCSVExport.csv , 2024-02-20T12:31:17Z , IMAFSCSVExport_test.csv , 2024-02-05T23:07:42Z , PT Amman Forecast_202310.xlsx , 2023-10-10T13:39:46Z\"\n}",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "SetList",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "ForEachFiles",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Amman_AMT_Files",
+					"value": {
+						"value": "@variables('Amman_AMT_List')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"Amman_AMT_List": {
+				"type": "Array"
+			},
+			"Amman_AMT_Files": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Versions Old"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-02-20T21:25:55Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

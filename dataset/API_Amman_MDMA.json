@@ -1,0 +1,19 @@
+{
+	"name": "API_Amman_MDMA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "API_Amman_PROD_MDMA",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/API"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": ""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

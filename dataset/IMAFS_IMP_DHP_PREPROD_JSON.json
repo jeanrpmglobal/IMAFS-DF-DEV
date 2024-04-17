@@ -1,0 +1,23 @@
+{
+	"name": "IMAFS_IMP_DHP_PREPROD_JSON",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlob_imafs_storage_general",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Others"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "dbo.IMAFS_IMP_DHP.json",
+				"container": "imafsstoragegeneral"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,33 @@
+{
+	"name": "Ellipse1CS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobCerrejonBlob",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Ellipse"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "IMAFS_IMAF1CS.TXT",
+				"folderPath": "import",
+				"container": "root"
+			},
+			"columnDelimiter": "\t",
+			"escapeChar": "",
+			"firstRowAsHeader": true,
+			"quoteChar": ""
+		},
+		"schema": [
+			{
+				"name": "DSTRCT_CODE\tWHOUSE_ID\tCUSTODIAN_ID\tCUSTODIAN_TYPE\t",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

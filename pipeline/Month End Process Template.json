@@ -1,0 +1,60 @@
+{
+	"name": "Month End Process Template",
+	"properties": {
+		"activities": [
+			{
+				"name": "Arima",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Prophet",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/jmichaud@rpmglobal.com/Forecasting_Arima V3"
+				},
+				"linkedServiceName": {
+					"referenceName": "DatabricksTrial",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Prophet",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/jmichaud@rpmglobal.com/Forecasting_Prophet V2"
+				},
+				"linkedServiceName": {
+					"referenceName": "DatabricksTrial",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Month End Process"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-03-08T20:43:33Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

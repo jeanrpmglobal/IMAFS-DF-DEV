@@ -1,0 +1,16 @@
+{
+	"name": "StatsElasticPoolDev",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDevMaster",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Others"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,37 @@
+{
+	"name": "Blob_Amman_EQUI",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobAmman",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/Blob"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "EQUI_0.json",
+				"folderPath": "import",
+				"container": "root"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"AUFNR": {
+					"type": "string"
+				},
+				"KTEXT": {
+					"type": "string"
+				},
+				"AUART": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,33 @@
+{
+	"name": "SQL_SAP_EKET_EKPO_AMMAN_PROD",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureProdAmman",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/SQL"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "AUFNR",
+				"type": "varchar"
+			},
+			{
+				"name": "KTEXT",
+				"type": "varchar"
+			},
+			{
+				"name": "AUART",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "_SAP_EKET_EKPO"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

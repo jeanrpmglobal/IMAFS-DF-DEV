@@ -1,0 +1,17 @@
+{
+	"name": "IMAFS_IMP_ITEMS_to_JSON_BLOB_test_to_delete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDevPreprod",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "IMAFS_IMP_ITEMS_JSON_TEST"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,56 @@
+{
+	"name": "Export Forecast Data Lake to Blob to SQL",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy Arima Qty to Blob",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "default.arima_forecast_qty_export"
+					},
+					{
+						"name": "Destination",
+						"value": "machine-learning-export//"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureDatabricksDeltaLakeSource",
+						"exportSettings": {
+							"type": "AzureDatabricksDeltaLakeExportCommand"
+						}
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "AzureBlobMachineLearningImport",
+							"type": "LinkedServiceReference"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DataBricks_Arima_Forecast_Qty_Export",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Month End Process"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-04-16T15:04:35Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

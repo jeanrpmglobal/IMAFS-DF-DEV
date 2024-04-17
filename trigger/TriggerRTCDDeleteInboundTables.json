@@ -1,0 +1,24 @@
+{
+	"name": "TriggerRTCDDeleteInboundTables",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "_RTC_TRUNCATE_INBOUND TABLES",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2023-12-20T21:00:00",
+				"timeZone": "Eastern Standard Time"
+			}
+		}
+	}
+}

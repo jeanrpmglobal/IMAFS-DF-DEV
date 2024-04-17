@@ -1,0 +1,5285 @@
+{
+	"name": "INTERFACE_PROD_AMMAN_Big_Tables",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy EBAN_2021",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_EBAN",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['BANFN']"
+								},
+								"sink": {
+									"name": "BANFN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BNFPO']"
+								},
+								"sink": {
+									"name": "BNFPO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BADAT']"
+								},
+								"sink": {
+									"name": "BADAT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BSART']"
+								},
+								"sink": {
+									"name": "BSART",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BSTYP']"
+								},
+								"sink": {
+									"name": "BSTYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PSTYP']"
+								},
+								"sink": {
+									"name": "PSTYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LOEKZ']"
+								},
+								"sink": {
+									"name": "LOEKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['STATU']"
+								},
+								"sink": {
+									"name": "STATU",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['FRGKZ']"
+								},
+								"sink": {
+									"name": "FRGKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['FRGZU']"
+								},
+								"sink": {
+									"name": "FRGZU",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['FRGDT']"
+								},
+								"sink": {
+									"name": "FRGDT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MEINS']"
+								},
+								"sink": {
+									"name": "MEINS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZZ_PRREQ']"
+								},
+								"sink": {
+									"name": "ZZ_PRREQ",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_EBAN_2021",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_EBAN_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy EBAN_2022 1",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy EBAN_2021",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE _SAP_EBAN",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['BANFN']"
+								},
+								"sink": {
+									"name": "BANFN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BNFPO']"
+								},
+								"sink": {
+									"name": "BNFPO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BADAT']"
+								},
+								"sink": {
+									"name": "BADAT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BSART']"
+								},
+								"sink": {
+									"name": "BSART",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BSTYP']"
+								},
+								"sink": {
+									"name": "BSTYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PSTYP']"
+								},
+								"sink": {
+									"name": "PSTYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LOEKZ']"
+								},
+								"sink": {
+									"name": "LOEKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['STATU']"
+								},
+								"sink": {
+									"name": "STATU",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['FRGKZ']"
+								},
+								"sink": {
+									"name": "FRGKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['FRGZU']"
+								},
+								"sink": {
+									"name": "FRGZU",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['FRGDT']"
+								},
+								"sink": {
+									"name": "FRGDT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MEINS']"
+								},
+								"sink": {
+									"name": "MEINS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZZ_PRREQ']"
+								},
+								"sink": {
+									"name": "ZZ_PRREQ",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_EBAN_2022_1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_EBAN_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy EBAN_2023",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy EBAN_2022_2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE _SAP_EBAN",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['BANFN']"
+								},
+								"sink": {
+									"name": "BANFN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BNFPO']"
+								},
+								"sink": {
+									"name": "BNFPO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BADAT']"
+								},
+								"sink": {
+									"name": "BADAT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BSART']"
+								},
+								"sink": {
+									"name": "BSART",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BSTYP']"
+								},
+								"sink": {
+									"name": "BSTYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PSTYP']"
+								},
+								"sink": {
+									"name": "PSTYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LOEKZ']"
+								},
+								"sink": {
+									"name": "LOEKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['STATU']"
+								},
+								"sink": {
+									"name": "STATU",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['FRGKZ']"
+								},
+								"sink": {
+									"name": "FRGKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['FRGZU']"
+								},
+								"sink": {
+									"name": "FRGZU",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['FRGDT']"
+								},
+								"sink": {
+									"name": "FRGDT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MEINS']"
+								},
+								"sink": {
+									"name": "MEINS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZZ_PRREQ']"
+								},
+								"sink": {
+									"name": "ZZ_PRREQ",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_EBAN_2023",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_EBAN_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MARD_2021 1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_MARD",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LVORM']"
+								},
+								"sink": {
+									"name": "LVORM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['DISKZ']"
+								},
+								"sink": {
+									"name": "DISKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGPBE']"
+								},
+								"sink": {
+									"name": "LGPBE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERSDA']"
+								},
+								"sink": {
+									"name": "ERSDA",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_MARD_2021_1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MARD_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MARD_2021 2",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy MARD_2021 1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE _SAP_MARD",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LVORM']"
+								},
+								"sink": {
+									"name": "LVORM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['DISKZ']"
+								},
+								"sink": {
+									"name": "DISKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGPBE']"
+								},
+								"sink": {
+									"name": "LGPBE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERSDA']"
+								},
+								"sink": {
+									"name": "ERSDA",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_MARD_2021_2",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MARD_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MARD_2021 3",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy MARD_2021 2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE _SAP_MARD",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LVORM']"
+								},
+								"sink": {
+									"name": "LVORM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['DISKZ']"
+								},
+								"sink": {
+									"name": "DISKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGPBE']"
+								},
+								"sink": {
+									"name": "LGPBE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERSDA']"
+								},
+								"sink": {
+									"name": "ERSDA",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_MARD_2021_3",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MARD_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MARD_2021_4",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy MARD_2021 3_2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE _SAP_MARD",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LVORM']"
+								},
+								"sink": {
+									"name": "LVORM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['DISKZ']"
+								},
+								"sink": {
+									"name": "DISKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGPBE']"
+								},
+								"sink": {
+									"name": "LGPBE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERSDA']"
+								},
+								"sink": {
+									"name": "ERSDA",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_MARD_2021_4",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MARD_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MARD_2022",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy MARD_2021_4",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE _SAP_MARD",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LVORM']"
+								},
+								"sink": {
+									"name": "LVORM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['DISKZ']"
+								},
+								"sink": {
+									"name": "DISKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGPBE']"
+								},
+								"sink": {
+									"name": "LGPBE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERSDA']"
+								},
+								"sink": {
+									"name": "ERSDA",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_MARD_2022",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MARD_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MARD_2023",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy MARD_2022",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE _SAP_MARD",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LVORM']"
+								},
+								"sink": {
+									"name": "LVORM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['DISKZ']"
+								},
+								"sink": {
+									"name": "DISKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGPBE']"
+								},
+								"sink": {
+									"name": "LGPBE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERSDA']"
+								},
+								"sink": {
+									"name": "ERSDA",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_MARD_2023",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MARD_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy RESB_2021",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_RESB",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_RESB_2021",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_RESB_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy RESB_2022",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy RESB_2021",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE _SAP_RESB",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_RESB_2022",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_RESB_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy RESB_2023",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy RESB_2022",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE _SAP_RESB",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_RESB_2023",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_RESB_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy EKPO_2021",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_EKET_EKPO",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['EBELN']"
+								},
+								"sink": {
+									"name": "EBELN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELP']"
+								},
+								"sink": {
+									"name": "EBELP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LOEKZ']"
+								},
+								"sink": {
+									"name": "LOEKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AEDAT']"
+								},
+								"sink": {
+									"name": "AEDAT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE_PO']"
+								},
+								"sink": {
+									"name": "MENGE_PO",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MEINS']"
+								},
+								"sink": {
+									"name": "MEINS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['UMREZ']"
+								},
+								"sink": {
+									"name": "UMREZ",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['UMREN']"
+								},
+								"sink": {
+									"name": "UMREN",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BSTYP']"
+								},
+								"sink": {
+									"name": "BSTYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['INCO1']"
+								},
+								"sink": {
+									"name": "INCO1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZZ_BEDNR']"
+								},
+								"sink": {
+									"name": "ZZ_BEDNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ELIKZ']"
+								},
+								"sink": {
+									"name": "ELIKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EINDT']"
+								},
+								"sink": {
+									"name": "EINDT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WEMNG']"
+								},
+								"sink": {
+									"name": "WEMNG",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BANFN']"
+								},
+								"sink": {
+									"name": "BANFN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BNFPO']"
+								},
+								"sink": {
+									"name": "BNFPO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BEDAT']"
+								},
+								"sink": {
+									"name": "BEDAT",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_EKPO_2021",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_EKPO_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy EKPO_2022",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy EKPO_2021",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE _SAP_EKET_EKPO",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['EBELN']"
+								},
+								"sink": {
+									"name": "EBELN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELP']"
+								},
+								"sink": {
+									"name": "EBELP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LOEKZ']"
+								},
+								"sink": {
+									"name": "LOEKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AEDAT']"
+								},
+								"sink": {
+									"name": "AEDAT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE_PO']"
+								},
+								"sink": {
+									"name": "MENGE_PO",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MEINS']"
+								},
+								"sink": {
+									"name": "MEINS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['UMREZ']"
+								},
+								"sink": {
+									"name": "UMREZ",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['UMREN']"
+								},
+								"sink": {
+									"name": "UMREN",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BSTYP']"
+								},
+								"sink": {
+									"name": "BSTYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['INCO1']"
+								},
+								"sink": {
+									"name": "INCO1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZZ_BEDNR']"
+								},
+								"sink": {
+									"name": "ZZ_BEDNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ELIKZ']"
+								},
+								"sink": {
+									"name": "ELIKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EINDT']"
+								},
+								"sink": {
+									"name": "EINDT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WEMNG']"
+								},
+								"sink": {
+									"name": "WEMNG",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BANFN']"
+								},
+								"sink": {
+									"name": "BANFN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BNFPO']"
+								},
+								"sink": {
+									"name": "BNFPO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BEDAT']"
+								},
+								"sink": {
+									"name": "BEDAT",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_EKPO_2022",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_EKPO_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy EKPO_2023",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy EKPO_2022_1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE _SAP_EKET_EKPO",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['EBELN']"
+								},
+								"sink": {
+									"name": "EBELN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELP']"
+								},
+								"sink": {
+									"name": "EBELP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LOEKZ']"
+								},
+								"sink": {
+									"name": "LOEKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AEDAT']"
+								},
+								"sink": {
+									"name": "AEDAT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE_PO']"
+								},
+								"sink": {
+									"name": "MENGE_PO",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MEINS']"
+								},
+								"sink": {
+									"name": "MEINS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['UMREZ']"
+								},
+								"sink": {
+									"name": "UMREZ",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['UMREN']"
+								},
+								"sink": {
+									"name": "UMREN",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BSTYP']"
+								},
+								"sink": {
+									"name": "BSTYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['INCO1']"
+								},
+								"sink": {
+									"name": "INCO1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZZ_BEDNR']"
+								},
+								"sink": {
+									"name": "ZZ_BEDNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ELIKZ']"
+								},
+								"sink": {
+									"name": "ELIKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EINDT']"
+								},
+								"sink": {
+									"name": "EINDT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WEMNG']"
+								},
+								"sink": {
+									"name": "WEMNG",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BANFN']"
+								},
+								"sink": {
+									"name": "BANFN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BNFPO']"
+								},
+								"sink": {
+									"name": "BNFPO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BEDAT']"
+								},
+								"sink": {
+									"name": "BEDAT",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_EKPO_2023",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_EKPO_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MKPF to MSEG_2021",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_MSEG",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MBLNR']"
+								},
+								"sink": {
+									"name": "MBLNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MJAHR']"
+								},
+								"sink": {
+									"name": "MJAHR",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BUDAT']"
+								},
+								"sink": {
+									"name": "MKPF_BUDAT"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZEILE']"
+								},
+								"sink": {
+									"name": "ZEILE",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LINE_ID']"
+								},
+								"sink": {
+									"name": "LINE_ID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BWART']"
+								},
+								"sink": {
+									"name": "BWART",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LIFNR']"
+								},
+								"sink": {
+									"name": "LIFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERFMG']"
+								},
+								"sink": {
+									"name": "ERFMG",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SHKZG']"
+								},
+								"sink": {
+									"name": "SHKZG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELN']"
+								},
+								"sink": {
+									"name": "EBELN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELP']"
+								},
+								"sink": {
+									"name": "EBELP",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SGTXT']"
+								},
+								"sink": {
+									"name": "SGTXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AUFNR']"
+								},
+								"sink": {
+									"name": "AUFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUDT_MKPF']"
+								},
+								"sink": {
+									"name": "CPUDT_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUTM_MKPF']"
+								},
+								"sink": {
+									"name": "CPUTM_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CHARG']"
+								},
+								"sink": {
+									"name": "CHARG",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_MKPF_2021",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MKPF_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MKPF to MSEG_2022 1",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy MKPF to MSEG_2021",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "--TRUNCATE TABLE _SAP_MSEG",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MBLNR']"
+								},
+								"sink": {
+									"name": "MBLNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MJAHR']"
+								},
+								"sink": {
+									"name": "MJAHR",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BUDAT']"
+								},
+								"sink": {
+									"name": "MKPF_BUDAT"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZEILE']"
+								},
+								"sink": {
+									"name": "ZEILE",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LINE_ID']"
+								},
+								"sink": {
+									"name": "LINE_ID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BWART']"
+								},
+								"sink": {
+									"name": "BWART",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LIFNR']"
+								},
+								"sink": {
+									"name": "LIFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERFMG']"
+								},
+								"sink": {
+									"name": "ERFMG",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SHKZG']"
+								},
+								"sink": {
+									"name": "SHKZG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELN']"
+								},
+								"sink": {
+									"name": "EBELN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELP']"
+								},
+								"sink": {
+									"name": "EBELP",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SGTXT']"
+								},
+								"sink": {
+									"name": "SGTXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AUFNR']"
+								},
+								"sink": {
+									"name": "AUFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUDT_MKPF']"
+								},
+								"sink": {
+									"name": "CPUDT_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUTM_MKPF']"
+								},
+								"sink": {
+									"name": "CPUTM_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CHARG']"
+								},
+								"sink": {
+									"name": "CHARG",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_MKPF_2022_1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MKPF_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MKPF to MSEG_2023 1",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy MKPF to MSEG_2022_5",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "--TRUNCATE TABLE _SAP_MSEG",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MBLNR']"
+								},
+								"sink": {
+									"name": "MBLNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MJAHR']"
+								},
+								"sink": {
+									"name": "MJAHR",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BUDAT']"
+								},
+								"sink": {
+									"name": "MKPF_BUDAT"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZEILE']"
+								},
+								"sink": {
+									"name": "ZEILE",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LINE_ID']"
+								},
+								"sink": {
+									"name": "LINE_ID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BWART']"
+								},
+								"sink": {
+									"name": "BWART",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LIFNR']"
+								},
+								"sink": {
+									"name": "LIFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERFMG']"
+								},
+								"sink": {
+									"name": "ERFMG",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SHKZG']"
+								},
+								"sink": {
+									"name": "SHKZG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELN']"
+								},
+								"sink": {
+									"name": "EBELN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELP']"
+								},
+								"sink": {
+									"name": "EBELP",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SGTXT']"
+								},
+								"sink": {
+									"name": "SGTXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AUFNR']"
+								},
+								"sink": {
+									"name": "AUFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUDT_MKPF']"
+								},
+								"sink": {
+									"name": "CPUDT_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUTM_MKPF']"
+								},
+								"sink": {
+									"name": "CPUTM_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CHARG']"
+								},
+								"sink": {
+									"name": "CHARG",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_MKPF_2023_1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MKPF_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MKPF to MSEG_2022_2",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy MKPF to MSEG_2022 1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "--TRUNCATE TABLE _SAP_MSEG",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MBLNR']"
+								},
+								"sink": {
+									"name": "MBLNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MJAHR']"
+								},
+								"sink": {
+									"name": "MJAHR",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BUDAT']"
+								},
+								"sink": {
+									"name": "MKPF_BUDAT"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZEILE']"
+								},
+								"sink": {
+									"name": "ZEILE",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LINE_ID']"
+								},
+								"sink": {
+									"name": "LINE_ID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BWART']"
+								},
+								"sink": {
+									"name": "BWART",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LIFNR']"
+								},
+								"sink": {
+									"name": "LIFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERFMG']"
+								},
+								"sink": {
+									"name": "ERFMG",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SHKZG']"
+								},
+								"sink": {
+									"name": "SHKZG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELN']"
+								},
+								"sink": {
+									"name": "EBELN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELP']"
+								},
+								"sink": {
+									"name": "EBELP",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SGTXT']"
+								},
+								"sink": {
+									"name": "SGTXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AUFNR']"
+								},
+								"sink": {
+									"name": "AUFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUDT_MKPF']"
+								},
+								"sink": {
+									"name": "CPUDT_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUTM_MKPF']"
+								},
+								"sink": {
+									"name": "CPUTM_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CHARG']"
+								},
+								"sink": {
+									"name": "CHARG",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_MKPF_2022_2",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MKPF_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MKPF to MSEG_2022_3",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy MKPF to MSEG_2022_2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "--TRUNCATE TABLE _SAP_MSEG",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MBLNR']"
+								},
+								"sink": {
+									"name": "MBLNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MJAHR']"
+								},
+								"sink": {
+									"name": "MJAHR",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BUDAT']"
+								},
+								"sink": {
+									"name": "MKPF_BUDAT"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZEILE']"
+								},
+								"sink": {
+									"name": "ZEILE",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LINE_ID']"
+								},
+								"sink": {
+									"name": "LINE_ID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BWART']"
+								},
+								"sink": {
+									"name": "BWART",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LIFNR']"
+								},
+								"sink": {
+									"name": "LIFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERFMG']"
+								},
+								"sink": {
+									"name": "ERFMG",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SHKZG']"
+								},
+								"sink": {
+									"name": "SHKZG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELN']"
+								},
+								"sink": {
+									"name": "EBELN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELP']"
+								},
+								"sink": {
+									"name": "EBELP",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SGTXT']"
+								},
+								"sink": {
+									"name": "SGTXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AUFNR']"
+								},
+								"sink": {
+									"name": "AUFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUDT_MKPF']"
+								},
+								"sink": {
+									"name": "CPUDT_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUTM_MKPF']"
+								},
+								"sink": {
+									"name": "CPUTM_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CHARG']"
+								},
+								"sink": {
+									"name": "CHARG",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_MKPF_2022_3",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MKPF_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MKPF to MSEG_2022_4",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy MKPF to MSEG_2022_3",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "--TRUNCATE TABLE _SAP_MSEG",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MBLNR']"
+								},
+								"sink": {
+									"name": "MBLNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MJAHR']"
+								},
+								"sink": {
+									"name": "MJAHR",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BUDAT']"
+								},
+								"sink": {
+									"name": "MKPF_BUDAT"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZEILE']"
+								},
+								"sink": {
+									"name": "ZEILE",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LINE_ID']"
+								},
+								"sink": {
+									"name": "LINE_ID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BWART']"
+								},
+								"sink": {
+									"name": "BWART",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LIFNR']"
+								},
+								"sink": {
+									"name": "LIFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERFMG']"
+								},
+								"sink": {
+									"name": "ERFMG",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SHKZG']"
+								},
+								"sink": {
+									"name": "SHKZG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELN']"
+								},
+								"sink": {
+									"name": "EBELN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELP']"
+								},
+								"sink": {
+									"name": "EBELP",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SGTXT']"
+								},
+								"sink": {
+									"name": "SGTXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AUFNR']"
+								},
+								"sink": {
+									"name": "AUFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUDT_MKPF']"
+								},
+								"sink": {
+									"name": "CPUDT_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUTM_MKPF']"
+								},
+								"sink": {
+									"name": "CPUTM_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CHARG']"
+								},
+								"sink": {
+									"name": "CHARG",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_MKPF_2022_4",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MKPF_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MKPF to MSEG_2022_5",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy MKPF to MSEG_2022_4",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "--TRUNCATE TABLE _SAP_MSEG",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MBLNR']"
+								},
+								"sink": {
+									"name": "MBLNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MJAHR']"
+								},
+								"sink": {
+									"name": "MJAHR",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BUDAT']"
+								},
+								"sink": {
+									"name": "MKPF_BUDAT"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZEILE']"
+								},
+								"sink": {
+									"name": "ZEILE",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LINE_ID']"
+								},
+								"sink": {
+									"name": "LINE_ID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BWART']"
+								},
+								"sink": {
+									"name": "BWART",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LIFNR']"
+								},
+								"sink": {
+									"name": "LIFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERFMG']"
+								},
+								"sink": {
+									"name": "ERFMG",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SHKZG']"
+								},
+								"sink": {
+									"name": "SHKZG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELN']"
+								},
+								"sink": {
+									"name": "EBELN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELP']"
+								},
+								"sink": {
+									"name": "EBELP",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SGTXT']"
+								},
+								"sink": {
+									"name": "SGTXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AUFNR']"
+								},
+								"sink": {
+									"name": "AUFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUDT_MKPF']"
+								},
+								"sink": {
+									"name": "CPUDT_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUTM_MKPF']"
+								},
+								"sink": {
+									"name": "CPUTM_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CHARG']"
+								},
+								"sink": {
+									"name": "CHARG",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_MKPF_2022_5",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MKPF_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy EBAN_2022_2",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy EBAN_2022 1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE _SAP_EBAN",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['BANFN']"
+								},
+								"sink": {
+									"name": "BANFN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BNFPO']"
+								},
+								"sink": {
+									"name": "BNFPO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BADAT']"
+								},
+								"sink": {
+									"name": "BADAT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BSART']"
+								},
+								"sink": {
+									"name": "BSART",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BSTYP']"
+								},
+								"sink": {
+									"name": "BSTYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PSTYP']"
+								},
+								"sink": {
+									"name": "PSTYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LOEKZ']"
+								},
+								"sink": {
+									"name": "LOEKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['STATU']"
+								},
+								"sink": {
+									"name": "STATU",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['FRGKZ']"
+								},
+								"sink": {
+									"name": "FRGKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['FRGZU']"
+								},
+								"sink": {
+									"name": "FRGZU",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['FRGDT']"
+								},
+								"sink": {
+									"name": "FRGDT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MEINS']"
+								},
+								"sink": {
+									"name": "MEINS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZZ_PRREQ']"
+								},
+								"sink": {
+									"name": "ZZ_PRREQ",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_EBAN_2022_2",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_EBAN_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MKPF to MSEG_2023_2",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy MKPF to MSEG_2023 1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "--TRUNCATE TABLE _SAP_MSEG",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MBLNR']"
+								},
+								"sink": {
+									"name": "MBLNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MJAHR']"
+								},
+								"sink": {
+									"name": "MJAHR",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BUDAT']"
+								},
+								"sink": {
+									"name": "MKPF_BUDAT"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZEILE']"
+								},
+								"sink": {
+									"name": "ZEILE",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LINE_ID']"
+								},
+								"sink": {
+									"name": "LINE_ID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BWART']"
+								},
+								"sink": {
+									"name": "BWART",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LIFNR']"
+								},
+								"sink": {
+									"name": "LIFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERFMG']"
+								},
+								"sink": {
+									"name": "ERFMG",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SHKZG']"
+								},
+								"sink": {
+									"name": "SHKZG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELN']"
+								},
+								"sink": {
+									"name": "EBELN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELP']"
+								},
+								"sink": {
+									"name": "EBELP",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SGTXT']"
+								},
+								"sink": {
+									"name": "SGTXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AUFNR']"
+								},
+								"sink": {
+									"name": "AUFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUDT_MKPF']"
+								},
+								"sink": {
+									"name": "CPUDT_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUTM_MKPF']"
+								},
+								"sink": {
+									"name": "CPUTM_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CHARG']"
+								},
+								"sink": {
+									"name": "CHARG",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_MKPF_2023_2",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MKPF_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MKPF to MSEG_2023_3",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy MKPF to MSEG_2023_2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "--TRUNCATE TABLE _SAP_MSEG",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MBLNR']"
+								},
+								"sink": {
+									"name": "MBLNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MJAHR']"
+								},
+								"sink": {
+									"name": "MJAHR",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BUDAT']"
+								},
+								"sink": {
+									"name": "MKPF_BUDAT"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZEILE']"
+								},
+								"sink": {
+									"name": "ZEILE",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LINE_ID']"
+								},
+								"sink": {
+									"name": "LINE_ID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BWART']"
+								},
+								"sink": {
+									"name": "BWART",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LIFNR']"
+								},
+								"sink": {
+									"name": "LIFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERFMG']"
+								},
+								"sink": {
+									"name": "ERFMG",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SHKZG']"
+								},
+								"sink": {
+									"name": "SHKZG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELN']"
+								},
+								"sink": {
+									"name": "EBELN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELP']"
+								},
+								"sink": {
+									"name": "EBELP",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SGTXT']"
+								},
+								"sink": {
+									"name": "SGTXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AUFNR']"
+								},
+								"sink": {
+									"name": "AUFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUDT_MKPF']"
+								},
+								"sink": {
+									"name": "CPUDT_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUTM_MKPF']"
+								},
+								"sink": {
+									"name": "CPUTM_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CHARG']"
+								},
+								"sink": {
+									"name": "CHARG",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_MKPF_2023_3",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MKPF_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy EKPO_2022_1",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy EKPO_2022",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE _SAP_EKET_EKPO",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['EBELN']"
+								},
+								"sink": {
+									"name": "EBELN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELP']"
+								},
+								"sink": {
+									"name": "EBELP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LOEKZ']"
+								},
+								"sink": {
+									"name": "LOEKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AEDAT']"
+								},
+								"sink": {
+									"name": "AEDAT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE_PO']"
+								},
+								"sink": {
+									"name": "MENGE_PO",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MEINS']"
+								},
+								"sink": {
+									"name": "MEINS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['UMREZ']"
+								},
+								"sink": {
+									"name": "UMREZ",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['UMREN']"
+								},
+								"sink": {
+									"name": "UMREN",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BSTYP']"
+								},
+								"sink": {
+									"name": "BSTYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['INCO1']"
+								},
+								"sink": {
+									"name": "INCO1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZZ_BEDNR']"
+								},
+								"sink": {
+									"name": "ZZ_BEDNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ELIKZ']"
+								},
+								"sink": {
+									"name": "ELIKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EINDT']"
+								},
+								"sink": {
+									"name": "EINDT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WEMNG']"
+								},
+								"sink": {
+									"name": "WEMNG",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BANFN']"
+								},
+								"sink": {
+									"name": "BANFN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BNFPO']"
+								},
+								"sink": {
+									"name": "BNFPO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BEDAT']"
+								},
+								"sink": {
+									"name": "BEDAT",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_EKPO_2022_1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_EKPO_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy EKPO_2023_1",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy EKPO_2023",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE _SAP_EKET_EKPO",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['EBELN']"
+								},
+								"sink": {
+									"name": "EBELN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELP']"
+								},
+								"sink": {
+									"name": "EBELP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LOEKZ']"
+								},
+								"sink": {
+									"name": "LOEKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AEDAT']"
+								},
+								"sink": {
+									"name": "AEDAT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE_PO']"
+								},
+								"sink": {
+									"name": "MENGE_PO",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MEINS']"
+								},
+								"sink": {
+									"name": "MEINS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['UMREZ']"
+								},
+								"sink": {
+									"name": "UMREZ",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['UMREN']"
+								},
+								"sink": {
+									"name": "UMREN",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BSTYP']"
+								},
+								"sink": {
+									"name": "BSTYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['INCO1']"
+								},
+								"sink": {
+									"name": "INCO1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZZ_BEDNR']"
+								},
+								"sink": {
+									"name": "ZZ_BEDNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ELIKZ']"
+								},
+								"sink": {
+									"name": "ELIKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EINDT']"
+								},
+								"sink": {
+									"name": "EINDT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WEMNG']"
+								},
+								"sink": {
+									"name": "WEMNG",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BANFN']"
+								},
+								"sink": {
+									"name": "BANFN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BNFPO']"
+								},
+								"sink": {
+									"name": "BNFPO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BEDAT']"
+								},
+								"sink": {
+									"name": "BEDAT",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_EKPO_2023_1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_EKPO_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MARD_2021 3_2",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy MARD_2021 3_1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE _SAP_MARD",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LVORM']"
+								},
+								"sink": {
+									"name": "LVORM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['DISKZ']"
+								},
+								"sink": {
+									"name": "DISKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGPBE']"
+								},
+								"sink": {
+									"name": "LGPBE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERSDA']"
+								},
+								"sink": {
+									"name": "ERSDA",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_MARD_2021_3_2",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MARD_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MARD_2021 3_1",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy MARD_2021 3",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 5,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:05:00",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE _SAP_MARD",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LVORM']"
+								},
+								"sink": {
+									"name": "LVORM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['DISKZ']"
+								},
+								"sink": {
+									"name": "DISKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGPBE']"
+								},
+								"sink": {
+									"name": "LGPBE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERSDA']"
+								},
+								"sink": {
+									"name": "ERSDA",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "API_Amman_PROD_MARD_2021_31",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MARD_AMMAN_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Versions Old"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-11-07T19:15:43Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

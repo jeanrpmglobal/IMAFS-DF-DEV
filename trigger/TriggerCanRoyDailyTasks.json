@@ -1,0 +1,24 @@
+{
+	"name": "TriggerCanRoyDailyTasks",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "INTERFACE_PROD_CANROY",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-08T03:15:00",
+				"timeZone": "Eastern Standard Time"
+			}
+		}
+	}
+}

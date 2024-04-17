@@ -1,0 +1,31 @@
+{
+	"name": "API_Amman_PROD_EKPO_DELTA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "API_Amman_PROD_EKPO_DELTA",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"BaseUrlParameter": {
+					"value": "@concat('https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=ekpo&aedatge=', dataset().currentDate)",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"currentDate": {
+				"type": "string",
+				"defaultValue": "@formatDateTime(addDays(utcnow(), -7), 'yyyyMMdd')"
+			}
+		},
+		"folder": {
+			"name": "Amman/API"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": ""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,37 @@
+{
+	"name": "Blob_Amman_AUFK",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobAmman",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/Blob"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "AUFK_0.json",
+				"folderPath": "import",
+				"container": "root"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"AUFNR": {
+					"type": "string"
+				},
+				"KTEXT": {
+					"type": "string"
+				},
+				"AUART": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

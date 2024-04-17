@@ -1,0 +1,19 @@
+{
+	"name": "API_Amman_EKET",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "API_Amman_PROD_EKET",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/API"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": ""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,35 @@
+{
+	"name": "Blob_Amman_IMAFS_EXP_ITEMS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobAmman",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/Blob"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "root"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"AUFNR": {
+					"type": "string"
+				},
+				"EQUNR": {
+					"type": "string"
+				},
+				"ADDAT": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

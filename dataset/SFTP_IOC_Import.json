@@ -1,0 +1,22 @@
+{
+	"name": "SFTP_IOC_Import",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SFTP_IOC",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Others"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "SftpLocation",
+				"fileName": "tblimport.accdb",
+				"folderPath": "/Home/imafs"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,19 @@
+{
+	"name": "API_Amman_PROD_MKPF_2022_4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "API_Amman_PROD_MKPF 2022 4",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/API"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": ""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

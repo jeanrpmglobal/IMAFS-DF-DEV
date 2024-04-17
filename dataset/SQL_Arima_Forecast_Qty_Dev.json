@@ -1,0 +1,37 @@
+{
+	"name": "SQL_Arima_Forecast_Qty_Dev",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDev_IMAFS_AI_STORAGE",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Others"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "unique_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "ds",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "AutoARIMA",
+				"type": "real",
+				"precision": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "FORECAST_RESULT_ARIMA_QTY"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

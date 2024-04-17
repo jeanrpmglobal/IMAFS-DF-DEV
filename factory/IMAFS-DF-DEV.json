@@ -1,0 +1,14 @@
+{
+	"name": "IMAFS-DF-DEV",
+	"properties": {
+		"globalConfigurations": {
+			"PipelineBillingEnabled": "false"
+		}
+	},
+	"location": "canadacentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "80995b0e-1ec2-4253-aa57-cf0986030611",
+		"tenantId": "63ba811f-595f-4090-8c1b-420ff9cf2a63"
+	}
+}

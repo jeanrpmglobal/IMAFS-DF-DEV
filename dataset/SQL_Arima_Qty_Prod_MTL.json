@@ -1,0 +1,37 @@
+{
+	"name": "SQL_Arima_Qty_Prod_MTL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SQL_PROD_MTL",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Others"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "unique_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "ds",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "AutoARIMA",
+				"type": "real",
+				"precision": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "_NEW_CANROY_FORECAST_ARIMA_QTY"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

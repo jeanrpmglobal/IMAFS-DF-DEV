@@ -1,0 +1,145 @@
+{
+	"name": "SqlEllipse170",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureProdCerrejon",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Ellipse"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "STOCK_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "CATEG_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "STOCK_STATUS",
+				"type": "varchar"
+			},
+			{
+				"name": "STOCK_SECTIONX6",
+				"type": "varchar"
+			},
+			{
+				"name": "REF_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "STK_DESC",
+				"type": "varchar"
+			},
+			{
+				"name": "PART_NO",
+				"type": "varchar"
+			},
+			{
+				"name": "MNEMONIC",
+				"type": "varchar"
+			},
+			{
+				"name": "DSTRCT_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "STOCK_TYPE",
+				"type": "varchar"
+			},
+			{
+				"name": "CREATION_DATE",
+				"type": "varchar"
+			},
+			{
+				"name": "UNIT_OF_ISSUE",
+				"type": "varchar"
+			},
+			{
+				"name": "ROP",
+				"type": "varchar"
+			},
+			{
+				"name": "ROQ",
+				"type": "varchar"
+			},
+			{
+				"name": "CURR_SUPPLIER",
+				"type": "varchar"
+			},
+			{
+				"name": "INVENT_COST_PR",
+				"type": "varchar"
+			},
+			{
+				"name": "FRT_IN_I_PRICE",
+				"type": "varchar"
+			},
+			{
+				"name": "CUST_IN_I_PRICE",
+				"type": "varchar"
+			},
+			{
+				"name": "INV_REV_DAYS",
+				"type": "varchar"
+			},
+			{
+				"name": "PUR_REV_DAYS",
+				"type": "varchar"
+			},
+			{
+				"name": "INVT_CONTROLLR",
+				"type": "varchar"
+			},
+			{
+				"name": "PURCH_OFFICER",
+				"type": "varchar"
+			},
+			{
+				"name": "ORIGIN_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "INVT_STAT_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "CLASS",
+				"type": "varchar"
+			},
+			{
+				"name": "EXP_ELEMENT",
+				"type": "varchar"
+			},
+			{
+				"name": "PRICE_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "INVENTORY_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "CONSIGN_WS_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "LAST_REC_DATE",
+				"type": "varchar"
+			},
+			{
+				"name": "LAST_ISS_DATE",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "_ELLIPSE_MSF170_TEMP"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

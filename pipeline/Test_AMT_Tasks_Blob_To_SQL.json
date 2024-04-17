@@ -1,0 +1,331 @@
+{
+	"name": "Test_AMT_Tasks_Blob_To_SQL",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy Task Section",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table Tasks",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['Task']['TaskNumber']"
+								},
+								"sink": {
+									"name": "TaskNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Task']['Priority']"
+								},
+								"sink": {
+									"name": "Priority",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Task']['Name']"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Task']['Strategy']"
+								},
+								"sink": {
+									"name": "Strategy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Task']['ConstType']"
+								},
+								"sink": {
+									"name": "ConstType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Task']['Usage']"
+								},
+								"sink": {
+									"name": "Usage",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Task']['Status']"
+								},
+								"sink": {
+									"name": "Status",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Task']['Plant']"
+								},
+								"sink": {
+									"name": "Plant",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_AMT_AI_Extract",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlDev_Amt_AI_Task",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy Operator Section",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table Operations",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['Task']['TaskNumber']"
+								},
+								"sink": {
+									"name": "TaskNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Operation']['OperationNumber']"
+								},
+								"sink": {
+									"name": "OperationNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Operation']['Description']"
+								},
+								"sink": {
+									"name": "Description",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Operation']['WorkCenter']"
+								},
+								"sink": {
+									"name": "WorkCenter",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Operation']['ControlKey']"
+								},
+								"sink": {
+									"name": "ControlKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Operation']['NumberOfPersons']"
+								},
+								"sink": {
+									"name": "NumberOfPersons",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Operation']['Work']"
+								},
+								"sink": {
+									"name": "Work",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Operation']['Duration']"
+								},
+								"sink": {
+									"name": "Duration",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_AMT_AI_Extract",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlDev_Amt_AI_Task_Operations",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy TasksLists Section",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table TasksLists",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['Tasks'][0]['TaskName']"
+								},
+								"sink": {
+									"name": "TaskName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Tasks'][0]['Answer']"
+								},
+								"sink": {
+									"name": "Answer",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_AMT_AI_TasksList_Extract",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlDev_Amt_AI_Tasks_Lists",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Tests"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-10-24T19:48:22Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

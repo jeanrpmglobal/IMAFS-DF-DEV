@@ -1,0 +1,19 @@
+{
+	"name": "API_Amman_EKPO_2023",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "API_Amman_PROD_EKPO 2023",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/API"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": ""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

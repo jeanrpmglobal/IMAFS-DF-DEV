@@ -1,0 +1,20 @@
+{
+	"name": "imafs_imp_dhp_json_test_to_delete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlob_imafs_storage_general",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "imafs_imp_dhp_json_test.json",
+				"container": "tests"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

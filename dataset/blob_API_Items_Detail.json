@@ -1,0 +1,92 @@
+{
+	"name": "blob_API_Items_Detail",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlob_imafs_storage_general",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "api_output_items_detail.json",
+				"container": "apis"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"info": {
+					"type": "object",
+					"properties": {
+						"_postman_id": {
+							"type": "string"
+						},
+						"name": {
+							"type": "string"
+						},
+						"schema": {
+							"type": "string"
+						},
+						"_exporter_id": {
+							"type": "string"
+						},
+						"_collection_link": {
+							"type": "string"
+						}
+					}
+				},
+				"item": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"request": {
+								"type": "object",
+								"properties": {
+									"method": {
+										"type": "string"
+									},
+									"header": {
+										"type": "array"
+									},
+									"url": {
+										"type": "object",
+										"properties": {
+											"raw": {
+												"type": "string"
+											},
+											"protocol": {
+												"type": "string"
+											},
+											"host": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								}
+							},
+							"response": {
+								"type": "array"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,20 @@
+{
+	"name": "AzureDevElasticPoolStats",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDevIMAFS_STATS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Others"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ELASTIC_POOLS_STATS"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

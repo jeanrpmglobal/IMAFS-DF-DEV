@@ -1,0 +1,19 @@
+{
+	"name": "API_Amman_TCURR",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "API_Amman_PROD_TCURR",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/API"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": ""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

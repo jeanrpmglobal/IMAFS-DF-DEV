@@ -1,0 +1,16 @@
+{
+	"name": "SFTP_IOC",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "Sftp",
+		"typeProperties": {
+			"host": "sft.riotinto.com",
+			"port": "22",
+			"skipHostKeyValidation": true,
+			"authenticationType": "Basic",
+			"userName": "imafs",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDY1MEJGNzIzLUZDNjAtNDk1Ri05QTU4LTY4OUNDOTMxOTUwQ19kMjU5NWI0ZC1jZDAyLTQzMjgtOWYzYS1iM2ZmYTc1ODViYmIiDQp9"
+		}
+	}
+}

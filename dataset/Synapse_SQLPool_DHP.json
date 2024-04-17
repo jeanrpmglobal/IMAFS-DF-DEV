@@ -1,0 +1,20 @@
+{
+	"name": "Synapse_SQLPool_DHP",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SynapseSQLPool1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Others"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "demand_hist_period",
+			"table": "demand_hist_period"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

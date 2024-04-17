@@ -1,0 +1,59 @@
+{
+	"name": "Copy DemandHistPeriod to MTL Prod Srv",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy CanRoy demand",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SQL_Azure_Prod_Canroy_DHP",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_Prod_Canroy_To_IMAFS_AI_Mtl_Srv_Demand_Hist_Period",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Machine Learning"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-03-13T17:37:29Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

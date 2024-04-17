@@ -1,0 +1,37 @@
+{
+	"name": "SourceDataset_kac",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDatabricksTrial",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Others"
+		},
+		"annotations": [],
+		"type": "AzureDatabricksDeltaLakeDataset",
+		"typeProperties": {
+			"database": "default",
+			"table": "demand_rtc_250_items"
+		},
+		"schema": [
+			{
+				"name": "item_id",
+				"type": "long"
+			},
+			{
+				"name": "MONTHDATE",
+				"type": "date"
+			},
+			{
+				"name": "qty",
+				"type": "long"
+			},
+			{
+				"name": "qty_adj",
+				"type": "double"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

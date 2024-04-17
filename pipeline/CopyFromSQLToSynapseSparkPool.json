@@ -1,0 +1,140 @@
+{
+	"name": "CopyFromSQLToSynapseSparkPool",
+	"properties": {
+		"activities": [
+			{
+				"name": "CopyFromSQLToBlobCSV",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT        DEMAND_HIST_PERIOD.item_id, DEMAND_HIST_PERIOD.date, DEMAND_HIST_PERIOD.qty, DEMAND_HIST_PERIOD.hits, DEMAND_HIST_PERIOD.real_data_flag, ITEMS.Intermittent\nFROM            DEMAND_HIST_PERIOD INNER JOIN\n                         ITEMS ON DEMAND_HIST_PERIOD.item_id = ITEMS.item_id\nWHERE        (DEMAND_HIST_PERIOD.date < dbo.ACTIVE_MONTH_VAR()) AND (DEMAND_HIST_PERIOD.item_id <= 128900862) AND (ITEMS.Intermittent = 0)\nORDER BY DEMAND_HIST_PERIOD.item_id, DEMAND_HIST_PERIOD.date",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "item_id",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "item_id",
+									"type": "Int64",
+									"physicalType": "INT_64"
+								}
+							},
+							{
+								"source": {
+									"name": "date",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "date",
+									"type": "DateTime",
+									"physicalType": "INT_96"
+								}
+							},
+							{
+								"source": {
+									"name": "qty",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "qty",
+									"type": "Double",
+									"physicalType": "DOUBLE"
+								}
+							},
+							{
+								"source": {
+									"name": "hits",
+									"type": "Int16",
+									"physicalType": "smallint"
+								},
+								"sink": {
+									"name": "hits",
+									"type": "Int16",
+									"physicalType": "INT_32"
+								}
+							},
+							{
+								"source": {
+									"name": "real_data_flag",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "real_data_flag",
+									"type": "Boolean",
+									"physicalType": "BOOLEAN"
+								}
+							},
+							{
+								"source": {
+									"name": "Intermittent",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "Intermittent",
+									"type": "Boolean",
+									"physicalType": "BOOLEAN"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_DHP_CanRoy_Non_Intermittent",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "CSVBlobTransfer",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Synapse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-09-07T18:35:08Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

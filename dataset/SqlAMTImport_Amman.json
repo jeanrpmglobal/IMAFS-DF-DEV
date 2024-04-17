@@ -1,0 +1,45 @@
+{
+	"name": "SqlAMTImport_Amman",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSQLAmman",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/SQL"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ORGANIZATION_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WAREHOUSE_DESCRP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVENTORY_ITEM_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FORECAST_MONTH",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FORECAST_QTY",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "IMAFS_IMP_AMT_FORECAST_TEMP"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,49 @@
+{
+	"name": "SqlAMT_No_Temp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureQACerrejon",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Others"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "ORGANIZATION_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WAREHOUSE_DESCRP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVENTORY_ITEM_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FORECAST_MONTH",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "FORECAST_QTY",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "IMAFS_IMP_AMT_FORECAST"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

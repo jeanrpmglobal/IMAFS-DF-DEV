@@ -1,0 +1,37 @@
+{
+	"name": "ParquetBlobTransfer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedServiceBlobStorageGeneral",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Machine Learning"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "data_09bf7bed-220e-4bac-b090-6dff911cf577_943e1c63-cc46-4164-b62a-748765386d28.parquet",
+				"container": "imafsstoragegeneral"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "item_id",
+				"type": "INT64"
+			},
+			{
+				"name": "MONTHDATE",
+				"type": "DATE"
+			},
+			{
+				"name": "qty",
+				"type": "DOUBLE"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

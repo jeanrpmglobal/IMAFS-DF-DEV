@@ -1,0 +1,33 @@
+{
+	"name": "SQL_SAP_MSEG_AMMAN",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSQLAmman",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/SQL"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "AUFNR",
+				"type": "varchar"
+			},
+			{
+				"name": "KTEXT",
+				"type": "varchar"
+			},
+			{
+				"name": "AUART",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "_SAP_MSEG"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

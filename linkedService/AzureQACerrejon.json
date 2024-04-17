@@ -1,0 +1,12 @@
+{
+	"name": "AzureQACerrejon",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=sql-common-imafs-qa.database.windows.net;initial catalog=sqldb-cerrejon-imafs-QA;user id=IMAFSCommonQARPMAdmin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDY1MEJGNzIzLUZDNjAtNDk1Ri05QTU4LTY4OUNDOTMxOTUwQ18yZDgyMTg1Yy01Nzc5LTQ1ZGMtYTM3Mi0xYzQyNWFiNWI4N2IiDQp9"
+		}
+	}
+}

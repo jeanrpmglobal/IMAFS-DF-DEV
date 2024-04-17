@@ -1,0 +1,35 @@
+{
+	"name": "Resume SQLPool1 Synapse",
+	"properties": {
+		"activities": [
+			{
+				"name": "Resume SQLPool1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": "https://management.azure.com/subscriptions/35fcb957-d7ba-4604-870c-99751eb8f0cd/resourceGroups/IMAFSaaSDevSyn/providers/Microsoft.Synapse/workspaces/synw-imafs-dev/sqlPools/SQLPool1/resume?api-version=2021-06-01",
+					"body": "Resume Pool",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://management.azure.com/"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "Synapse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-09-01T19:54:25Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

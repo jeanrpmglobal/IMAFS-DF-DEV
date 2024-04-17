@@ -1,0 +1,33 @@
+{
+	"name": "SQL_SAP_MARA_MAKT_AMMAN_QA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureQAAmman",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/SQL/QA"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "AUFNR",
+				"type": "varchar"
+			},
+			{
+				"name": "KTEXT",
+				"type": "varchar"
+			},
+			{
+				"name": "AUART",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "_SAP_MARA_MAKT"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

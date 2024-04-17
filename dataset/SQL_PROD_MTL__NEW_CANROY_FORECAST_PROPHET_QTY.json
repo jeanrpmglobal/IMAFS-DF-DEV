@@ -1,0 +1,35 @@
+{
+	"name": "SQL_PROD_MTL__NEW_CANROY_FORECAST_PROPHET_QTY",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SQL_PROD_MTL",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Machine Learning"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ds",
+				"type": "date"
+			},
+			{
+				"name": "item",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "yhat",
+				"type": "real",
+				"precision": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "_NEW_CANROY_FORECAST_PROPHET_QTY"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

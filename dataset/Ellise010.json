@@ -1,0 +1,49 @@
+{
+	"name": "Ellise010",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobCerrejonBlob",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Ellipse"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "IMAFS_IMAF010.TXT",
+				"folderPath": "import",
+				"container": "root"
+			},
+			"columnDelimiter": "\t",
+			"escapeChar": "",
+			"firstRowAsHeader": true,
+			"quoteChar": ""
+		},
+		"schema": [
+			{
+				"name": "TABLE_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "TABLE_CODE",
+				"type": "String"
+			},
+			{
+				"name": "TABLE_DESC",
+				"type": "String"
+			},
+			{
+				"name": "ASSOC_REC",
+				"type": "String"
+			},
+			{
+				"name": "ACTIVE_FLAG",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

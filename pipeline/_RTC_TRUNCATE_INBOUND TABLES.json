@@ -1,0 +1,39 @@
+{
+	"name": "_RTC_TRUNCATE_INBOUND TABLES",
+	"properties": {
+		"activities": [
+			{
+				"name": "TRUNCATE INBOUND TABLES",
+				"type": "Script",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "AzureProdRTC",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "truncate table IMAFS_IMP_ITEMS\ntruncate table IMAFS_IMP_SUPPLIERS\ntruncate table IMAFS_IMP_DHP\ntruncate table IMAFS_IMP_LTH\ntruncate table IMAFS_IMP_TRANSACTIONS"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			}
+		],
+		"folder": {
+			"name": "Interfaces"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-12-20T19:49:50Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

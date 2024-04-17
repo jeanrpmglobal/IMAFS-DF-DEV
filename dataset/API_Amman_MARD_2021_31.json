@@ -1,0 +1,19 @@
+{
+	"name": "API_Amman_MARD_2021_31",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "API_Amman_PROD_MARD 2021 31",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/API"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": ""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

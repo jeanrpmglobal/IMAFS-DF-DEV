@@ -1,0 +1,53 @@
+{
+	"name": "Blob_Amman_AMT_Import",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobAmman",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/Blob"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "IMAFSCSVExport.csv",
+				"folderPath": "AMT",
+				"container": "root"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "fcast_period",
+				"type": "String"
+			},
+			{
+				"name": "forecast_site",
+				"type": "String"
+			},
+			{
+				"name": "part_no",
+				"type": "String"
+			},
+			{
+				"name": "SourceOfSupply",
+				"type": "String"
+			},
+			{
+				"name": "forecast_period_month",
+				"type": "String"
+			},
+			{
+				"name": "forecast",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

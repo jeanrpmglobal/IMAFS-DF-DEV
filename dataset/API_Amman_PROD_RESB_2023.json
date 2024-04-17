@@ -1,0 +1,19 @@
+{
+	"name": "API_Amman_PROD_RESB_2023",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "API_Amman_PROD_RESB 2023",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/API"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": ""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

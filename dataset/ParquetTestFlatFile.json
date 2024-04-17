@@ -1,0 +1,24 @@
+{
+	"name": "ParquetTestFlatFile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobCerrejonBlob",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Machine Learning"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "import",
+				"container": "root"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

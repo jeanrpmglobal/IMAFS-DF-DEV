@@ -1,0 +1,20 @@
+{
+	"name": "SqlEllipse920_QA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureQACerrejon",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Ellipse"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "_ELLIPSE_MSF920_TEMP"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

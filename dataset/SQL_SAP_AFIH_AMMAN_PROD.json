@@ -1,0 +1,33 @@
+{
+	"name": "SQL_SAP_AFIH_AMMAN_PROD",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureProdAmman",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/SQL"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "AUFNR",
+				"type": "varchar"
+			},
+			{
+				"name": "KTEXT",
+				"type": "varchar"
+			},
+			{
+				"name": "AUART",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "_SAP_AFIH"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

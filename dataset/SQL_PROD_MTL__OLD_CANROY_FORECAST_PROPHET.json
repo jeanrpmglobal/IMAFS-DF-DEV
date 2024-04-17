@@ -1,0 +1,44 @@
+{
+	"name": "SQL_PROD_MTL__OLD_CANROY_FORECAST_PROPHET",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SQL_PROD_MTL",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Machine Learning"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "rownames",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "items_listj1",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "forecast_listjds",
+				"type": "date"
+			},
+			{
+				"name": "forecast_listjyhat",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "method_forecast",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "_OLD_CANROY_FORECAST_PROPHET"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

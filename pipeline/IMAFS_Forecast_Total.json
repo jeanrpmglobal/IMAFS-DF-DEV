@@ -1,0 +1,299 @@
+{
+	"name": "IMAFS_Forecast_Total",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy CANROY Demand Demand From Canroy to Ai Storage",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table DHP_TO_FORECAST_TEMP",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "item_id",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "item_id",
+									"type": "Int64",
+									"physicalType": "bigint"
+								}
+							},
+							{
+								"source": {
+									"name": "MONTHDATE",
+									"type": "DateTime",
+									"physicalType": "date"
+								},
+								"sink": {
+									"name": "MONTHDATE",
+									"type": "DateTime",
+									"physicalType": "date"
+								}
+							},
+							{
+								"source": {
+									"name": "qty",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "qty",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "qty_adj",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "qty_adj",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "Intermittent",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "Intermittent",
+									"type": "Boolean",
+									"physicalType": "bit"
+								}
+							},
+							{
+								"source": {
+									"name": "saisonalite",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "saisonalite",
+									"type": "Boolean",
+									"physicalType": "bit"
+								}
+							},
+							{
+								"source": {
+									"name": "class",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "class",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "family_descrp",
+									"type": "String",
+									"physicalType": "char"
+								},
+								"sink": {
+									"name": "family_descrp",
+									"type": "String",
+									"physicalType": "char"
+								}
+							},
+							{
+								"source": {
+									"name": "criticality",
+									"type": "Int16",
+									"physicalType": "smallint"
+								},
+								"sink": {
+									"name": "criticality",
+									"type": "Int16",
+									"physicalType": "smallint"
+								}
+							},
+							{
+								"source": {
+									"name": "Nb_Month_Zero_Demand",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "Nb_Month_Zero_Demand",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "lead_time",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "lead_time",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACT",
+									"type": "Int16",
+									"physicalType": "smallint"
+								},
+								"sink": {
+									"name": "CONTRACT",
+									"type": "Int16",
+									"physicalType": "smallint"
+								}
+							},
+							{
+								"source": {
+									"name": "preferred_tr_mode",
+									"type": "Int16",
+									"physicalType": "smallint"
+								},
+								"sink": {
+									"name": "preferred_tr_mode",
+									"type": "Int16",
+									"physicalType": "smallint"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SQL_CANROY_PROD_DemandHistPeriod_To_Forecast",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_IMAFS_AI_STORAGE_DEMAND",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Training Arima Qty",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Import AI Demand from SQL Table",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/jmichaud@rpmglobal.com/Batch-Inference/ARIMA_Qty/Arima_Qty_2"
+				},
+				"linkedServiceName": {
+					"referenceName": "DatabricksTrial",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Import AI Demand from SQL Table",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Copy CANROY Demand Demand From Canroy to Ai Storage",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/jmichaud@rpmglobal.com/Import AI Demand from SQL Azure"
+				},
+				"linkedServiceName": {
+					"referenceName": "DatabricksTrial",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Export AI Forecast to SQL",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Training Arima Qty",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/jmichaud@rpmglobal.com/Export Forecasting to SQL"
+				},
+				"linkedServiceName": {
+					"referenceName": "DatabricksTrial",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Machine Learning"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-03-14T17:17:18Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

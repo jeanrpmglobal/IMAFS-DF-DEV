@@ -1,0 +1,110 @@
+{
+	"name": "Blob_AMT_AI_Extract",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlob_AI_Digit_AMT_AI",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AMT_AI"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Task_AMT.json",
+				"container": "amt-gpt-extract"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"Task": {
+					"type": "object",
+					"properties": {
+						"TaskNumber": {
+							"type": "string"
+						},
+						"Priority": {
+							"type": "string"
+						},
+						"Name": {
+							"type": "string"
+						},
+						"Strategy": {
+							"type": "string"
+						},
+						"ConstType": {
+							"type": "string"
+						},
+						"Usage": {
+							"type": "string"
+						},
+						"Status": {
+							"type": "string"
+						},
+						"Plant": {
+							"type": "string"
+						}
+					}
+				},
+				"Operation": {
+					"type": "object",
+					"properties": {
+						"OperationNumber": {
+							"type": "string"
+						},
+						"Description": {
+							"type": "string"
+						},
+						"Tasks": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"TaskName": {
+										"type": "string"
+									},
+									"Answer": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"WorkCenter": {
+							"type": "string"
+						},
+						"ControlKey": {
+							"type": "string"
+						},
+						"NumberOfPersons": {
+							"type": "string"
+						},
+						"Work": {
+							"type": "string"
+						},
+						"Duration": {
+							"type": "string"
+						}
+					}
+				},
+				"MaintenancePackage": {
+					"type": "object",
+					"properties": {
+						"PackageNumber": {
+							"type": "string"
+						},
+						"Frequency": {
+							"type": "string"
+						},
+						"Description": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,82 @@
+{
+	"name": "SendSuccessEmail",
+	"properties": {
+		"activities": [
+			{
+				"name": "Send Email On Pipeline Success",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Get Logic App URL from Key Vault",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": true
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"url": {
+						"value": "@activity('Get Logic App URL from Key Vault').output.value",
+						"type": "Expression"
+					},
+					"body": {
+						"value": "{\n    \"EmailTo\": \"@{pipeline().parameters.EmailTo}\",\n    \"Subject\": \"@{pipeline().parameters.ParentPipelineName} has completed for @{pipeline().parameters.CustomerName}\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().parameters.ParentPipelineName}\",\n    \"ActivityName\": \"Send Email On Pipeline Success\",\n    \"Message\": \"The pipeline (@{pipeline().RunId}) was executed successfully\"\n}",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Get Logic App URL from Key Vault",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": true,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "GET",
+					"url": {
+						"value": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+						"type": "Expression"
+					},
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"EmailTo": {
+				"type": "string"
+			},
+			"CustomerName": {
+				"type": "string"
+			},
+			"ParentPipelineName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Release"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-03-12T15:59:06Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

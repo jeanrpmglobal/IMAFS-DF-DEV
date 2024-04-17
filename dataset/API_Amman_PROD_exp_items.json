@@ -1,0 +1,16 @@
+{
+	"name": "API_Amman_PROD_exp_items",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "API_Amman_PROD_EXP_ITEMS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/API"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,19 @@
+{
+	"name": "API_Amman_PROD_EINA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "API_Amman_PROD_EINA",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/API"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": ""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

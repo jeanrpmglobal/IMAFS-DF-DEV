@@ -1,0 +1,29 @@
+{
+	"name": "SourceDataset_it9",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDatabricksTrial",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Others"
+		},
+		"annotations": [],
+		"type": "AzureDatabricksDeltaLakeDataset",
+		"typeProperties": {
+			"database": "default",
+			"table": "arima_forecast_qty_export"
+		},
+		"schema": [
+			{
+				"name": "ds",
+				"type": "timestamp"
+			},
+			{
+				"name": "AutoARIMA",
+				"type": "float"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

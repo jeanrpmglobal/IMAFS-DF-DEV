@@ -1,0 +1,33 @@
+{
+	"name": "SQL_SAP_EQUI_AMMAN_QA_old",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureQAAmman",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/SQL/QA"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "AUFNR",
+				"type": "varchar"
+			},
+			{
+				"name": "KTEXT",
+				"type": "varchar"
+			},
+			{
+				"name": "AUART",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "_SAP_EQUI"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

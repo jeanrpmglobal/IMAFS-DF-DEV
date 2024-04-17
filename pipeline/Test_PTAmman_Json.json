@@ -1,0 +1,2091 @@
+{
+	"name": "Test_PTAmman_Json",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy AUFK",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_AUFK",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['AUFNR']"
+								},
+								"sink": {
+									"name": "AUFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['KTEXT']"
+								},
+								"sink": {
+									"name": "KTEXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AUART']"
+								},
+								"sink": {
+									"name": "AUART",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERDAT']"
+								},
+								"sink": {
+									"name": "ERDAT",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_AUFK",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_AUFK_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy EKET",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_EKET",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_EKET",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_EKET_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy AUSP",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_AUSP",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['OBJEK']"
+								},
+								"sink": {
+									"name": "OBJEK",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ATINN']"
+								},
+								"sink": {
+									"name": "ATINN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ATWRT']"
+								},
+								"sink": {
+									"name": "ATWRT",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_AUSP",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_AUSP_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy EBAN",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_EBAN",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['BANFN']"
+								},
+								"sink": {
+									"name": "BANFN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BNFPO']"
+								},
+								"sink": {
+									"name": "BNFPO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BADAT']"
+								},
+								"sink": {
+									"name": "BADAT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BSART']"
+								},
+								"sink": {
+									"name": "BSART",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BSTYP']"
+								},
+								"sink": {
+									"name": "BSTYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PSTYP']"
+								},
+								"sink": {
+									"name": "PSTYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LOEKZ']"
+								},
+								"sink": {
+									"name": "LOEKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['STATU']"
+								},
+								"sink": {
+									"name": "STATU",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['FRGKZ']"
+								},
+								"sink": {
+									"name": "FRGKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['FRGZU']"
+								},
+								"sink": {
+									"name": "FRGZU",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['FRGDT']"
+								},
+								"sink": {
+									"name": "FRGDT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MEINS']"
+								},
+								"sink": {
+									"name": "MEINS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZZ_PRREQ']"
+								},
+								"sink": {
+									"name": "ZZ_PRREQ",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_EBAN",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_EBAN_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy EINA",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_EINA",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_EINA",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_EINA_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy EKKO",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_EKKO",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['EBELN']"
+								},
+								"sink": {
+									"name": "EBELN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BSART']"
+								},
+								"sink": {
+									"name": "BSART",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LOEKZ']"
+								},
+								"sink": {
+									"name": "LOEKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LIFNR']"
+								},
+								"sink": {
+									"name": "LIFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AEDAT']"
+								},
+								"sink": {
+									"name": "AEDAT",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_EKKO",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_EKKO_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy EQUI",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_EQUI",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_EQUI",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_EQUI_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy LAF1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_LFA1",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_LAF1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_LFA1_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MARA MAKT",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_MARA_MAKT",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MAKTX']"
+								},
+								"sink": {
+									"name": "MAKTX",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MTART']"
+								},
+								"sink": {
+									"name": "MTART",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATKL']"
+								},
+								"sink": {
+									"name": "MATKL",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MEINS']"
+								},
+								"sink": {
+									"name": "MEINS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WRKST']"
+								},
+								"sink": {
+									"name": "WRKST",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NORMT']"
+								},
+								"sink": {
+									"name": "NORMT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MFRPN']"
+								},
+								"sink": {
+									"name": "MFRPN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MFRNR']"
+								},
+								"sink": {
+									"name": "MFRNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BISMT']"
+								},
+								"sink": {
+									"name": "BISMT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BMATN']"
+								},
+								"sink": {
+									"name": "BMATN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERSDA']"
+								},
+								"sink": {
+									"name": "ERSDA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MSTAE']"
+								},
+								"sink": {
+									"name": "MSTAE",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_MARA_MAKT",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MARA_MAKT_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MARC",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_MARC",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_MARC",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MARC_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MBEW",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_MBEW",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_MBEW",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MBEW_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy T023T",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_T023T",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_T023T",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_T023T_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy T025T",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_T025T",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_T025T",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_T025T_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy TCURR",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_TCURR",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_TCURR",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_TCURR_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MARD",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_MARD",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LVORM']"
+								},
+								"sink": {
+									"name": "LVORM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['DISKZ']"
+								},
+								"sink": {
+									"name": "DISKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGPBE']"
+								},
+								"sink": {
+									"name": "LGPBE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERSDA']"
+								},
+								"sink": {
+									"name": "ERSDA",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_MARD",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MARD_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy AFIH",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE _SAP_AFIH",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['AUFNR']"
+								},
+								"sink": {
+									"name": "AUFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EQUNR']"
+								},
+								"sink": {
+									"name": "EQUNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ADDAT']"
+								},
+								"sink": {
+									"name": "ADDAT",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_AFIH",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_AFIH_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy EKPO",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_EKPO",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['EBELN']"
+								},
+								"sink": {
+									"name": "EBELN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELP']"
+								},
+								"sink": {
+									"name": "EBELP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LOEKZ']"
+								},
+								"sink": {
+									"name": "LOEKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AEDAT']"
+								},
+								"sink": {
+									"name": "AEDAT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MEINS']"
+								},
+								"sink": {
+									"name": "MEINS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['UMREZ']"
+								},
+								"sink": {
+									"name": "UMREZ",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['UMREN']"
+								},
+								"sink": {
+									"name": "UMREN",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BSTYP']"
+								},
+								"sink": {
+									"name": "BSTYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['INCO1']"
+								},
+								"sink": {
+									"name": "INCO1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BEDNR']"
+								},
+								"sink": {
+									"name": "BEDNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ELIKZ']"
+								},
+								"sink": {
+									"name": "ELIKZ",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_EKPO",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_EKPO_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy RESB",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_RESB",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_RESB",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_RESB_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MKPF",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE _SAP_MKPF",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['Column_1']"
+								},
+								"sink": {
+									"name": "MBLNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Column_2']"
+								},
+								"sink": {
+									"name": "MJAHR",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Column_3']"
+								},
+								"sink": {
+									"name": "BUDAT",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_MKPF",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MKPF_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy EKET_EXPO",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo._SAP_EKET_EXPO",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['EBELN']"
+								},
+								"sink": {
+									"name": "EBELN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELP']"
+								},
+								"sink": {
+									"name": "EBELP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LOEKZ']"
+								},
+								"sink": {
+									"name": "LOEKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AEDAT']"
+								},
+								"sink": {
+									"name": "AEDAT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE_PO']"
+								},
+								"sink": {
+									"name": "MENGE_PO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MEINS']"
+								},
+								"sink": {
+									"name": "MEINS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['UMREZ']"
+								},
+								"sink": {
+									"name": "UMREZ",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['UMREN']"
+								},
+								"sink": {
+									"name": "UMREN",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BSTYP']"
+								},
+								"sink": {
+									"name": "BSTYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['INCO1']"
+								},
+								"sink": {
+									"name": "INCO1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZZ_BEDNR']"
+								},
+								"sink": {
+									"name": "ZZ_BEDNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ELIKZ']"
+								},
+								"sink": {
+									"name": "ELIKZ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EINDT']"
+								},
+								"sink": {
+									"name": "EINDT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WEMNG']"
+								},
+								"sink": {
+									"name": "WEMNG",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BANFN']"
+								},
+								"sink": {
+									"name": "BANFN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BNFPO']"
+								},
+								"sink": {
+									"name": "BNFPO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BEDAT']"
+								},
+								"sink": {
+									"name": "BEDAT",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_EKET_EKPO",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_EKET_EKPO_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MSEG",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "--TRUNCATE TABLE _SAP_MSEG",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['MBLNR']"
+								},
+								"sink": {
+									"name": "MBLNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MJAHR']"
+								},
+								"sink": {
+									"name": "MJAHR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BUDAT']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ZEILE']"
+								},
+								"sink": {
+									"name": "ZEILE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LINE_ID']"
+								},
+								"sink": {
+									"name": "LINE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BWART']"
+								},
+								"sink": {
+									"name": "BWART",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MATNR']"
+								},
+								"sink": {
+									"name": "MATNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WERKS']"
+								},
+								"sink": {
+									"name": "WERKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LGORT']"
+								},
+								"sink": {
+									"name": "LGORT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LIFNR']"
+								},
+								"sink": {
+									"name": "LIFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MENGE']"
+								},
+								"sink": {
+									"name": "MENGE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ERFMG']"
+								},
+								"sink": {
+									"name": "ERFMG",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SHKZG']"
+								},
+								"sink": {
+									"name": "SHKZG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELN']"
+								},
+								"sink": {
+									"name": "EBELN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EBELP']"
+								},
+								"sink": {
+									"name": "EBELP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SGTXT']"
+								},
+								"sink": {
+									"name": "SGTXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AUFNR']"
+								},
+								"sink": {
+									"name": "AUFNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUDT_MKPF']"
+								},
+								"sink": {
+									"name": "CPUDT_MKPF",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CPUTM_MKPF']"
+								},
+								"sink": {
+									"name": "CPUTM_MKPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CHARG']"
+								},
+								"sink": {
+									"name": "CHARG",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_MKPF",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_MSEG_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy EINE",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE _SAP_EINE",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_Amman_EINE",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_SAP_EINE_AMMAN_QA_old",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Tests"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-03-12T15:59:09Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

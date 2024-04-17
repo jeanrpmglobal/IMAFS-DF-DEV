@@ -1,0 +1,28 @@
+{
+	"name": "TXT_IMAFS_ITEMS_EXPORT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageExport",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Others"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "IMAFS_ITEMS_EXPORT.TXT",
+				"folderPath": "export",
+				"container": "root"
+			},
+			"columnDelimiter": "\t",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

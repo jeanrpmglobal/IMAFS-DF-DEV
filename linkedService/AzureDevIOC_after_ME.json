@@ -1,0 +1,22 @@
+{
+	"name": "AzureDevIOC_after_ME",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"parameters": {
+			"UserNameSQLDev": {
+				"type": "string",
+				"defaultValue": "adminimafsqlserver"
+			},
+			"PwdSQLDev": {
+				"type": "string",
+				"defaultValue": "hb74kg4HWXaYqe4a"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=imafsqlserver.database.windows.net;initial catalog=IMAFS_CANROY_JAN_2024;user id=adminimafsqlserver",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDY1MEJGNzIzLUZDNjAtNDk1Ri05QTU4LTY4OUNDOTMxOTUwQ19hY2Y5MGFkNC00NTUxLTRhOTYtYmM0NS0zYTlkYWEwYzhlMTIiDQp9"
+		}
+	}
+}

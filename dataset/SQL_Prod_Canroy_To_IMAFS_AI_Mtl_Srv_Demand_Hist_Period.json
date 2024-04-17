@@ -1,0 +1,98 @@
+{
+	"name": "SQL_Prod_Canroy_To_IMAFS_AI_Mtl_Srv_Demand_Hist_Period",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SQL_PROD_MTL",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Others"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "item_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "qty",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "hits",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "qty_forecast",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "qty_forecast_adj",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "qty_adj",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "qty_adj_reason",
+				"type": "nvarchar"
+			},
+			{
+				"name": "qty_ERP",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "real_data_flag",
+				"type": "bit"
+			},
+			{
+				"name": "forecast_id",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "forecast_id_smart",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Comments_Smart",
+				"type": "nvarchar"
+			},
+			{
+				"name": "QTY_FORECAST_CALC",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "QTY_FORECAST_MAN",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "QTY_FORECAST_AMT",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "_CANROY_DEMAND_HIST_PERIOD"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

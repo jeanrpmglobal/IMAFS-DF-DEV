@@ -1,0 +1,128 @@
+{
+	"name": "CopyFromSQLToSynapseSQLpool",
+	"properties": {
+		"activities": [
+			{
+				"name": "CopyFromSQLToSQLDW",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "."
+					},
+					{
+						"name": "Destination",
+						"value": "demand_hist_period.demand_hist_period"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT        DEMAND_HIST_PERIOD.item_id, DEMAND_HIST_PERIOD.date, DEMAND_HIST_PERIOD.qty, DEMAND_HIST_PERIOD.hits, DEMAND_HIST_PERIOD.real_data_flag, ITEMS.Intermittent\nFROM            DEMAND_HIST_PERIOD INNER JOIN\n                         ITEMS ON DEMAND_HIST_PERIOD.item_id = ITEMS.item_id\nWHERE        (DEMAND_HIST_PERIOD.date < dbo.ACTIVE_MONTH_VAR()) AND (DEMAND_HIST_PERIOD.item_id <= 128900862) AND (ITEMS.Intermittent = 0)\nORDER BY DEMAND_HIST_PERIOD.item_id, DEMAND_HIST_PERIOD.date",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "truncate table [demand_hist_period].[demand_hist_period]",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": false
+						},
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "linkedServiceBlobStorageGeneral",
+							"type": "LinkedServiceReference"
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "item_id",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "item_id",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "date",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "date",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "qty",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "qty",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "hits",
+									"type": "Int16"
+								},
+								"sink": {
+									"name": "hits",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "real_data_flag",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "real_data_flag",
+									"type": "Boolean"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_DHP_CanRoy_Non_Intermittent",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Synapse_SQLPool_DHP",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Synapse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-09-02T17:10:42Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

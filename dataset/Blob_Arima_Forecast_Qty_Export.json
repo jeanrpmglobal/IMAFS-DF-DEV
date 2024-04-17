@@ -1,0 +1,26 @@
+{
+	"name": "Blob_Arima_Forecast_Qty_Export",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobMachineLearningImport",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Others"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Arima_Qty_forecasted.csv",
+				"container": "machine-learning-export"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

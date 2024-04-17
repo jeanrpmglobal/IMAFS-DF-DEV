@@ -1,0 +1,33 @@
+{
+	"name": "AMT_import_QA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobCerrejonBlob",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Others"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "FCST_AMT.txt",
+				"folderPath": "AMT_import",
+				"container": "root"
+			},
+			"columnDelimiter": "\t",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "fcast_period\tforecast_site\tpart_no\tSourceOfSupply\tforecast_period_month\tforecast",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

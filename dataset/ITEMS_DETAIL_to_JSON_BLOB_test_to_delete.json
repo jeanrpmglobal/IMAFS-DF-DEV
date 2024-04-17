@@ -1,0 +1,17 @@
+{
+	"name": "ITEMS_DETAIL_to_JSON_BLOB_test_to_delete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDev_IMAFS_CANROY_JAN_2024",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "IMAFS_IMP_ITEMS_JSON_TEST"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

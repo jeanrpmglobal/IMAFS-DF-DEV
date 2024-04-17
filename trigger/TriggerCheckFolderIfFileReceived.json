@@ -1,0 +1,24 @@
+{
+	"name": "TriggerCheckFolderIfFileReceived",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "List_and_Email_Files_in_Folders",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2024-02-21T09:00:00",
+				"timeZone": "Eastern Standard Time"
+			}
+		}
+	}
+}

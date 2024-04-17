@@ -1,0 +1,23 @@
+{
+	"name": "CerrejonExportDaily",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobCerrejonBlob",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Others"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "IMAFS_ITEMS_EXPORT.TXT",
+				"folderPath": "export",
+				"container": "root"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

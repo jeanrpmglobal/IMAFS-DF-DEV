@@ -1,0 +1,62 @@
+{
+	"name": "Stats for Elastic Pool Dev",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy Elastic Pool Stats",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT top(1) start_time, end_time, elastic_pool_name, avg_cpu_percent, avg_data_io_percent,\n    avg_log_write_percent, avg_storage_percent, max_worker_percent, max_session_percent,\n    elastic_pool_dtu_limit, elastic_pool_storage_limit_mb, avg_allocated_storage_percent\nFROM sys.elastic_pool_resource_stats\nORDER BY end_time DESC;",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "StatsElasticPoolDev",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureDevElasticPoolStats",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "DBA Jobs"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-01-05T20:16:21Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

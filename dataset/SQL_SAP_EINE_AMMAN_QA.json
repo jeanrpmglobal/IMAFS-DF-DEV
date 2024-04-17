@@ -1,0 +1,33 @@
+{
+	"name": "SQL_SAP_EINE_AMMAN_QA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureQAAmman",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/SQL/QA"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "AUFNR",
+				"type": "varchar"
+			},
+			{
+				"name": "KTEXT",
+				"type": "varchar"
+			},
+			{
+				"name": "AUART",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "_SAP_EINE"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

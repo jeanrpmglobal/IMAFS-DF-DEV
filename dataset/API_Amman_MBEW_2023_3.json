@@ -1,0 +1,19 @@
+{
+	"name": "API_Amman_MBEW_2023_3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "API_Amman_PROD_MBEW 2023 3",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/API"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": ""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

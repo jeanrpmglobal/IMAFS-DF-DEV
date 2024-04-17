@@ -1,0 +1,20 @@
+{
+	"name": "AzureSqlDev_Amt_AI_Task",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDevAMT_AI",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AMT_AI"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Tasks"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

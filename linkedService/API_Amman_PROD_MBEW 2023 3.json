@@ -1,0 +1,15 @@
+{
+	"name": "API_Amman_PROD_MBEW 2023 3",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mbew&datefrom=20230101&dateto=20231231&bwkey=2013",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Basic",
+			"userName": "SCP-USER",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDY1MEJGNzIzLUZDNjAtNDk1Ri05QTU4LTY4OUNDOTMxOTUwQ19jYzA1NTNhYS1hM2EyLTQ1YjUtYmRlZC01NzUxYmI4ZTkxNTAiDQp9"
+		}
+	}
+}

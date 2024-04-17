@@ -1,0 +1,96 @@
+{
+	"name": "AzureDevIOC_after_ME",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDevIOC_after_ME",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Others"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "item_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "warehouse_descrp",
+				"type": "nvarchar"
+			},
+			{
+				"name": "organization_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "inventory_item_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "class",
+				"type": "nvarchar"
+			},
+			{
+				"name": "family",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "lead_time",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "qoh_qty",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "preferred_supplier_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TRANSACTION_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TRANSACTION_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TRANSACTION_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "product_cat",
+				"type": "nvarchar"
+			},
+			{
+				"name": "product_sub_cat",
+				"type": "nvarchar"
+			},
+			{
+				"name": "avg_cost",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "demand_multiple",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "_AI_USAGE_MULTIPLE_DATASET"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,48 @@
+{
+	"name": "Machine_Learning_Blob",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobMachineLearningImport",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Machine Learning"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "test_1.csv",
+				"container": "machine-learning-import"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

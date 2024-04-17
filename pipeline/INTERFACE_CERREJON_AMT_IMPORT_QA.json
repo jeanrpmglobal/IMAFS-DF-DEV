@@ -1,0 +1,156 @@
+{
+	"name": "INTERFACE_CERREJON_AMT_IMPORT_QA",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy AMT txt file to IMAFS",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table IMAFS_IMP_AMT_FORECAST_TEMP",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "fcast_period",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "fcast_period"
+								}
+							},
+							{
+								"source": {
+									"name": "forecast_site",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "forecast_site"
+								}
+							},
+							{
+								"source": {
+									"name": "part_no",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "part_no"
+								}
+							},
+							{
+								"source": {
+									"name": "SourceOfSupply",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SourceOfSupply"
+								}
+							},
+							{
+								"source": {
+									"name": "forecast_period_month",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "forecast_period_month"
+								}
+							},
+							{
+								"source": {
+									"name": "forecast",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "forecast"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "AMT_import",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SqlAMTImport_QA",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "QU_IMAFS_IMP_AMT_TEMP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Copy AMT txt file to IMAFS",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[QU_IMAFS_IMP_AMT_TEMP]"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureQACerrejon",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Versions Old"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-04-20T19:13:02Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

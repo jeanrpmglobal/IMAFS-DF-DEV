@@ -1,0 +1,42 @@
+{
+	"name": "SourceDataset_DHP_CanRoy_Non_Intermittent",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureProdCanRoy",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Others"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "item_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "qty",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "hits",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "real_data_flag",
+				"type": "bit"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

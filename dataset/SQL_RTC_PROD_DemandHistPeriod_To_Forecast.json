@@ -1,0 +1,81 @@
+{
+	"name": "SQL_RTC_PROD_DemandHistPeriod_To_Forecast",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureProdRTC",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Others"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "item_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "MONTHDATE",
+				"type": "date"
+			},
+			{
+				"name": "qty",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "qty_adj",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Intermittent",
+				"type": "bit"
+			},
+			{
+				"name": "saisonalite",
+				"type": "bit"
+			},
+			{
+				"name": "class",
+				"type": "nvarchar"
+			},
+			{
+				"name": "family_descrp",
+				"type": "char"
+			},
+			{
+				"name": "criticality",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "Nb_Month_Zero_Demand",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "lead_time",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CONTRACT",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "preferred_tr_mode",
+				"type": "smallint",
+				"precision": 5
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DEMAND_TEMP_DATASET_AI_AZURE"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

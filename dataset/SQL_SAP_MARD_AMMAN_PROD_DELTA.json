@@ -1,0 +1,33 @@
+{
+	"name": "SQL_SAP_MARD_AMMAN_PROD_DELTA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureProdAmman",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amman/SQL"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "AUFNR",
+				"type": "varchar"
+			},
+			{
+				"name": "KTEXT",
+				"type": "varchar"
+			},
+			{
+				"name": "AUART",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "_SAP_MARD"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

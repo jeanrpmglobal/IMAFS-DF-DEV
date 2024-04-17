@@ -1,0 +1,41 @@
+{
+	"name": "SqlEllipse010",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureProdCerrejon",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Ellipse"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "TABLE_TYPE",
+				"type": "varchar"
+			},
+			{
+				"name": "TABLE_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "TABLE_DESC",
+				"type": "varchar"
+			},
+			{
+				"name": "ASSOC_REC",
+				"type": "varchar"
+			},
+			{
+				"name": "ACTIVE_FLAG",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "_ELLIPSE_MSF010_TEMP"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
