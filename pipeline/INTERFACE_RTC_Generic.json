@@ -1,5 +1,5 @@
 {
-	"name": "INTERFACE_RTC",
+	"name": "INTERFACE_RTC_Generic",
 	"properties": {
 		"activities": [
 			{
