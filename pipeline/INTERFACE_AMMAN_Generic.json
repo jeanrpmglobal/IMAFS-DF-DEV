@@ -1,5 +1,5 @@
 {
-	"name": "INTERFACE_AMMAN",
+	"name": "INTERFACE_AMMAN_Generic",
 	"properties": {
 		"activities": [
 			{
@@ -244,7 +244,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "INTERFACE_AMMAN_PHASE_1",
+						"referenceName": "INTERFACE_AMMAN_PHASE_1_Generic",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true

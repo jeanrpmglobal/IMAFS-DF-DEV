@@ -25,7 +25,7 @@
 					"storedProcedureName": "[dbo].[Interface_ITEMS]"
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSQLCanRoy",
+					"referenceName": "AzureProdCanRoy",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -52,7 +52,7 @@
 					"storedProcedureName": "[dbo].[Interface_EXP_ITEMS]"
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSQLCanRoy",
+					"referenceName": "AzureProdCanRoy",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -79,7 +79,7 @@
 					"storedProcedureName": "[dbo].[QA_QS_ANALYSIS_DEMAND_0_12_MONTHS]"
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSQLCanRoy",
+					"referenceName": "AzureProdCanRoy",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -106,12 +106,12 @@
 					"storedProcedureName": "[dbo].[QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW]"
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSQLCanRoy",
+					"referenceName": "AzureProdCanRoy",
 					"type": "LinkedServiceReference"
 				}
 			},
 			{
-				"name": "Send email QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+				"name": "Send email",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -142,7 +142,7 @@
 				}
 			},
 			{
-				"name": "Send email Interface_ITEMS",
+				"name": "Send email_copy1",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -173,7 +173,7 @@
 				}
 			},
 			{
-				"name": "Send email Interface_EXP_ITEMS",
+				"name": "Send email_copy2",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -204,7 +204,7 @@
 				}
 			},
 			{
-				"name": "Send email QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+				"name": "Send email_copy3",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -254,7 +254,7 @@
 						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "StoredProc_CANROY",
+						"referenceName": "StoredProc_PROD_CANROY",
 						"type": "DatasetReference"
 					}
 				}
@@ -306,10 +306,10 @@
 			}
 		],
 		"folder": {
-			"name": "Interfaces/Generic"
+			"name": "Interfaces"
 		},
 		"annotations": [],
-		"lastPublishTime": "2024-03-13T21:53:06Z"
+		"lastPublishTime": "2024-01-09T14:40:42Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }
