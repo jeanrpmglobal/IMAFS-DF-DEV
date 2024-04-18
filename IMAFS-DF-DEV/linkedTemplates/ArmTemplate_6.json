@@ -13,597 +13,6 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/TriggerCheckFolderIfFileReceivedAmman')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Stopped",
-				"pipelines": [],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Day",
-						"interval": 1,
-						"startTime": "2024-02-21T09:30:00",
-						"timeZone": "Eastern Standard Time"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/TriggerVegProDailyTasks')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Stopped",
-				"pipelines": [],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Day",
-						"interval": 1,
-						"startTime": "2022-11-17T14:31:00",
-						"timeZone": "Eastern Standard Time",
-						"schedule": {
-							"minutes": [
-								45
-							],
-							"hours": [
-								2
-							]
-						}
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/StoredProc_DEV_IMAFS_CANROY_JAN_2024')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDevIMAFS_CANROY_JAN_2024",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Stored_Procedures"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "ID",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "MONTH_NAME",
-						"type": "date"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "ACTIVE_MONTH_GT"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/blob_API_Items_Detail')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlob_imafs_storage_general",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "api_output_items_detail.json",
-						"container": "apis"
-					}
-				},
-				"schema": {
-					"type": "object",
-					"properties": {
-						"info": {
-							"type": "object",
-							"properties": {
-								"_postman_id": {
-									"type": "string"
-								},
-								"name": {
-									"type": "string"
-								},
-								"schema": {
-									"type": "string"
-								},
-								"_exporter_id": {
-									"type": "string"
-								},
-								"_collection_link": {
-									"type": "string"
-								}
-							}
-						},
-						"item": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"name": {
-										"type": "string"
-									},
-									"request": {
-										"type": "object",
-										"properties": {
-											"method": {
-												"type": "string"
-											},
-											"header": {
-												"type": "array"
-											},
-											"url": {
-												"type": "object",
-												"properties": {
-													"raw": {
-														"type": "string"
-													},
-													"protocol": {
-														"type": "string"
-													},
-													"host": {
-														"type": "array",
-														"items": {
-															"type": "string"
-														}
-													},
-													"path": {
-														"type": "array",
-														"items": {
-															"type": "string"
-														}
-													}
-												}
-											}
-										}
-									},
-									"response": {
-										"type": "array"
-									}
-								}
-							}
-						}
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SQL_PREPROD_IMAFS_IMP_ITEMS')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDevPreProd2",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Others"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "ID",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "ORGANIZATION_ID",
-						"type": "nvarchar"
-					},
-					{
-						"name": "WAREHOUSE_DESCRP",
-						"type": "nvarchar"
-					},
-					{
-						"name": "INVENTORY_ITEM_ID",
-						"type": "nvarchar"
-					},
-					{
-						"name": "DEMAND_MONTH",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "NB_TRANSACTIONS_GOLD",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "NB_TRANSACTIONS_REG",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "NB_TRANSACTIONS_PROMO",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "NB_TRANSACTIONS_PROJECT",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MTHLY_DEMAND_GOLD",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "MTHLY_DEMAND_REG",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "MTHLY_DEMAND_PROMO",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "MTHLY_DEMAND_PROJECT",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "NB_TRANSACTIONS_GOLD_BO",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "NB_TRANSACTIONS_REG_BO",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MTHLY_DEMAND_GOLD_BO",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "MTHLY_DEMAND_REG_BO",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "BATCH_NO",
-						"type": "nvarchar"
-					},
-					{
-						"name": "EVENT_FLAG",
-						"type": "bit"
-					},
-					{
-						"name": "EVENT_DESCRIPTION",
-						"type": "nvarchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "IMAFS_IMP_ITEMS"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/TXT_IMAFS_ITEMS_EXPORT')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobStorageExport",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Others"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IMAFS_ITEMS_EXPORT.TXT",
-						"folderPath": "export",
-						"container": "root"
-					},
-					"columnDelimiter": "\t",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlImafsExpItemsCerrejon')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureProdCerrejon",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Others"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "ID",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "ORGANIZATION_ID",
-						"type": "nvarchar"
-					},
-					{
-						"name": "warehouse_descrp",
-						"type": "nvarchar"
-					},
-					{
-						"name": "INVENTORY_ITEM_ID",
-						"type": "nvarchar"
-					},
-					{
-						"name": "ITEM_NUMBER",
-						"type": "nvarchar"
-					},
-					{
-						"name": "CLASS",
-						"type": "nvarchar"
-					},
-					{
-						"name": "CLASS_DESCRIPTION",
-						"type": "nvarchar"
-					},
-					{
-						"name": "CRITICALITY",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "CRITICALITY_DESCRIPTION",
-						"type": "nvarchar"
-					},
-					{
-						"name": "SAFETY_STOCK",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "CALCULATED_SS",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MANUAL_SS",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MIN_MINMAX",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "CALCULATED_MIN",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MANUAL_MIN",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MAX_MINMAX",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "CALCULATED_MAX",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MANUAL_MAX",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "LOT_SIZE",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "NBR_PER_REORD",
-						"type": "real",
-						"precision": 7
-					},
-					{
-						"name": "CALCULATED_LEAD_TIME",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MANUAL_LEAD_TIME",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "FINAL_CALCULATED_LEAD_TIME",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "TOTAL_DELAY_TIME",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "INTERNAL_DELAY",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "SEASONAL_PRODUCT",
-						"type": "bit"
-					},
-					{
-						"name": "MONTHLY_FORECAST",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "NB_MONTHS_WITH_USAGE",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "FORECAST_NEXT_12_MONTHS",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MAD",
-						"type": "real",
-						"precision": 7
-					},
-					{
-						"name": "MAPE",
-						"type": "real",
-						"precision": 7
-					},
-					{
-						"name": "LAST_UPDATE_DATE",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "BATCH_NO",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Intermittent",
-						"type": "bit"
-					},
-					{
-						"name": "demand_multiple",
-						"type": "int",
-						"precision": 10
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "IMAFS_EXP_ITEMS"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Copy Arima Qty Forecasted')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy Arima Qty Forecasted to Blob",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [
-							{
-								"name": "Source",
-								"value": "default.arima_forecast_qty_export"
-							},
-							{
-								"name": "Destination",
-								"value": "machine-learning-export//"
-							}
-						],
-						"typeProperties": {
-							"source": {
-								"type": "AzureDatabricksDeltaLakeSource",
-								"exportSettings": {
-									"type": "AzureDatabricksDeltaLakeExportCommand"
-								}
-							},
-							"enableStaging": true,
-							"stagingSettings": {
-								"linkedServiceName": {
-									"referenceName": "AzureBlobMachineLearningImport",
-									"type": "LinkedServiceReference"
-								}
-							}
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "Machine Learning"
-				},
-				"annotations": [],
-				"lastPublishTime": "2024-04-16T15:04:35Z"
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/IMAFS_Forecast_Prophet_Arima_Only')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -669,7 +78,145 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_COEUR')]",
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_COEUR_DHP_Generic')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Import DHP",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[_COEUR_IMPORT_IMAFS_IMP_DHP]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLCoeur",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send email Import DHP",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Import DHP",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Coeur DHP has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Coeur DHP\"\n}",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Interfaces/Generic"
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-03-14T14:12:29Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_COEUR_EXPORT_Generic')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Interface_EXP_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_EXP_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLCoeur",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send email Interface_EXP_ITEMS",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Coeur Export has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Coeur Export\"\n}",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Interfaces/Generic"
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-03-14T14:12:29Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_COEUR_Generic')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -970,145 +517,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_COEUR_DHP')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Import DHP",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[_COEUR_IMPORT_IMAFS_IMP_DHP]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureSQLCoeur",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Send email Import DHP",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "Import DHP",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Coeur DHP has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Coeur DHP\"\n}",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "Interfaces/Generic"
-				},
-				"annotations": [],
-				"lastPublishTime": "2024-03-14T14:12:29Z"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_COEUR_EXPORT')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Interface_EXP_ITEMS",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[Interface_EXP_ITEMS]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureSQLCoeur",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Send email Interface_EXP_ITEMS",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "Interface_EXP_ITEMS",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Coeur Export has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Coeur Export\"\n}",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "Interfaces/Generic"
-				},
-				"annotations": [],
-				"lastPublishTime": "2024-03-14T14:12:29Z"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_IOC')]",
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_IOC_Generic')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1467,7 +876,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_MALARTIC')]",
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_MALARTIC_Generic')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -2990,6 +2399,1950 @@
 				},
 				"annotations": [],
 				"lastPublishTime": "2024-01-09T14:44:44Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_PROD_RTC')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Interface_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdRTC",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Interface_EXP_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_EXP_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdRTC",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_QS_ANALYSIS_DEMAND_0_12_MONTHS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdRTC",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdRTC",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send email",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface RTC has completed with error  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface RTC  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface RTC has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface RTC\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy2",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface RTC has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface RTC\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy3",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface RTC has completed with error  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface RTC  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\"\n}",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Interfaces"
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-01-09T14:44:44Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_PROD_SAYONA')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Interface_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdSAYONA",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Interface_EXP_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_EXP_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdSAYONA",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_QS_ANALYSIS_DEMAND_0_12_MONTHS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdSAYONA",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdSAYONA",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send email",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Sayona has completed with error  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Sayona  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Sayona has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Sayona\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy2",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Sayona has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Sayona\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy3",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Sayona has completed with error  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Sayona  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\"\n}",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Interfaces"
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-01-09T14:44:44Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_PROD_STO')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Interface_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdSTO",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Interface_EXP_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "Interface_EXP_ITEMS"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdSTO",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_QS_ANALYSIS_DEMAND_0_12_MONTHS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdSTO",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdSTO",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send email",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface STO has completed with error QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface STO QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface STO has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface STO\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy2",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface STO has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface STO\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy3",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface STO has completed with error  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface STO  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\"\n}",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Interfaces"
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-01-09T14:44:44Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_PROD_VEGPRO')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Interface_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdVegPro",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Interface_EXP_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_EXP_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdVegPro",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_QS_ANALYSIS_DEMAND_0_12_MONTHS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdVegPro",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdVegPro",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send email",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy2",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy3",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro\"\n}",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Interfaces"
+				},
+				"annotations": [],
+				"lastPublishTime": "2023-10-19T13:55:12Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_ROBEX_Generic')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Interface_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLRobex",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Interface_EXP_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_EXP_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLRobex",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_QS_ANALYSIS_DEMAND_0_12_MONTHS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLRobex",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLRobex",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send email QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Robex has completed with error  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Robex  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email Interface_ITEMS",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Robex has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Robex\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email Interface_EXP_ITEMS",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Robex has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Robex\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Robex has completed with error  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Robex  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\"\n}",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Interfaces/Generic"
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-03-14T14:56:44Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_RTC_Generic')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Interface_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLRTC",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Interface_EXP_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_EXP_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLRTC",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_QS_ANALYSIS_DEMAND_0_12_MONTHS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLRTC",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLRTC",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send email QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface RTC has completed with error  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface RTC  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email Interface_ITEMS",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface RTC has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface RTC\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email Interface_EXP_ITEMS",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface RTC has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface RTC\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface RTC has completed with error  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface RTC  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\"\n}",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Interfaces/Generic"
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-03-14T14:56:44Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_SAYONA_Generic')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Interface_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLSayona",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Interface_EXP_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_EXP_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLSayona",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_QS_ANALYSIS_DEMAND_0_12_MONTHS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLSayona",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLSayona",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send email QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Sayona has completed with error  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Sayona  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email Interface_ITEMS",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Sayona has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Sayona\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email Interface_EXP_ITEMS",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Sayona has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Sayona\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Sayona has completed with error  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Sayona  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\"\n}",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Interfaces/Generic"
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-03-14T14:56:44Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_STO_Generic')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Interface_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLSTO",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Interface_EXP_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_EXP_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLSTO",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_QS_ANALYSIS_DEMAND_0_12_MONTHS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLSTO",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLSTO",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send email QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface STO has completed with error QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface STO QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email Interface_ITEMS",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface STO has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface STO\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email Interface_EXP_ITEMS",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface STO has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface STO\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface STO has completed with error  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface STO  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\"\n}",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Interfaces/Generic"
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-03-14T14:56:44Z"
 			},
 			"dependsOn": []
 		}

@@ -7,62 +7,6 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "IMAFS-DF-DEV"
 		},
-		"AzureProdIOC_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdIOC'"
-		},
-		"AzureProdMalartic_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdMalartic'"
-		},
-		"AzureProdRobex_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdRobex'"
-		},
-		"AzureProdRTC_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdRTC'"
-		},
-		"AzureProdSAYONA_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdSAYONA'"
-		},
-		"AzureProdSTO_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdSTO'"
-		},
-		"AzureProdVegPro_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdVegPro'"
-		},
-		"AzureProdVegPro2_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdVegPro2'"
-		},
-		"SynapseSQLPool1_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'SynapseSQLPool1'"
-		},
-		"AzureBlobStorageExport_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorageExport'"
-		},
-		"AzureBlob_imafs_storage_general_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlob_imafs_storage_general'"
-		},
-		"AzureDevIMAFS_CANROY_JAN_2024_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureDevIMAFS_CANROY_JAN_2024'"
-		},
-		"AzureDevPreProd2_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureDevPreProd2'"
-		},
-		"AzureProdCerrejon_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdCerrejon'"
-		},
 		"API_Amman_PROD_AFIH_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'API_Amman_PROD_AFIH'"
@@ -323,9 +267,17 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobMachineLearningImport'"
 		},
+		"AzureBlobStorageExport_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorageExport'"
+		},
 		"AzureBlob_AI_Digit_AMT_AI_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlob_AI_Digit_AMT_AI'"
+		},
+		"AzureBlob_imafs_storage_general_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlob_imafs_storage_general'"
 		},
 		"AzureDatabricksTrial_accessToken": {
 			"type": "secureString",
@@ -343,6 +295,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureDevDemo'"
 		},
+		"AzureDevIMAFS_CANROY_JAN_2024_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureDevIMAFS_CANROY_JAN_2024'"
+		},
 		"AzureDevIMAFS_STATS_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureDevIMAFS_STATS'"
@@ -354,6 +310,10 @@
 		"AzureDevMaster_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureDevMaster'"
+		},
+		"AzureDevPreProd2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureDevPreProd2'"
 		},
 		"AzureDevPreprod_connectionString": {
 			"type": "secureString",
@@ -375,9 +335,45 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureProdCanRoy'"
 		},
+		"AzureProdCerrejon_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureProdCerrejon'"
+		},
 		"AzureProdCoeur_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureProdCoeur'"
+		},
+		"AzureProdIOC_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureProdIOC'"
+		},
+		"AzureProdMalartic_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureProdMalartic'"
+		},
+		"AzureProdRTC_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureProdRTC'"
+		},
+		"AzureProdRobex_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureProdRobex'"
+		},
+		"AzureProdSAYONA_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureProdSAYONA'"
+		},
+		"AzureProdSTO_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureProdSTO'"
+		},
+		"AzureProdVegPro_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureProdVegPro'"
+		},
+		"AzureProdVegPro2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureProdVegPro2'"
 		},
 		"AzureQAAmman_connectionString": {
 			"type": "secureString",
@@ -431,10 +427,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlMalartic'"
 		},
-		"Blob_Test_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'Blob_Test'"
-		},
 		"DatabricksTrial_accessToken": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'DatabricksTrial'"
@@ -446,6 +438,10 @@
 		"SQL_PROD_MTL_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'SQL_PROD_MTL'"
+		},
+		"SynapseSQLPool1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SynapseSQLPool1'"
 		},
 		"linkedServiceBlobStorageGeneral_connectionString": {
 			"type": "secureString",
@@ -947,17 +943,9 @@
 			"type": "string",
 			"defaultValue": "SCP-USER"
 		},
-		"API_DEV_IMAFS_IMP_ITEMS_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://prod-20.canadacentral.logic.azure.com:443/workflows/c08688c2c59e46e39aa02172ef1cb9c5/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=lbMSVIKisyvXsJY8ZzprX4mchrZqe1GWrg2LO1LS7KE&client=canroy"
-		},
 		"DatabricksTrial_properties_typeProperties_existingClusterId": {
 			"type": "string",
 			"defaultValue": "0130-184436-ylsbtzwy"
-		},
-		"RestService1_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://imafptamanstorage.blob.core.windows.net/"
 		},
 		"SFTP_IOC_properties_typeProperties_host": {
 			"type": "string",
@@ -976,752 +964,6 @@
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdIOC')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdIOC_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdMalartic')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdMalartic_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdRobex')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdRobex_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdRTC')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdRTC_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdSAYONA')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdSAYONA_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdSTO')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdSTO_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdVegPro')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdVegPro_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdVegPro2')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdVegPro2_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SynapseSQLPool1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDW",
-				"typeProperties": {
-					"connectionString": "[parameters('SynapseSQLPool1_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureBlobStorageExport')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureBlobStorageExport_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureBlob_imafs_storage_general')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureBlob_imafs_storage_general_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/StoredProc_DEV_IMAFS_CANROY_JAN_2024')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDevIMAFS_CANROY_JAN_2024",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Stored_Procedures"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "ID",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "MONTH_NAME",
-						"type": "date"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "ACTIVE_MONTH_GT"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureDevIMAFS_CANROY_JAN_2024')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/blob_API_Items_Detail')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlob_imafs_storage_general",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "api_output_items_detail.json",
-						"container": "apis"
-					}
-				},
-				"schema": {
-					"type": "object",
-					"properties": {
-						"info": {
-							"type": "object",
-							"properties": {
-								"_postman_id": {
-									"type": "string"
-								},
-								"name": {
-									"type": "string"
-								},
-								"schema": {
-									"type": "string"
-								},
-								"_exporter_id": {
-									"type": "string"
-								},
-								"_collection_link": {
-									"type": "string"
-								}
-							}
-						},
-						"item": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"name": {
-										"type": "string"
-									},
-									"request": {
-										"type": "object",
-										"properties": {
-											"method": {
-												"type": "string"
-											},
-											"header": {
-												"type": "array"
-											},
-											"url": {
-												"type": "object",
-												"properties": {
-													"raw": {
-														"type": "string"
-													},
-													"protocol": {
-														"type": "string"
-													},
-													"host": {
-														"type": "array",
-														"items": {
-															"type": "string"
-														}
-													},
-													"path": {
-														"type": "array",
-														"items": {
-															"type": "string"
-														}
-													}
-												}
-											}
-										}
-									},
-									"response": {
-										"type": "array"
-									}
-								}
-							}
-						}
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlob_imafs_storage_general')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureDevIMAFS_CANROY_JAN_2024')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureDevIMAFS_CANROY_JAN_2024_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SQL_PREPROD_IMAFS_IMP_ITEMS')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDevPreProd2",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Others"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "ID",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "ORGANIZATION_ID",
-						"type": "nvarchar"
-					},
-					{
-						"name": "WAREHOUSE_DESCRP",
-						"type": "nvarchar"
-					},
-					{
-						"name": "INVENTORY_ITEM_ID",
-						"type": "nvarchar"
-					},
-					{
-						"name": "DEMAND_MONTH",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "NB_TRANSACTIONS_GOLD",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "NB_TRANSACTIONS_REG",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "NB_TRANSACTIONS_PROMO",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "NB_TRANSACTIONS_PROJECT",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MTHLY_DEMAND_GOLD",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "MTHLY_DEMAND_REG",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "MTHLY_DEMAND_PROMO",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "MTHLY_DEMAND_PROJECT",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "NB_TRANSACTIONS_GOLD_BO",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "NB_TRANSACTIONS_REG_BO",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MTHLY_DEMAND_GOLD_BO",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "MTHLY_DEMAND_REG_BO",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "BATCH_NO",
-						"type": "nvarchar"
-					},
-					{
-						"name": "EVENT_FLAG",
-						"type": "bit"
-					},
-					{
-						"name": "EVENT_DESCRIPTION",
-						"type": "nvarchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "IMAFS_IMP_ITEMS"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureDevPreProd2')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureDevPreProd2')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureDevPreProd2_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/TXT_IMAFS_ITEMS_EXPORT')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobStorageExport",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Others"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IMAFS_ITEMS_EXPORT.TXT",
-						"folderPath": "export",
-						"container": "root"
-					},
-					"columnDelimiter": "\t",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorageExport')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlImafsExpItemsCerrejon')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureProdCerrejon",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Others"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "ID",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "ORGANIZATION_ID",
-						"type": "nvarchar"
-					},
-					{
-						"name": "warehouse_descrp",
-						"type": "nvarchar"
-					},
-					{
-						"name": "INVENTORY_ITEM_ID",
-						"type": "nvarchar"
-					},
-					{
-						"name": "ITEM_NUMBER",
-						"type": "nvarchar"
-					},
-					{
-						"name": "CLASS",
-						"type": "nvarchar"
-					},
-					{
-						"name": "CLASS_DESCRIPTION",
-						"type": "nvarchar"
-					},
-					{
-						"name": "CRITICALITY",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "CRITICALITY_DESCRIPTION",
-						"type": "nvarchar"
-					},
-					{
-						"name": "SAFETY_STOCK",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "CALCULATED_SS",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MANUAL_SS",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MIN_MINMAX",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "CALCULATED_MIN",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MANUAL_MIN",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MAX_MINMAX",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "CALCULATED_MAX",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MANUAL_MAX",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "LOT_SIZE",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "NBR_PER_REORD",
-						"type": "real",
-						"precision": 7
-					},
-					{
-						"name": "CALCULATED_LEAD_TIME",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MANUAL_LEAD_TIME",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "FINAL_CALCULATED_LEAD_TIME",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "TOTAL_DELAY_TIME",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "INTERNAL_DELAY",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "SEASONAL_PRODUCT",
-						"type": "bit"
-					},
-					{
-						"name": "MONTHLY_FORECAST",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "NB_MONTHS_WITH_USAGE",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "FORECAST_NEXT_12_MONTHS",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MAD",
-						"type": "real",
-						"precision": 7
-					},
-					{
-						"name": "MAPE",
-						"type": "real",
-						"precision": 7
-					},
-					{
-						"name": "LAST_UPDATE_DATE",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "BATCH_NO",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Intermittent",
-						"type": "bit"
-					},
-					{
-						"name": "demand_multiple",
-						"type": "int",
-						"precision": 10
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "IMAFS_EXP_ITEMS"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureProdCerrejon')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdCerrejon')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdCerrejon_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/API_Output_Items_Detail')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy Items Detail to Json file",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT       ITEMS.item_id AS [Item ID], ITEMS.inventory_item_id AS [Item No], ITEMS.organization_id AS [Org ID], ITEMS.warehouse_descrp AS Warehouse, ITEMS.description AS Description, \n                         ITEMS.product_cat AS [Prod Cat], ITEMS.product_sub_cat AS [Prod Sub Cat], ITEMS.nature_code AS [Nature Code], ITEMS.buyer AS Buyer, ITEMS.analyste AS Analyst, \n                         ITEMS.MANUFACTURER_PART_NUM AS [Manuf Part Num], ITEMS.MANUFACTURER_NAME AS [Manuf Name], SP_LIST_MAIN_TEMP.VENDOR_ID AS [Preferred Supplier No], \n                         SP_LIST_MAIN_TEMP.VENDOR_NAME AS [Preferred Supplier Name], ITEMS.CONTRACT AS Contract, ITEMS.saisonalite AS Seasonality, ITEMS.Intermittent, ITEMS.status AS Status, ITEMS.stockable AS Stockable, \n                         ITEMS.units AS UOM, ITEMS.creation_date AS [Creation Date], ITEMS.family AS Family, ITEMS.family_descrp AS [Family Desc], ITEMS.criticality AS Criticality, dbo.CRITICALITY.Description AS [Criticality Desc], \n                         ITEMS.class AS [Class Final], ITEMS.class_auto AS [Class Auto], ITEMS.class_manual AS [Class Man], dbo.CLASSES_FAMILY.description AS [Class Desc], ITEMS.modified_man_reason AS [Reason Class Chg], \n                         ITEMS.lead_time AS [LT Final], ITEMS.lead_time_auto AS [LT Auto], ITEMS.lead_time_man AS [LT Man], ITEMS.lead_time_req_rec AS [LT Theo], ITEMS.demand_multiple AS [Usage Multiple], \n                         ITEMS.nbr_per_reord AS [Number of mths to order], ITEMS.std_pack_multiple AS [Std Pack], SP_LIST_MAIN_TEMP.SS_final AS [SS Final], ITEMS.qty_ss_item AS [SS Auto], ITEMS.qty_ss_item_man AS [SS Man], \n                         SP_LIST_MAIN_TEMP.MIN_final AS [Min Final], ITEMS.reord_pt_item AS [Min Auto], ITEMS.reord_pt_item_man AS [Min Man], SP_LIST_MAIN_TEMP.MAX_final AS [Max Final], ITEMS.qty_max_item AS [Max Auto], \n                         ITEMS.qty_max_item_man AS [Max Man], (CASE WHEN items.qty_max_item_man IS NULL THEN 'false' ELSE 'true' END) AS [Manually Managed], ITEMS.qty_ss_item_man_reason AS [Reason SS Min Max chg], \n                         ITEMS.MAX_SHELF AS [Max Shelf], ITEMS.avg_cost AS [Avg Unit Cost], ITEMS.reord_cost AS [Current Cost], ITEMS.qoh_qty AS [Qty on Hand], ITEMS.atp_qty AS [Net Inventory], ITEMS.po_qty AS [Qty on Order], \n                         ITEMS.req_qty AS [Qty Required], ITEMS.reserved_qty AS [Qty Reserved], ITEMS.recv_qty AS [Qty in Transit], ITEMS.Nb_Month_Zero_Demand AS [Nb Mths Zero Dmd], \n                         SP_LIST_MAIN_TEMP.DMD_1_12_Month AS [Dmd last 1-12 mths], SP_LIST_MAIN_TEMP.DMD_12_24_Month AS [Dmd last 13-24 mths], SP_LIST_MAIN_TEMP.DMD_24_36_Month AS [Dmd last 25-36 mths], \n                         SP_LIST_MAIN_TEMP.hits_12_M AS [Hits last 1-12 mths], SP_LIST_MAIN_TEMP.SUM_QTY_FORECAST AS [Fcst 12 mths]\nFROM            dbo.ITEMS INNER JOIN\n                         dbo.SP_LIST_MAIN_TEMP ON dbo.ITEMS.item_id = dbo.SP_LIST_MAIN_TEMP.item_id LEFT OUTER JOIN\n                         dbo.CLASSES_FAMILY ON dbo.ITEMS.class = dbo.CLASSES_FAMILY.class AND dbo.ITEMS.family = dbo.CLASSES_FAMILY.Family_ID LEFT OUTER JOIN\n                         dbo.CRITICALITY ON dbo.ITEMS.criticality = dbo.CRITICALITY.criticality\nWHERE        (ITEMS.DELETION_FLAG IS NULL)\nORDER BY ITEMS.item_id",
-								"queryTimeout": "02:00:00",
-								"partitionOption": "None"
-							},
-							"sink": {
-								"type": "JsonSink",
-								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings"
-								},
-								"formatSettings": {
-									"type": "JsonWriteSettings"
-								}
-							},
-							"enableStaging": false
-						},
-						"inputs": [
-							{
-								"referenceName": "StoredProc_DEV_IMAFS_CANROY_JAN_2024",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "blob_API_Items_Detail",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "APIs"
-				},
-				"annotations": [],
-				"lastPublishTime": "2024-01-19T15:16:30Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/StoredProc_DEV_IMAFS_CANROY_JAN_2024')]",
-				"[concat(variables('factoryId'), '/datasets/blob_API_Items_Detail')]"
-			]
-		},
 		{
 			"name": "[concat(parameters('factoryName'), '/Alert 10perc Storage Unused')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
@@ -3956,7 +3198,211 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_AMMAN')]",
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_AMMAN_AMT_IMPORT_CSV')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy AMT csv",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE IMAFS_IMP_AMT_FORECAST_TEMP",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "Blob_Amman_AMT_Import_PROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SqlAMTImport_PROD_Amman",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "QU_IMAFS_IMP_AMT_TEMP",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Copy AMT csv",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QU_IMAFS_IMP_AMT_TEMP]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdAmman",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send email",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QU_IMAFS_IMP_AMT_TEMP",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman AMT has completed with error - QU_IMAFS_IMP_AMT_TEMP\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QU_IMAFS_IMP_AMT_TEMP\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy AMT csv",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman AMT has completed with error - Copy AMT csv\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in Copy AMT csv\"\n}",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Interfaces"
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-01-09T14:20:07Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/Blob_Amman_AMT_Import_PROD')]",
+				"[concat(variables('factoryId'), '/datasets/SqlAMTImport_PROD_Amman')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureProdAmman')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_AMMAN_EXP_ITEMS_Generic')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Call Logic Apps to send EXP_ITEMS",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {},
+							"url": "https://prod-26.canadacentral.logic.azure.com:443/workflows/110fcadbac2d4e34bdcd71bbd2912b8e/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=5MwQ1kqkNPqOaNS3SmU90XcgJNIod8zxTsb5Hvw5uL4",
+							"body": {}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Interfaces/Generic"
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-03-13T15:25:40Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_AMMAN_Generic')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -4203,7 +3649,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"pipeline": {
-								"referenceName": "INTERFACE_AMMAN_PHASE_1",
+								"referenceName": "INTERFACE_AMMAN_PHASE_1_Generic",
 								"type": "PipelineReference"
 							},
 							"waitOnCompletion": true,
@@ -4374,217 +3820,13 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureSQLAmman')]",
-				"[concat(variables('factoryId'), '/pipelines/INTERFACE_AMMAN_PHASE_1')]",
+				"[concat(variables('factoryId'), '/pipelines/INTERFACE_AMMAN_PHASE_1_Generic')]",
 				"[concat(variables('factoryId'), '/datasets/Blob_Amman_AMT_Import_PROD')]",
 				"[concat(variables('factoryId'), '/datasets/SqlAMTImport_Amman')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_AMMAN_AMT_IMPORT_CSV')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy AMT csv",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink",
-								"preCopyScript": "TRUNCATE TABLE IMAFS_IMP_AMT_FORECAST_TEMP",
-								"writeBehavior": "insert",
-								"sqlWriterUseTableLock": false,
-								"disableMetricsCollection": false
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Blob_Amman_AMT_Import_PROD",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SqlAMTImport_PROD_Amman",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "QU_IMAFS_IMP_AMT_TEMP",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Copy AMT csv",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[QU_IMAFS_IMP_AMT_TEMP]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdAmman",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Send email",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "QU_IMAFS_IMP_AMT_TEMP",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman AMT has completed with error - QU_IMAFS_IMP_AMT_TEMP\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QU_IMAFS_IMP_AMT_TEMP\"\n}",
-								"type": "Expression"
-							}
-						}
-					},
-					{
-						"name": "Send email_copy1",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "Copy AMT csv",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman AMT has completed with error - Copy AMT csv\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in Copy AMT csv\"\n}",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "Interfaces"
-				},
-				"annotations": [],
-				"lastPublishTime": "2024-01-09T14:20:07Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/Blob_Amman_AMT_Import_PROD')]",
-				"[concat(variables('factoryId'), '/datasets/SqlAMTImport_PROD_Amman')]",
-				"[concat(variables('factoryId'), '/linkedServices/AzureProdAmman')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_AMMAN_EXP_ITEMS')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Call Logic Apps to send EXP_ITEMS",
-						"type": "WebActivity",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {},
-							"url": "https://prod-26.canadacentral.logic.azure.com:443/workflows/110fcadbac2d4e34bdcd71bbd2912b8e/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=5MwQ1kqkNPqOaNS3SmU90XcgJNIod8zxTsb5Hvw5uL4",
-							"body": {}
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "Interfaces/Generic"
-				},
-				"annotations": [],
-				"lastPublishTime": "2024-03-13T15:25:40Z"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_AMMAN_PHASE_1')]",
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_AMMAN_PHASE_1_Generic')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -7165,6 +6407,330 @@
 							"storedProcedureName": "[[dbo].[Interface_ITEMS]"
 						},
 						"linkedServiceName": {
+							"referenceName": "AzureProdCanRoy",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Interface_EXP_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_EXP_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdCanRoy",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_QS_ANALYSIS_DEMAND_0_12_MONTHS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdCanRoy",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdCanRoy",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send email",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Canroy has completed with error - QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Canroy has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Canroy\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy2",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Canroy has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Canroy\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy3",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Canroy has completed with error - QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Count Nb Items IMAFS_IMP_ITEMS",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": "Declare @CountNbItems int\nexec QS_COUNT_IMAFS_IMP_ITEMS  @CountNbItems output\nselect @CountNbItems as NbItems",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "StoredProc_PROD_CANROY",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						}
+					},
+					{
+						"name": "If Condition1",
+						"type": "IfCondition",
+						"dependsOn": [
+							{
+								"activity": "Count Nb Items IMAFS_IMP_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"expression": {
+								"value": "@equals(activity('Count Nb Items IMAFS_IMP_ITEMS').output.firstRow.NbItems,0)",
+								"type": "Expression"
+							},
+							"ifTrueActivities": [
+								{
+									"name": "Send email True_copy1",
+									"type": "WebActivity",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"method": "POST",
+										"headers": {
+											"Content-Type": "application/json"
+										},
+										"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+										"body": {
+											"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} CANROY IMAFS_IMP_ITEMS table is empty\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"No records in CANROY IMAFS_IMP_ITEMS table\"\n}",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Interfaces"
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-01-09T14:40:42Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureProdCanRoy')]",
+				"[concat(variables('factoryId'), '/datasets/StoredProc_PROD_CANROY')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_CANROY_Generic')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Interface_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Count Nb Items IMAFS_IMP_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_ITEMS]"
+						},
+						"linkedServiceName": {
 							"referenceName": "AzureSQLCanRoy",
 							"type": "LinkedServiceReference"
 						}
@@ -7461,7 +7027,588 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_CERREJON')]",
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_CERREJON_AMT_IMPORT')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy AMT txt file to IMAFS",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "truncate table IMAFS_IMP_AMT_FORECAST_TEMP",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"type": "String",
+											"ordinal": 1
+										},
+										"sink": {
+											"name": "fcast_period",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"type": "String",
+											"ordinal": 2
+										},
+										"sink": {
+											"name": "forecast_site",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"type": "String",
+											"ordinal": 3
+										},
+										"sink": {
+											"name": "part_no",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"type": "String",
+											"ordinal": 4
+										},
+										"sink": {
+											"name": "SourceOfSupply",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"type": "String",
+											"ordinal": 5
+										},
+										"sink": {
+											"name": "forecast_period_month",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"type": "String",
+											"ordinal": 6
+										},
+										"sink": {
+											"name": "forecast",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "AMT_import",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SqlAMTImport",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "QU_IMAFS_IMP_AMT_TEMP",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Copy AMT txt file to IMAFS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QU_IMAFS_IMP_AMT_TEMP]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdCerrejon",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Versions Old"
+				},
+				"annotations": [],
+				"lastPublishTime": "2023-04-20T19:13:02Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/AMT_import')]",
+				"[concat(variables('factoryId'), '/datasets/SqlAMTImport')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureProdCerrejon')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_CERREJON_AMT_IMPORT_CSV')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy AMT CSV file to IMAFS",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "truncate table IMAFS_IMP_AMT_FORECAST_TEMP",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "fcast_period",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "fcast_period",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "forecast_site",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "forecast_site",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "part_no",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "part_no",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "SourceOfSupply",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "SourceOfSupply",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "forecast_period_month",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "forecast_period_month",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "forecast",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "forecast",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "AMT_Import_CSV",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SqlAMTImport",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "QU_IMAFS_IMP_AMT_TEMP",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Copy AMT CSV file to IMAFS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QU_IMAFS_IMP_AMT_TEMP]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdCerrejon",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send email",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QU_IMAFS_IMP_AMT_TEMP",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon AMT has completed with error - QU_IMAFS_IMP_AMT_TEMP\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QU_IMAFS_IMP_AMT_TEMP\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy AMT CSV file to IMAFS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon AMT has completed with error - QU_IMAFS_IMP_AMT_TEMP\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QU_IMAFS_IMP_AMT_TEMP\"\n}",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Interfaces"
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-01-09T14:21:16Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/AMT_Import_CSV')]",
+				"[concat(variables('factoryId'), '/datasets/SqlAMTImport')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureProdCerrejon')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_CERREJON_AMT_IMPORT_QA')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy AMT txt file to IMAFS",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "truncate table IMAFS_IMP_AMT_FORECAST_TEMP",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "fcast_period",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "fcast_period"
+										}
+									},
+									{
+										"source": {
+											"name": "forecast_site",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "forecast_site"
+										}
+									},
+									{
+										"source": {
+											"name": "part_no",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "part_no"
+										}
+									},
+									{
+										"source": {
+											"name": "SourceOfSupply",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "SourceOfSupply"
+										}
+									},
+									{
+										"source": {
+											"name": "forecast_period_month",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "forecast_period_month"
+										}
+									},
+									{
+										"source": {
+											"name": "forecast",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "forecast"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "AMT_import",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SqlAMTImport_QA",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "QU_IMAFS_IMP_AMT_TEMP",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Copy AMT txt file to IMAFS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QU_IMAFS_IMP_AMT_TEMP]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureQACerrejon",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Versions Old"
+				},
+				"annotations": [],
+				"lastPublishTime": "2023-04-20T19:13:02Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/AMT_import')]",
+				"[concat(variables('factoryId'), '/datasets/SqlAMTImport_QA')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureQACerrejon')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_CERREJON_Generic')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -10803,587 +10950,6 @@
 				"[concat(variables('factoryId'), '/datasets/TXT_IMAFS_ITEMS_EXPORT')]",
 				"[concat(variables('factoryId'), '/datasets/SqlImafsExpItemsCerrejon')]",
 				"[concat(variables('factoryId'), '/linkedServices/AzureProdCerrejon')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_CERREJON_AMT_IMPORT')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy AMT txt file to IMAFS",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink",
-								"preCopyScript": "truncate table IMAFS_IMP_AMT_FORECAST_TEMP",
-								"writeBehavior": "insert",
-								"sqlWriterUseTableLock": false,
-								"disableMetricsCollection": false
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"type": "String",
-											"ordinal": 1
-										},
-										"sink": {
-											"name": "fcast_period",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"type": "String",
-											"ordinal": 2
-										},
-										"sink": {
-											"name": "forecast_site",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"type": "String",
-											"ordinal": 3
-										},
-										"sink": {
-											"name": "part_no",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"type": "String",
-											"ordinal": 4
-										},
-										"sink": {
-											"name": "SourceOfSupply",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"type": "String",
-											"ordinal": 5
-										},
-										"sink": {
-											"name": "forecast_period_month",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"type": "String",
-											"ordinal": 6
-										},
-										"sink": {
-											"name": "forecast",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "AMT_import",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SqlAMTImport",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "QU_IMAFS_IMP_AMT_TEMP",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Copy AMT txt file to IMAFS",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[QU_IMAFS_IMP_AMT_TEMP]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdCerrejon",
-							"type": "LinkedServiceReference"
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "Versions Old"
-				},
-				"annotations": [],
-				"lastPublishTime": "2023-04-20T19:13:02Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/AMT_import')]",
-				"[concat(variables('factoryId'), '/datasets/SqlAMTImport')]",
-				"[concat(variables('factoryId'), '/linkedServices/AzureProdCerrejon')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_CERREJON_AMT_IMPORT_CSV')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy AMT CSV file to IMAFS",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink",
-								"preCopyScript": "truncate table IMAFS_IMP_AMT_FORECAST_TEMP",
-								"writeBehavior": "insert",
-								"sqlWriterUseTableLock": false,
-								"disableMetricsCollection": false
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "fcast_period",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "fcast_period",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "forecast_site",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "forecast_site",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "part_no",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "part_no",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "SourceOfSupply",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "SourceOfSupply",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "forecast_period_month",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "forecast_period_month",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "forecast",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "forecast",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "AMT_Import_CSV",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SqlAMTImport",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "QU_IMAFS_IMP_AMT_TEMP",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Copy AMT CSV file to IMAFS",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[QU_IMAFS_IMP_AMT_TEMP]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdCerrejon",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Send email",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "QU_IMAFS_IMP_AMT_TEMP",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon AMT has completed with error - QU_IMAFS_IMP_AMT_TEMP\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QU_IMAFS_IMP_AMT_TEMP\"\n}",
-								"type": "Expression"
-							}
-						}
-					},
-					{
-						"name": "Send email_copy1",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "Copy AMT CSV file to IMAFS",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon AMT has completed with error - QU_IMAFS_IMP_AMT_TEMP\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QU_IMAFS_IMP_AMT_TEMP\"\n}",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "Interfaces"
-				},
-				"annotations": [],
-				"lastPublishTime": "2024-01-09T14:21:16Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/AMT_Import_CSV')]",
-				"[concat(variables('factoryId'), '/datasets/SqlAMTImport')]",
-				"[concat(variables('factoryId'), '/linkedServices/AzureProdCerrejon')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_CERREJON_AMT_IMPORT_QA')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy AMT txt file to IMAFS",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink",
-								"preCopyScript": "truncate table IMAFS_IMP_AMT_FORECAST_TEMP",
-								"writeBehavior": "insert",
-								"sqlWriterUseTableLock": false,
-								"disableMetricsCollection": false
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "fcast_period",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "fcast_period"
-										}
-									},
-									{
-										"source": {
-											"name": "forecast_site",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "forecast_site"
-										}
-									},
-									{
-										"source": {
-											"name": "part_no",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "part_no"
-										}
-									},
-									{
-										"source": {
-											"name": "SourceOfSupply",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "SourceOfSupply"
-										}
-									},
-									{
-										"source": {
-											"name": "forecast_period_month",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "forecast_period_month"
-										}
-									},
-									{
-										"source": {
-											"name": "forecast",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "forecast"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "AMT_import",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SqlAMTImport_QA",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "QU_IMAFS_IMP_AMT_TEMP",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Copy AMT txt file to IMAFS",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[QU_IMAFS_IMP_AMT_TEMP]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureQACerrejon",
-							"type": "LinkedServiceReference"
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "Versions Old"
-				},
-				"annotations": [],
-				"lastPublishTime": "2023-04-20T19:13:02Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/AMT_import')]",
-				"[concat(variables('factoryId'), '/datasets/SqlAMTImport_QA')]",
-				"[concat(variables('factoryId'), '/linkedServices/AzureQACerrejon')]"
 			]
 		},
 		{
@@ -26855,7 +26421,149 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_COEUR')]",
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_COEUR_DHP_Generic')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Import DHP",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[_COEUR_IMPORT_IMAFS_IMP_DHP]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLCoeur",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send email Import DHP",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Import DHP",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Coeur DHP has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Coeur DHP\"\n}",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Interfaces/Generic"
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-03-14T14:12:29Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSQLCoeur')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_COEUR_EXPORT_Generic')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Interface_EXP_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_EXP_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLCoeur",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send email Interface_EXP_ITEMS",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Coeur Export has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Coeur Export\"\n}",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Interfaces/Generic"
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-03-14T14:12:29Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSQLCoeur')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_COEUR_Generic')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -27158,149 +26866,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_COEUR_DHP')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Import DHP",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[_COEUR_IMPORT_IMAFS_IMP_DHP]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureSQLCoeur",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Send email Import DHP",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "Import DHP",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Coeur DHP has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Coeur DHP\"\n}",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "Interfaces/Generic"
-				},
-				"annotations": [],
-				"lastPublishTime": "2024-03-14T14:12:29Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSQLCoeur')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_COEUR_EXPORT')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Interface_EXP_ITEMS",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[Interface_EXP_ITEMS]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureSQLCoeur",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Send email Interface_EXP_ITEMS",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "Interface_EXP_ITEMS",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Coeur Export has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Coeur Export\"\n}",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "Interfaces/Generic"
-				},
-				"annotations": [],
-				"lastPublishTime": "2024-03-14T14:12:29Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSQLCoeur')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_IOC')]",
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_IOC_Generic')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -27661,7 +27227,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_MALARTIC')]",
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_MALARTIC_Generic')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -39436,330 +39002,6 @@
 				"[concat(variables('factoryId'), '/datasets/SQL_SAP_RESB_AMMAN_PROD_DELTA')]",
 				"[concat(variables('factoryId'), '/datasets/API_Amman_PROD_EKPO_DELTA')]",
 				"[concat(variables('factoryId'), '/datasets/SQL_SAP_EKET_EKPO_AMMAN_PROD_DELTA')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_PROD_CANROY')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Interface_ITEMS",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Count Nb Items IMAFS_IMP_ITEMS",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[Interface_ITEMS]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdCanRoy",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Interface_EXP_ITEMS",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Interface_ITEMS",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[Interface_EXP_ITEMS]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdCanRoy",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Interface_EXP_ITEMS",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[QA_QS_ANALYSIS_DEMAND_0_12_MONTHS]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdCanRoy",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdCanRoy",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Send email",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Canroy has completed with error - QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\"\n}",
-								"type": "Expression"
-							}
-						}
-					},
-					{
-						"name": "Send email_copy1",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "Interface_ITEMS",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Canroy has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Canroy\"\n}",
-								"type": "Expression"
-							}
-						}
-					},
-					{
-						"name": "Send email_copy2",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "Interface_EXP_ITEMS",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Canroy has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Canroy\"\n}",
-								"type": "Expression"
-							}
-						}
-					},
-					{
-						"name": "Send email_copy3",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Canroy has completed with error - QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\"\n}",
-								"type": "Expression"
-							}
-						}
-					},
-					{
-						"name": "Count Nb Items IMAFS_IMP_ITEMS",
-						"type": "Lookup",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "Declare @CountNbItems int\nexec QS_COUNT_IMAFS_IMP_ITEMS  @CountNbItems output\nselect @CountNbItems as NbItems",
-								"queryTimeout": "02:00:00",
-								"partitionOption": "None"
-							},
-							"dataset": {
-								"referenceName": "StoredProc_PROD_CANROY",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "If Condition1",
-						"type": "IfCondition",
-						"dependsOn": [
-							{
-								"activity": "Count Nb Items IMAFS_IMP_ITEMS",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"expression": {
-								"value": "@equals(activity('Count Nb Items IMAFS_IMP_ITEMS').output.firstRow.NbItems,0)",
-								"type": "Expression"
-							},
-							"ifTrueActivities": [
-								{
-									"name": "Send email True_copy1",
-									"type": "WebActivity",
-									"dependsOn": [],
-									"policy": {
-										"timeout": "0.12:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"method": "POST",
-										"headers": {
-											"Content-Type": "application/json"
-										},
-										"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-										"body": {
-											"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} CANROY IMAFS_IMP_ITEMS table is empty\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"No records in CANROY IMAFS_IMP_ITEMS table\"\n}",
-											"type": "Expression"
-										}
-									}
-								}
-							]
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "Interfaces"
-				},
-				"annotations": [],
-				"lastPublishTime": "2024-01-09T14:40:42Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureProdCanRoy')]",
-				"[concat(variables('factoryId'), '/datasets/StoredProc_PROD_CANROY')]"
 			]
 		},
 		{
@@ -60949,7 +60191,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_ROBEX')]",
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_ROBEX_Generic')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -61194,7 +60436,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_RTC')]",
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_RTC_Generic')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -61439,7 +60681,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_SAYONA')]",
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_SAYONA_Generic')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -61684,7 +60926,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_STO')]",
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_STO_Generic')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -61929,252 +61171,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_VEGPRO')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Interface_ITEMS",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[Interface_ITEMS]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdVegPro",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Interface_EXP_ITEMS",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Interface_ITEMS",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[Interface_EXP_ITEMS]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdVegPro",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Interface_EXP_ITEMS",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[QA_QS_ANALYSIS_DEMAND_0_12_MONTHS]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdVegPro",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdVegPro",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Send email QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro\"\n}",
-								"type": "Expression"
-							}
-						}
-					},
-					{
-						"name": "Send email Interface_ITEMS",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "Interface_ITEMS",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro\"\n}",
-								"type": "Expression"
-							}
-						}
-					},
-					{
-						"name": "Send email Interface_EXP_ITEMS",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "Interface_EXP_ITEMS",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro\"\n}",
-								"type": "Expression"
-							}
-						}
-					},
-					{
-						"name": "Send email QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro\"\n}",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "Interfaces/Generic"
-				},
-				"annotations": [],
-				"lastPublishTime": "2024-03-14T14:56:44Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureProdVegPro')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_VEGPRO_2')]",
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_VEGPRO_2_Generic')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -62553,6 +61550,251 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureSQLVegPro2')]",
 				"[concat(variables('factoryId'), '/datasets/StoredProc_PROD_VEGPRO2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_VEGPRO_Generic')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Interface_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdVegPro",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Interface_EXP_ITEMS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Interface_EXP_ITEMS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdVegPro",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_QS_ANALYSIS_DEMAND_0_12_MONTHS]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdVegPro",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureProdVegPro",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send email QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email Interface_ITEMS",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email Interface_EXP_ITEMS",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Interface_EXP_ITEMS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro\"\n}",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Interfaces/Generic"
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-03-14T14:56:44Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureProdVegPro')]"
 			]
 		},
 		{
@@ -72672,27 +71914,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ITEMS_DETAIL_to_JSON_BLOB_test_to_delete')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDev_IMAFS_CANROY_JAN_2024",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "IMAFS_IMP_ITEMS_JSON_TEST"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureDev_IMAFS_CANROY_JAN_2024')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/Machine_Learning_Blob')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -73957,6 +73178,132 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureProdAmman')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_PREPROD_IMAFS_IMP_ITEMS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDevPreProd2",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Others"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "ID",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "ORGANIZATION_ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "WAREHOUSE_DESCRP",
+						"type": "nvarchar"
+					},
+					{
+						"name": "INVENTORY_ITEM_ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DEMAND_MONTH",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "NB_TRANSACTIONS_GOLD",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "NB_TRANSACTIONS_REG",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "NB_TRANSACTIONS_PROMO",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "NB_TRANSACTIONS_PROJECT",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MTHLY_DEMAND_GOLD",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "MTHLY_DEMAND_REG",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "MTHLY_DEMAND_PROMO",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "MTHLY_DEMAND_PROJECT",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "NB_TRANSACTIONS_GOLD_BO",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "NB_TRANSACTIONS_REG_BO",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MTHLY_DEMAND_GOLD_BO",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "MTHLY_DEMAND_REG_BO",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "BATCH_NO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "EVENT_FLAG",
+						"type": "bit"
+					},
+					{
+						"name": "EVENT_DESCRIPTION",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "IMAFS_IMP_ITEMS"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDevPreProd2')]"
 			]
 		},
 		{
@@ -80117,6 +79464,216 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/SqlImafsExpItemsCerrejon')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureProdCerrejon",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Others"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "ID",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "ORGANIZATION_ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "warehouse_descrp",
+						"type": "nvarchar"
+					},
+					{
+						"name": "INVENTORY_ITEM_ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ITEM_NUMBER",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CLASS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CLASS_DESCRIPTION",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CRITICALITY",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "CRITICALITY_DESCRIPTION",
+						"type": "nvarchar"
+					},
+					{
+						"name": "SAFETY_STOCK",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "CALCULATED_SS",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MANUAL_SS",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MIN_MINMAX",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "CALCULATED_MIN",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MANUAL_MIN",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MAX_MINMAX",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "CALCULATED_MAX",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MANUAL_MAX",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "LOT_SIZE",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "NBR_PER_REORD",
+						"type": "real",
+						"precision": 7
+					},
+					{
+						"name": "CALCULATED_LEAD_TIME",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MANUAL_LEAD_TIME",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "FINAL_CALCULATED_LEAD_TIME",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "TOTAL_DELAY_TIME",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "INTERNAL_DELAY",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "SEASONAL_PRODUCT",
+						"type": "bit"
+					},
+					{
+						"name": "MONTHLY_FORECAST",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "NB_MONTHS_WITH_USAGE",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "FORECAST_NEXT_12_MONTHS",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MAD",
+						"type": "real",
+						"precision": 7
+					},
+					{
+						"name": "MAPE",
+						"type": "real",
+						"precision": 7
+					},
+					{
+						"name": "LAST_UPDATE_DATE",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "BATCH_NO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Intermittent",
+						"type": "bit"
+					},
+					{
+						"name": "demand_multiple",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "IMAFS_EXP_ITEMS"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureProdCerrejon')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/SqlImafsExpItemsCerrejonQA')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -81253,6 +80810,134 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/SynapseSQLPool1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TXT_IMAFS_ITEMS_EXPORT')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorageExport",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Others"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFS_ITEMS_EXPORT.TXT",
+						"folderPath": "export",
+						"container": "root"
+					},
+					"columnDelimiter": "\t",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorageExport')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/blob_API_Items_Detail')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlob_imafs_storage_general",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "api_output_items_detail.json",
+						"container": "apis"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"info": {
+							"type": "object",
+							"properties": {
+								"_postman_id": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string"
+								},
+								"schema": {
+									"type": "string"
+								},
+								"_exporter_id": {
+									"type": "string"
+								},
+								"_collection_link": {
+									"type": "string"
+								}
+							}
+						},
+						"item": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"request": {
+										"type": "object",
+										"properties": {
+											"method": {
+												"type": "string"
+											},
+											"header": {
+												"type": "array"
+											},
+											"url": {
+												"type": "object",
+												"properties": {
+													"raw": {
+														"type": "string"
+													},
+													"protocol": {
+														"type": "string"
+													},
+													"host": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													},
+													"path": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									},
+									"response": {
+										"type": "array"
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlob_imafs_storage_general')]"
 			]
 		},
 		{
@@ -82544,21 +82229,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/API_DEV_IMAFS_IMP_ITEMS')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "RestService",
-				"typeProperties": {
-					"url": "[parameters('API_DEV_IMAFS_IMP_ITEMS_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": true,
-					"authenticationType": "Anonymous"
-				}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/AzureBlobAmman')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -82598,6 +82268,19 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorageExport')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureBlobStorageExport_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AzureBlob_AI_Digit_AMT_AI')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -82606,6 +82289,19 @@
 				"type": "AzureBlobStorage",
 				"typeProperties": {
 					"connectionString": "[parameters('AzureBlob_AI_Digit_AMT_AI_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlob_imafs_storage_general')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureBlob_imafs_storage_general_connectionString')]"
 				}
 			},
 			"dependsOn": []
@@ -82668,6 +82364,19 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureDevIMAFS_CANROY_JAN_2024')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureDevIMAFS_CANROY_JAN_2024_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AzureDevIMAFS_STATS')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -82712,6 +82421,19 @@
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
 					"connectionString": "[parameters('AzureDevMaster_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDevPreProd2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureDevPreProd2_connectionString')]"
 				}
 			},
 			"dependsOn": []
@@ -82782,6 +82504,19 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureProdCerrejon')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureProdCerrejon_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AzureProdCoeur')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -82790,6 +82525,110 @@
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
 					"connectionString": "[parameters('AzureProdCoeur_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureProdIOC')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureProdIOC_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureProdMalartic')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureProdMalartic_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureProdRTC')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureProdRTC_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureProdRobex')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureProdRobex_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureProdSAYONA')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureProdSAYONA_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureProdSTO')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureProdSTO_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureProdVegPro')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureProdVegPro_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureProdVegPro2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureProdVegPro2_connectionString')]"
 				}
 			},
 			"dependsOn": []
@@ -82964,19 +82803,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Blob_Test')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('Blob_Test_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/DatabricksTrial')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -82990,21 +82816,6 @@
 						"value": "[parameters('DatabricksTrial_accessToken')]"
 					},
 					"existingClusterId": "[parameters('DatabricksTrial_properties_typeProperties_existingClusterId')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/RestService1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "RestService",
-				"typeProperties": {
-					"url": "[parameters('RestService1_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": true,
-					"authenticationType": "Anonymous"
 				}
 			},
 			"dependsOn": []
@@ -83039,6 +82850,19 @@
 				"type": "SqlServer",
 				"typeProperties": {
 					"connectionString": "[parameters('SQL_PROD_MTL_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SynapseSQLPool1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDW",
+				"typeProperties": {
+					"connectionString": "[parameters('SynapseSQLPool1_connectionString')]"
 				}
 			},
 			"dependsOn": []
@@ -83141,7 +82965,7 @@
 				"pipelines": [
 					{
 						"pipelineReference": {
-							"referenceName": "INTERFACE_PROD_CANROY",
+							"referenceName": "INTERFACE_CANROY",
 							"type": "PipelineReference"
 						},
 						"parameters": {}
@@ -83158,7 +82982,7 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/INTERFACE_PROD_CANROY')]"
+				"[concat(variables('factoryId'), '/pipelines/INTERFACE_CANROY')]"
 			]
 		},
 		{

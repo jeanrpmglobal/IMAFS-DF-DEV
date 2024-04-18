@@ -7,61 +7,173 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "IMAFS-DF-DEV"
 		},
-		"AzureProdIOC_connectionString": {
+		"API_Amman_PROD_AFIH_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdIOC'"
+			"metadata": "Secure string for 'password' of 'API_Amman_PROD_AFIH'"
 		},
-		"AzureProdMalartic_connectionString": {
+		"API_Amman_PROD_AUFK_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdMalartic'"
+			"metadata": "Secure string for 'password' of 'API_Amman_PROD_AUFK'"
 		},
-		"AzureProdRobex_connectionString": {
+		"API_Amman_PROD_AUSP_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdRobex'"
+			"metadata": "Secure string for 'password' of 'API_Amman_PROD_AUSP'"
 		},
-		"AzureProdRTC_connectionString": {
+		"API_Amman_PROD_EBAN 2021_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdRTC'"
+			"metadata": "Secure string for 'password' of 'API_Amman_PROD_EBAN 2021'"
 		},
-		"AzureProdSAYONA_connectionString": {
+		"API_Amman_PROD_EBAN 2022 1_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdSAYONA'"
+			"metadata": "Secure string for 'password' of 'API_Amman_PROD_EBAN 2022 1'"
 		},
-		"AzureProdSTO_connectionString": {
+		"API_Amman_PROD_EBAN 2022 2_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdSTO'"
+			"metadata": "Secure string for 'password' of 'API_Amman_PROD_EBAN 2022 2'"
 		},
-		"AzureProdVegPro_connectionString": {
+		"API_Amman_PROD_EBAN 2023_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdVegPro'"
+			"metadata": "Secure string for 'password' of 'API_Amman_PROD_EBAN 2023'"
 		},
-		"AzureProdVegPro2_connectionString": {
+		"API_Amman_PROD_EBAN_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdVegPro2'"
+			"metadata": "Secure string for 'password' of 'API_Amman_PROD_EBAN'"
 		},
-		"SynapseSQLPool1_connectionString": {
+		"API_Amman_PROD_EBAN_DELTA_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'SynapseSQLPool1'"
+			"metadata": "Secure string for 'password' of 'API_Amman_PROD_EBAN_DELTA'"
 		},
-		"AzureBlobStorageExport_connectionString": {
+		"API_Amman_PROD_EINA_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorageExport'"
+			"metadata": "Secure string for 'password' of 'API_Amman_PROD_EINA'"
 		},
-		"AzureBlob_imafs_storage_general_connectionString": {
+		"API_Amman_PROD_EINE_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlob_imafs_storage_general'"
+			"metadata": "Secure string for 'password' of 'API_Amman_PROD_EINE'"
 		},
-		"AzureDevIMAFS_CANROY_JAN_2024_connectionString": {
+		"API_Amman_PROD_EKET_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureDevIMAFS_CANROY_JAN_2024'"
+			"metadata": "Secure string for 'password' of 'API_Amman_PROD_EKET'"
 		},
-		"AzureDevPreProd2_connectionString": {
+		"API_Amman_PROD_EKKO_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureDevPreProd2'"
+			"metadata": "Secure string for 'password' of 'API_Amman_PROD_EKKO'"
 		},
-		"AzureProdCerrejon_connectionString": {
+		"API_Amman_PROD_EKPO 2021_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdCerrejon'"
+			"metadata": "Secure string for 'password' of 'API_Amman_PROD_EKPO 2021'"
+		},
+		"API_Amman_PROD_AFIH_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=afih"
+		},
+		"API_Amman_PROD_AFIH_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "SCP-USER"
+		},
+		"API_Amman_PROD_AUFK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=aufk"
+		},
+		"API_Amman_PROD_AUFK_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "SCP-USER"
+		},
+		"API_Amman_PROD_AUSP_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=ausp"
+		},
+		"API_Amman_PROD_AUSP_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "SCP-USER"
+		},
+		"API_Amman_PROD_EBAN 2021_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=eban&datefrom=20210101&dateto=20211231"
+		},
+		"API_Amman_PROD_EBAN 2021_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "SCP-USER"
+		},
+		"API_Amman_PROD_EBAN 2022 1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=eban&datefrom=20220101&dateto=20220701"
+		},
+		"API_Amman_PROD_EBAN 2022 1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "SCP-USER"
+		},
+		"API_Amman_PROD_EBAN 2022 2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=eban&datefrom=20220702&dateto=20221231"
+		},
+		"API_Amman_PROD_EBAN 2022 2_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "SCP-USER"
+		},
+		"API_Amman_PROD_EBAN 2023_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=eban&datefrom=20230101&dateto=20231231"
+		},
+		"API_Amman_PROD_EBAN 2023_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "SCP-USER"
+		},
+		"API_Amman_PROD_EBAN_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=eban&datefrom=20220101&dateto=20221231"
+		},
+		"API_Amman_PROD_EBAN_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "SCP-USER"
+		},
+		"API_Amman_PROD_EBAN_DELTA_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "@{linkedService().BaseUrlParameter}"
+		},
+		"API_Amman_PROD_EBAN_DELTA_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "SCP-USER"
+		},
+		"API_Amman_PROD_EINA_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=eina"
+		},
+		"API_Amman_PROD_EINA_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "SCP-USER"
+		},
+		"API_Amman_PROD_EINE_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=eine"
+		},
+		"API_Amman_PROD_EINE_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "SCP-USER"
+		},
+		"API_Amman_PROD_EKET_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=eket&ebeln="
+		},
+		"API_Amman_PROD_EKET_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "SCP-USER"
+		},
+		"API_Amman_PROD_EKKO_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=ekko"
+		},
+		"API_Amman_PROD_EKKO_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "SCP-USER"
+		},
+		"API_Amman_PROD_EKPO 2021_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=ekpo&datefrom=20210101&dateto=20211231"
+		},
+		"API_Amman_PROD_EKPO 2021_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "SCP-USER"
 		}
 	},
 	"variables": {
@@ -69,189 +181,7 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdIOC')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdIOC_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdMalartic')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdMalartic_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdRobex')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdRobex_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdRTC')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdRTC_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdSAYONA')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdSAYONA_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdSTO')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdSTO_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdVegPro')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdVegPro_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdVegPro2')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdVegPro2_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SynapseSQLPool1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDW",
-				"typeProperties": {
-					"connectionString": "[parameters('SynapseSQLPool1_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureBlobStorageExport')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureBlobStorageExport_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureBlob_imafs_storage_general')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureBlob_imafs_storage_general_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureDevIMAFS_CANROY_JAN_2024')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureDevIMAFS_CANROY_JAN_2024_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureDevPreProd2')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureDevPreProd2_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdCerrejon')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdCerrejon_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_AMMAN_EXP_ITEMS')]",
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_AMMAN_EXP_ITEMS_Generic')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -582,6 +512,292 @@
 				},
 				"annotations": [],
 				"lastPublishTime": "2024-03-12T15:59:06Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_AFIH')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('API_Amman_PROD_AFIH_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Basic",
+					"userName": "[parameters('API_Amman_PROD_AFIH_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('API_Amman_PROD_AFIH_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_AUFK')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('API_Amman_PROD_AUFK_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Basic",
+					"userName": "[parameters('API_Amman_PROD_AUFK_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('API_Amman_PROD_AUFK_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_AUSP')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('API_Amman_PROD_AUSP_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Basic",
+					"userName": "[parameters('API_Amman_PROD_AUSP_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('API_Amman_PROD_AUSP_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_EBAN 2021')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('API_Amman_PROD_EBAN 2021_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Basic",
+					"userName": "[parameters('API_Amman_PROD_EBAN 2021_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('API_Amman_PROD_EBAN 2021_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_EBAN 2022 1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('API_Amman_PROD_EBAN 2022 1_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Basic",
+					"userName": "[parameters('API_Amman_PROD_EBAN 2022 1_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('API_Amman_PROD_EBAN 2022 1_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_EBAN 2022 2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('API_Amman_PROD_EBAN 2022 2_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Basic",
+					"userName": "[parameters('API_Amman_PROD_EBAN 2022 2_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('API_Amman_PROD_EBAN 2022 2_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_EBAN 2023')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('API_Amman_PROD_EBAN 2023_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Basic",
+					"userName": "[parameters('API_Amman_PROD_EBAN 2023_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('API_Amman_PROD_EBAN 2023_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_EBAN')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('API_Amman_PROD_EBAN_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Basic",
+					"userName": "[parameters('API_Amman_PROD_EBAN_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('API_Amman_PROD_EBAN_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_EBAN_DELTA')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"parameters": {
+					"BaseUrlParameter": {
+						"type": "string",
+						"defaultValue": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=eban&erdatge=20231004"
+					}
+				},
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('API_Amman_PROD_EBAN_DELTA_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Basic",
+					"userName": "[parameters('API_Amman_PROD_EBAN_DELTA_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('API_Amman_PROD_EBAN_DELTA_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_EINA')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('API_Amman_PROD_EINA_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Basic",
+					"userName": "[parameters('API_Amman_PROD_EINA_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('API_Amman_PROD_EINA_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_EINE')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('API_Amman_PROD_EINE_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Basic",
+					"userName": "[parameters('API_Amman_PROD_EINE_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('API_Amman_PROD_EINE_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_EKET')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('API_Amman_PROD_EKET_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Basic",
+					"userName": "[parameters('API_Amman_PROD_EKET_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('API_Amman_PROD_EKET_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_EKKO')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('API_Amman_PROD_EKKO_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Basic",
+					"userName": "[parameters('API_Amman_PROD_EKKO_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('API_Amman_PROD_EKKO_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_EKPO 2021')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('API_Amman_PROD_EKPO 2021_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Basic",
+					"userName": "[parameters('API_Amman_PROD_EKPO 2021_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('API_Amman_PROD_EKPO 2021_password')]"
+					}
+				}
 			},
 			"dependsOn": []
 		}

@@ -13,718 +13,6 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/Ellipse_1E1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobCerrejonBlob",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IMAFS_IMAF1E1.TXT",
-						"folderPath": "import",
-						"container": "root"
-					},
-					"columnDelimiter": "\t",
-					"escapeChar": "",
-					"firstRowAsHeader": true,
-					"quoteChar": ""
-				},
-				"schema": [
-					{
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Ellipse_1HD')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobCerrejonBlob",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IMAFS_IMAF1HD.TXT",
-						"folderPath": "import",
-						"container": "root"
-					},
-					"columnDelimiter": "\t",
-					"escapeChar": "",
-					"firstRowAsHeader": true,
-					"quoteChar": ""
-				},
-				"schema": [
-					{
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Ellise010')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobCerrejonBlob",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IMAFS_IMAF010.TXT",
-						"folderPath": "import",
-						"container": "root"
-					},
-					"columnDelimiter": "\t",
-					"escapeChar": "",
-					"firstRowAsHeader": true,
-					"quoteChar": ""
-				},
-				"schema": [
-					{
-						"name": "TABLE_TYPE",
-						"type": "String"
-					},
-					{
-						"name": "TABLE_CODE",
-						"type": "String"
-					},
-					{
-						"name": "TABLE_DESC",
-						"type": "String"
-					},
-					{
-						"name": "ASSOC_REC",
-						"type": "String"
-					},
-					{
-						"name": "ACTIVE_FLAG",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/IMAFS_IMP_DHP_JSON_to_delete_2')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDevPreprod",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "ID",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "ORGANIZATION_ID",
-						"type": "nvarchar"
-					},
-					{
-						"name": "WAREHOUSE_DESCRP",
-						"type": "nvarchar"
-					},
-					{
-						"name": "INVENTORY_ITEM_ID",
-						"type": "nvarchar"
-					},
-					{
-						"name": "PRODUCT_CAT",
-						"type": "nvarchar"
-					},
-					{
-						"name": "PRODUCT_SUB_CAT",
-						"type": "nvarchar"
-					},
-					{
-						"name": "ITEM_NUMBER",
-						"type": "nvarchar"
-					},
-					{
-						"name": "CLASS",
-						"type": "nvarchar"
-					},
-					{
-						"name": "CRITICALITY_CODE",
-						"type": "nvarchar"
-					},
-					{
-						"name": "NATURE_CODE",
-						"type": "nvarchar"
-					},
-					{
-						"name": "CREATION_DATE",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "DESCRIPTION",
-						"type": "nvarchar"
-					},
-					{
-						"name": "STOCKABLE",
-						"type": "bit"
-					},
-					{
-						"name": "ALIAS",
-						"type": "nvarchar"
-					},
-					{
-						"name": "AUTO_REAPRO",
-						"type": "bit"
-					},
-					{
-						"name": "TEAM",
-						"type": "nvarchar"
-					},
-					{
-						"name": "ANNUAL_DEMAND",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "PREFERRED_SHIPPING",
-						"type": "nvarchar"
-					},
-					{
-						"name": "NB_UNITS_PER_USAGE",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "UNIT_OF_MEASURE",
-						"type": "nvarchar"
-					},
-					{
-						"name": "PRIMARY_UOM_QTY",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MANUFACTURER_PART_NUM",
-						"type": "nvarchar"
-					},
-					{
-						"name": "MANUFACTURER_NAME",
-						"type": "nvarchar"
-					},
-					{
-						"name": "MIN_MINMAX",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MAX_MINMAX",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "SS_MANUAL",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "STATUS",
-						"type": "nvarchar"
-					},
-					{
-						"name": "PREFERRED_VENDOR_ID",
-						"type": "nvarchar"
-					},
-					{
-						"name": "VALUE_PER_REORD",
-						"type": "money",
-						"precision": 19,
-						"scale": 4
-					},
-					{
-						"name": "MIN_QTY_TO_ORDER",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "AVG_COST_INV",
-						"type": "money",
-						"precision": 19,
-						"scale": 4
-					},
-					{
-						"name": "CURRENT_COST",
-						"type": "money",
-						"precision": 19,
-						"scale": 4
-					},
-					{
-						"name": "LEAD_TIME",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "LT_MANUAL",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "DATE_LAST_MODIF",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "FAMILY",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "USED_EQUIPMENT",
-						"type": "bit"
-					},
-					{
-						"name": "PROMO_NUMBER",
-						"type": "nvarchar"
-					},
-					{
-						"name": "PROMO_START_DATE",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "PROMO_END_DATE",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "PROMO_FORECAST_QTY",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "PROJECT_NUMBER",
-						"type": "nvarchar"
-					},
-					{
-						"name": "PROJECT_START_DATE",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "PROJECT_END_DATE",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "PROJECT_FORECAST_QTY",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "QTY_NET",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "QOH_QTY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "PO_QTY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "TRANSFERT_CODE",
-						"type": "nvarchar"
-					},
-					{
-						"name": "REQ_QTY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "RECV_QTY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "RESERVED_QTY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "TRANSFERT_QTY",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "TRANSFERT_FLAG",
-						"type": "bit"
-					},
-					{
-						"name": "ATP_QTY",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "FUTUR_DMD_QTY",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "EXP_RESERVED_QTY",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "EXP_PROMISED_QTY",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "ANTICIPATED_QTY",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "REQUIREMENT_DATE",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "COMPLETED_QTY",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "PROMISED_QTY",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "STD_PACK_MULTIPLE",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "CONSIGNMENT",
-						"type": "bit"
-					},
-					{
-						"name": "BUYER",
-						"type": "nvarchar"
-					},
-					{
-						"name": "ANALYSTE",
-						"type": "nvarchar"
-					},
-					{
-						"name": "BATCH_NO",
-						"type": "nvarchar"
-					},
-					{
-						"name": "EQUIP_LINK",
-						"type": "nvarchar"
-					},
-					{
-						"name": "CONTRACT",
-						"type": "bit"
-					},
-					{
-						"name": "MAX_SHELF",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "STRAT_COMM",
-						"type": "nvarchar"
-					},
-					{
-						"name": "SERVICE_LEVEL_3M",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "SERVICE_LEVEL_6M",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "SERVICE_LEVEL_12M",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "FLEX_FIELD_1",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FLEX_FIELD_2",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FLEX_FIELD_3",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FLEX_FIELD_4",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FLEX_FIELD_5",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FLEX_FIELD_6",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FLEX_FIELD_7",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FLEX_FIELD_8",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FLEX_FIELD_9",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FLEX_FIELD_10",
-						"type": "nvarchar"
-					},
-					{
-						"name": "SUBSTITUTED_PART_NO",
-						"type": "nvarchar"
-					},
-					{
-						"name": "PCT_SUBSTITUTION",
-						"type": "float",
-						"precision": 15
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "IMAFS_IMP_DHP_JSON_TEST"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/IMAFS_IMP_DHP_PREPROD_JSON')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlob_imafs_storage_general",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Others"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "dbo.IMAFS_IMP_DHP.json",
-						"container": "imafsstoragegeneral"
-					}
-				},
-				"schema": {}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/IMAFS_IMP_ITEMS_to_JSON_BLOB_test_to_delete')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDevPreprod",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "IMAFS_IMP_ITEMS_JSON_TEST"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ITEMS_DETAIL_to_JSON_BLOB_test_to_delete')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDev_IMAFS_CANROY_JAN_2024",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "IMAFS_IMP_ITEMS_JSON_TEST"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Machine_Learning_Blob')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobMachineLearningImport",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Machine Learning"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "test_1.csv",
-						"container": "machine-learning-import"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ParquetBlobTransfer')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "linkedServiceBlobStorageGeneral",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Machine Learning"
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "data_09bf7bed-220e-4bac-b090-6dff911cf577_943e1c63-cc46-4164-b62a-748765386d28.parquet",
-						"container": "imafsstoragegeneral"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": [
-					{
-						"name": "item_id",
-						"type": "INT64"
-					},
-					{
-						"name": "MONTHDATE",
-						"type": "DATE"
-					},
-					{
-						"name": "qty",
-						"type": "DOUBLE"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/ParquetTestFlatFile')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -1452,6 +740,914 @@
 				"typeProperties": {
 					"schema": "dbo",
 					"table": "DHP_TO_FORECAST_TEMP"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_IMAFS_EXP_ITEMS_AMMAN')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSQLAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "ID",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "ORGANIZATION_ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "warehouse_descrp",
+						"type": "nvarchar"
+					},
+					{
+						"name": "INVENTORY_ITEM_ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ITEM_NUMBER",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CLASS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CLASS_DESCRIPTION",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CRITICALITY",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "CRITICALITY_DESCRIPTION",
+						"type": "nvarchar"
+					},
+					{
+						"name": "SAFETY_STOCK",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "CALCULATED_SS",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MANUAL_SS",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MIN_MINMAX",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "CALCULATED_MIN",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MANUAL_MIN",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MAX_MINMAX",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "CALCULATED_MAX",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MANUAL_MAX",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "LOT_SIZE",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "NBR_PER_REORD",
+						"type": "real",
+						"precision": 7
+					},
+					{
+						"name": "CALCULATED_LEAD_TIME",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MANUAL_LEAD_TIME",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "FINAL_CALCULATED_LEAD_TIME",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "TOTAL_DELAY_TIME",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "INTERNAL_DELAY",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "SEASONAL_PRODUCT",
+						"type": "bit"
+					},
+					{
+						"name": "MONTHLY_FORECAST",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "NB_MONTHS_WITH_USAGE",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "FORECAST_NEXT_12_MONTHS",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MAD",
+						"type": "real",
+						"precision": 7
+					},
+					{
+						"name": "MAPE",
+						"type": "real",
+						"precision": 7
+					},
+					{
+						"name": "LAST_UPDATE_DATE",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "BATCH_NO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Intermittent",
+						"type": "bit"
+					},
+					{
+						"name": "demand_multiple",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "IMAFS_EXP_ITEMS"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_IMAFS_EXP_ITEMS_AMMAN_PROD')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureProdAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "ID",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "ORGANIZATION_ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "warehouse_descrp",
+						"type": "nvarchar"
+					},
+					{
+						"name": "INVENTORY_ITEM_ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ITEM_NUMBER",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CLASS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CLASS_DESCRIPTION",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CRITICALITY",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "CRITICALITY_DESCRIPTION",
+						"type": "nvarchar"
+					},
+					{
+						"name": "SAFETY_STOCK",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "CALCULATED_SS",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MANUAL_SS",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MIN_MINMAX",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "CALCULATED_MIN",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MANUAL_MIN",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MAX_MINMAX",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "CALCULATED_MAX",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MANUAL_MAX",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "LOT_SIZE",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "NBR_PER_REORD",
+						"type": "real",
+						"precision": 7
+					},
+					{
+						"name": "CALCULATED_LEAD_TIME",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MANUAL_LEAD_TIME",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "FINAL_CALCULATED_LEAD_TIME",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "TOTAL_DELAY_TIME",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "INTERNAL_DELAY",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "SEASONAL_PRODUCT",
+						"type": "bit"
+					},
+					{
+						"name": "MONTHLY_FORECAST",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "NB_MONTHS_WITH_USAGE",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "FORECAST_NEXT_12_MONTHS",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MAD",
+						"type": "real",
+						"precision": 7
+					},
+					{
+						"name": "MAPE",
+						"type": "real",
+						"precision": 7
+					},
+					{
+						"name": "LAST_UPDATE_DATE",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "BATCH_NO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Intermittent",
+						"type": "bit"
+					},
+					{
+						"name": "demand_multiple",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "IMAFS_EXP_ITEMS"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_PREPROD_IMAFS_IMP_ITEMS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDevPreProd2",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Others"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "ID",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "ORGANIZATION_ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "WAREHOUSE_DESCRP",
+						"type": "nvarchar"
+					},
+					{
+						"name": "INVENTORY_ITEM_ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DEMAND_MONTH",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "NB_TRANSACTIONS_GOLD",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "NB_TRANSACTIONS_REG",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "NB_TRANSACTIONS_PROMO",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "NB_TRANSACTIONS_PROJECT",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MTHLY_DEMAND_GOLD",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "MTHLY_DEMAND_REG",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "MTHLY_DEMAND_PROMO",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "MTHLY_DEMAND_PROJECT",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "NB_TRANSACTIONS_GOLD_BO",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "NB_TRANSACTIONS_REG_BO",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "MTHLY_DEMAND_GOLD_BO",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "MTHLY_DEMAND_REG_BO",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "BATCH_NO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "EVENT_FLAG",
+						"type": "bit"
+					},
+					{
+						"name": "EVENT_DESCRIPTION",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "IMAFS_IMP_ITEMS"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_PROD_MTL__CANROY_DEMAND_HIST_PERIOD')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "SQL_PROD_MTL",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Machine Learning"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "item_id",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "date",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "qty",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "hits",
+						"type": "smallint",
+						"precision": 5
+					},
+					{
+						"name": "qty_forecast",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "qty_forecast_adj",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "qty_adj",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "qty_adj_reason",
+						"type": "nvarchar"
+					},
+					{
+						"name": "qty_ERP",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "real_data_flag",
+						"type": "bit"
+					},
+					{
+						"name": "forecast_id",
+						"type": "smallint",
+						"precision": 5
+					},
+					{
+						"name": "forecast_id_smart",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Comments_Smart",
+						"type": "nvarchar"
+					},
+					{
+						"name": "QTY_FORECAST_CALC",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "QTY_FORECAST_MAN",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "QTY_FORECAST_AMT",
+						"type": "float",
+						"precision": 15
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_CANROY_DEMAND_HIST_PERIOD"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_PROD_MTL__NEW_CANROY_FORECAST_ARIMA_QTY')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "SQL_PROD_MTL",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Machine Learning"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "unique_id",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "ds",
+						"type": "date"
+					},
+					{
+						"name": "AutoARIMA",
+						"type": "real",
+						"precision": 7
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_NEW_CANROY_FORECAST_ARIMA_QTY"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_PROD_MTL__NEW_CANROY_FORECAST_PROPHET_QTY')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "SQL_PROD_MTL",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Machine Learning"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "ds",
+						"type": "date"
+					},
+					{
+						"name": "item",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "yhat",
+						"type": "real",
+						"precision": 7
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_NEW_CANROY_FORECAST_PROPHET_QTY"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_PROD_MTL__OLD_CANROY_FORECAST_ARIMA')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "SQL_PROD_MTL",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Machine Learning"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "rownames",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "items_listj1",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "forecast_listjds",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "forecast_listjyhat",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "method_forecast",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_OLD_CANROY_FORECAST_ARIMA"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_PROD_MTL__OLD_CANROY_FORECAST_PROPHET')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "SQL_PROD_MTL",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Machine Learning"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "rownames",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "items_listj1",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "forecast_listjds",
+						"type": "date"
+					},
+					{
+						"name": "forecast_listjyhat",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "method_forecast",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_OLD_CANROY_FORECAST_PROPHET"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_Prod_Canroy_To_IMAFS_AI_Mtl_Srv_Demand_Hist_Period')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "SQL_PROD_MTL",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Others"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "item_id",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "date",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "qty",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "hits",
+						"type": "smallint",
+						"precision": 5
+					},
+					{
+						"name": "qty_forecast",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "qty_forecast_adj",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "qty_adj",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "qty_adj_reason",
+						"type": "nvarchar"
+					},
+					{
+						"name": "qty_ERP",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "real_data_flag",
+						"type": "bit"
+					},
+					{
+						"name": "forecast_id",
+						"type": "smallint",
+						"precision": 5
+					},
+					{
+						"name": "forecast_id_smart",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Comments_Smart",
+						"type": "nvarchar"
+					},
+					{
+						"name": "QTY_FORECAST_CALC",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "QTY_FORECAST_MAN",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "QTY_FORECAST_AMT",
+						"type": "float",
+						"precision": 15
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_CANROY_DEMAND_HIST_PERIOD"
 				}
 			},
 			"dependsOn": []

@@ -5,48 +5,6 @@
 		"factoryName": {
 			"value": "IMAFS-DF-DEV"
 		},
-		"AzureProdIOC_connectionString": {
-			"value": ""
-		},
-		"AzureProdMalartic_connectionString": {
-			"value": ""
-		},
-		"AzureProdRobex_connectionString": {
-			"value": ""
-		},
-		"AzureProdRTC_connectionString": {
-			"value": ""
-		},
-		"AzureProdSAYONA_connectionString": {
-			"value": ""
-		},
-		"AzureProdSTO_connectionString": {
-			"value": ""
-		},
-		"AzureProdVegPro_connectionString": {
-			"value": ""
-		},
-		"AzureProdVegPro2_connectionString": {
-			"value": ""
-		},
-		"SynapseSQLPool1_connectionString": {
-			"value": ""
-		},
-		"AzureBlobStorageExport_connectionString": {
-			"value": ""
-		},
-		"AzureBlob_imafs_storage_general_connectionString": {
-			"value": ""
-		},
-		"AzureDevIMAFS_CANROY_JAN_2024_connectionString": {
-			"value": ""
-		},
-		"AzureDevPreProd2_connectionString": {
-			"value": ""
-		},
-		"AzureProdCerrejon_connectionString": {
-			"value": ""
-		},
 		"API_Amman_PROD_AFIH_password": {
 			"value": ""
 		},
@@ -242,7 +200,13 @@
 		"AzureBlobMachineLearningImport_connectionString": {
 			"value": ""
 		},
+		"AzureBlobStorageExport_connectionString": {
+			"value": ""
+		},
 		"AzureBlob_AI_Digit_AMT_AI_connectionString": {
+			"value": ""
+		},
+		"AzureBlob_imafs_storage_general_connectionString": {
 			"value": ""
 		},
 		"AzureDatabricksTrial_accessToken": {
@@ -257,6 +221,9 @@
 		"AzureDevDemo_connectionString": {
 			"value": ""
 		},
+		"AzureDevIMAFS_CANROY_JAN_2024_connectionString": {
+			"value": ""
+		},
 		"AzureDevIMAFS_STATS_connectionString": {
 			"value": ""
 		},
@@ -264,6 +231,9 @@
 			"value": ""
 		},
 		"AzureDevMaster_connectionString": {
+			"value": ""
+		},
+		"AzureDevPreProd2_connectionString": {
 			"value": ""
 		},
 		"AzureDevPreprod_connectionString": {
@@ -281,7 +251,34 @@
 		"AzureProdCanRoy_connectionString": {
 			"value": ""
 		},
+		"AzureProdCerrejon_connectionString": {
+			"value": ""
+		},
 		"AzureProdCoeur_connectionString": {
+			"value": ""
+		},
+		"AzureProdIOC_connectionString": {
+			"value": ""
+		},
+		"AzureProdMalartic_connectionString": {
+			"value": ""
+		},
+		"AzureProdRTC_connectionString": {
+			"value": ""
+		},
+		"AzureProdRobex_connectionString": {
+			"value": ""
+		},
+		"AzureProdSAYONA_connectionString": {
+			"value": ""
+		},
+		"AzureProdSTO_connectionString": {
+			"value": ""
+		},
+		"AzureProdVegPro_connectionString": {
+			"value": ""
+		},
+		"AzureProdVegPro2_connectionString": {
 			"value": ""
 		},
 		"AzureQAAmman_connectionString": {
@@ -323,9 +320,6 @@
 		"AzureSqlMalartic_connectionString": {
 			"value": ""
 		},
-		"Blob_Test_connectionString": {
-			"value": ""
-		},
 		"DatabricksTrial_accessToken": {
 			"value": ""
 		},
@@ -333,6 +327,9 @@
 			"value": ""
 		},
 		"SQL_PROD_MTL_connectionString": {
+			"value": ""
+		},
+		"SynapseSQLPool1_connectionString": {
 			"value": ""
 		},
 		"linkedServiceBlobStorageGeneral_connectionString": {
@@ -710,14 +707,8 @@
 		"API_Amman_PROD_TCURR_properties_typeProperties_userName": {
 			"value": "SCP-USER"
 		},
-		"API_DEV_IMAFS_IMP_ITEMS_properties_typeProperties_url": {
-			"value": "https://prod-20.canadacentral.logic.azure.com:443/workflows/c08688c2c59e46e39aa02172ef1cb9c5/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=lbMSVIKisyvXsJY8ZzprX4mchrZqe1GWrg2LO1LS7KE&client=canroy"
-		},
 		"DatabricksTrial_properties_typeProperties_existingClusterId": {
 			"value": "0130-184436-ylsbtzwy"
-		},
-		"RestService1_properties_typeProperties_url": {
-			"value": "https://imafptamanstorage.blob.core.windows.net/"
 		},
 		"SFTP_IOC_properties_typeProperties_host": {
 			"value": "sft.riotinto.com"
