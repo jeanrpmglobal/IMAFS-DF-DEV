@@ -1,0 +1,1045 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "IMAFS-DF-DEV"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDevIOC_after_ME')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDevIOC_after_ME",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Others"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "item_id",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "warehouse_descrp",
+						"type": "nvarchar"
+					},
+					{
+						"name": "organization_id",
+						"type": "nvarchar"
+					},
+					{
+						"name": "inventory_item_id",
+						"type": "nvarchar"
+					},
+					{
+						"name": "class",
+						"type": "nvarchar"
+					},
+					{
+						"name": "family",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "lead_time",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "qoh_qty",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "preferred_supplier_id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "TRANSACTION_DATE",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "TRANSACTION_QTY",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TRANSACTION_TYPE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "product_cat",
+						"type": "nvarchar"
+					},
+					{
+						"name": "product_sub_cat",
+						"type": "nvarchar"
+					},
+					{
+						"name": "avg_cost",
+						"type": "money",
+						"precision": 19,
+						"scale": 4
+					},
+					{
+						"name": "demand_multiple",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_AI_USAGE_MULTIPLE_DATASET"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDev_Amt_AI_Task')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDevAMT_AI",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "AMT_AI"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Tasks"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDev_Amt_AI_Task_Operations')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDevAMT_AI",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "AMT_AI"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Operations"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDev_Amt_AI_Tasks_Lists')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDevAMT_AI",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "AMT_AI"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "TasksLists"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/BlobForecastExport')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlob_imafs_storage_general",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Others"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "ArimaForecasted.csv",
+						"container": "machine-learning-export"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_AMT_AI_Extract')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlob_AI_Digit_AMT_AI",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "AMT_AI"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "Task_AMT.json",
+						"container": "amt-gpt-extract"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"Task": {
+							"type": "object",
+							"properties": {
+								"TaskNumber": {
+									"type": "string"
+								},
+								"Priority": {
+									"type": "string"
+								},
+								"Name": {
+									"type": "string"
+								},
+								"Strategy": {
+									"type": "string"
+								},
+								"ConstType": {
+									"type": "string"
+								},
+								"Usage": {
+									"type": "string"
+								},
+								"Status": {
+									"type": "string"
+								},
+								"Plant": {
+									"type": "string"
+								}
+							}
+						},
+						"Operation": {
+							"type": "object",
+							"properties": {
+								"OperationNumber": {
+									"type": "string"
+								},
+								"Description": {
+									"type": "string"
+								},
+								"Tasks": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"TaskName": {
+												"type": "string"
+											},
+											"Answer": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"WorkCenter": {
+									"type": "string"
+								},
+								"ControlKey": {
+									"type": "string"
+								},
+								"NumberOfPersons": {
+									"type": "string"
+								},
+								"Work": {
+									"type": "string"
+								},
+								"Duration": {
+									"type": "string"
+								}
+							}
+						},
+						"MaintenancePackage": {
+							"type": "object",
+							"properties": {
+								"PackageNumber": {
+									"type": "string"
+								},
+								"Frequency": {
+									"type": "string"
+								},
+								"Description": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_AMT_AI_TasksList_Extract')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlob_AI_Digit_AMT_AI",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "AMT_AI"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "TasksLLists_AMT.json",
+						"container": "amt-gpt-extract"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"Task": {
+							"type": "object",
+							"properties": {
+								"TaskNumber": {
+									"type": "string"
+								},
+								"Priority": {
+									"type": "string"
+								},
+								"Name": {
+									"type": "string"
+								},
+								"Strategy": {
+									"type": "string"
+								},
+								"ConstType": {
+									"type": "string"
+								},
+								"Usage": {
+									"type": "string"
+								},
+								"Status": {
+									"type": "string"
+								},
+								"Plant": {
+									"type": "string"
+								}
+							}
+						},
+						"Operation": {
+							"type": "object",
+							"properties": {
+								"OperationNumber": {
+									"type": "string"
+								},
+								"Description": {
+									"type": "string"
+								},
+								"Tasks": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"TaskName": {
+												"type": "string"
+											},
+											"Answer": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"WorkCenter": {
+									"type": "string"
+								},
+								"ControlKey": {
+									"type": "string"
+								},
+								"NumberOfPersons": {
+									"type": "string"
+								},
+								"Work": {
+									"type": "string"
+								},
+								"Duration": {
+									"type": "string"
+								}
+							}
+						},
+						"MaintenancePackage": {
+							"type": "object",
+							"properties": {
+								"PackageNumber": {
+									"type": "string"
+								},
+								"Frequency": {
+									"type": "string"
+								},
+								"Description": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Amman_AFIH')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/Blob"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "AFIH_0.json",
+						"folderPath": "import",
+						"container": "root"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"AUFNR": {
+							"type": "string"
+						},
+						"KTEXT": {
+							"type": "string"
+						},
+						"AUART": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Amman_AMT_Export')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "export",
+						"container": "root"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "fcast_period",
+						"type": "String"
+					},
+					{
+						"name": "forecast_site",
+						"type": "String"
+					},
+					{
+						"name": "part_no",
+						"type": "String"
+					},
+					{
+						"name": "SourceOfSupply",
+						"type": "String"
+					},
+					{
+						"name": "forecast_period_month",
+						"type": "String"
+					},
+					{
+						"name": "forecast",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Amman_AMT_Export_PROD')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/Blob"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "export",
+						"container": "root"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "fcast_period",
+						"type": "String"
+					},
+					{
+						"name": "forecast_site",
+						"type": "String"
+					},
+					{
+						"name": "part_no",
+						"type": "String"
+					},
+					{
+						"name": "SourceOfSupply",
+						"type": "String"
+					},
+					{
+						"name": "forecast_period_month",
+						"type": "String"
+					},
+					{
+						"name": "forecast",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Amman_AMT_Import')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/Blob"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFSCSVExport.csv",
+						"folderPath": "AMT",
+						"container": "root"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "fcast_period",
+						"type": "String"
+					},
+					{
+						"name": "forecast_site",
+						"type": "String"
+					},
+					{
+						"name": "part_no",
+						"type": "String"
+					},
+					{
+						"name": "SourceOfSupply",
+						"type": "String"
+					},
+					{
+						"name": "forecast_period_month",
+						"type": "String"
+					},
+					{
+						"name": "forecast",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Amman_AMT_Import_FileList_Txt')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/Blob"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "AMT",
+						"container": "root"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "fcast_period",
+						"type": "String"
+					},
+					{
+						"name": "forecast_site",
+						"type": "String"
+					},
+					{
+						"name": "part_no",
+						"type": "String"
+					},
+					{
+						"name": "SourceOfSupply",
+						"type": "String"
+					},
+					{
+						"name": "forecast_period_month",
+						"type": "String"
+					},
+					{
+						"name": "forecast",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Amman_AMT_Import_PROD')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/Blob"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFSCSVExport.csv",
+						"folderPath": "AMT",
+						"container": "root"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "fcast_period",
+						"type": "String"
+					},
+					{
+						"name": "forecast_site",
+						"type": "String"
+					},
+					{
+						"name": "part_no",
+						"type": "String"
+					},
+					{
+						"name": "SourceOfSupply",
+						"type": "String"
+					},
+					{
+						"name": "forecast_period_month",
+						"type": "String"
+					},
+					{
+						"name": "forecast",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Amman_AMT_Import_PROD_per_File')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobAmman",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"FileName": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "Amman/Blob"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": {
+							"value": "@dataset().FileName",
+							"type": "Expression"
+						},
+						"folderPath": "AMT",
+						"container": "root"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "fcast_period",
+						"type": "String"
+					},
+					{
+						"name": "forecast_site",
+						"type": "String"
+					},
+					{
+						"name": "part_no",
+						"type": "String"
+					},
+					{
+						"name": "SourceOfSupply",
+						"type": "String"
+					},
+					{
+						"name": "forecast_period_month",
+						"type": "String"
+					},
+					{
+						"name": "forecast",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Amman_AUFK')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/Blob"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "AUFK_0.json",
+						"folderPath": "import",
+						"container": "root"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"AUFNR": {
+							"type": "string"
+						},
+						"KTEXT": {
+							"type": "string"
+						},
+						"AUART": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Amman_AUSP')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/Blob"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "AUSP_0.json",
+						"folderPath": "import",
+						"container": "root"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"AUFNR": {
+							"type": "string"
+						},
+						"KTEXT": {
+							"type": "string"
+						},
+						"AUART": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Amman_EBAN')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/Blob"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "EBAN_0.json",
+						"folderPath": "import",
+						"container": "root"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"AUFNR": {
+							"type": "string"
+						},
+						"KTEXT": {
+							"type": "string"
+						},
+						"AUART": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Amman_EINA')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/Blob"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "EINA_0.json",
+						"folderPath": "import",
+						"container": "root"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"AUFNR": {
+							"type": "string"
+						},
+						"KTEXT": {
+							"type": "string"
+						},
+						"AUART": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Amman_EINE')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/Blob"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "EINE_0.json",
+						"folderPath": "import",
+						"container": "root"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"AUFNR": {
+							"type": "string"
+						},
+						"KTEXT": {
+							"type": "string"
+						},
+						"AUART": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Amman_EKET')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/Blob"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "EKET_0.json",
+						"folderPath": "import",
+						"container": "root"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"AUFNR": {
+							"type": "string"
+						},
+						"KTEXT": {
+							"type": "string"
+						},
+						"AUART": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

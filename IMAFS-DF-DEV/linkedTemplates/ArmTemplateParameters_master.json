@@ -1,0 +1,738 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "IMAFS-DF-DEV"
+		},
+		"AzureProdIOC_connectionString": {
+			"value": ""
+		},
+		"AzureProdMalartic_connectionString": {
+			"value": ""
+		},
+		"AzureProdRobex_connectionString": {
+			"value": ""
+		},
+		"AzureProdRTC_connectionString": {
+			"value": ""
+		},
+		"AzureProdSAYONA_connectionString": {
+			"value": ""
+		},
+		"AzureProdSTO_connectionString": {
+			"value": ""
+		},
+		"AzureProdVegPro_connectionString": {
+			"value": ""
+		},
+		"AzureProdVegPro2_connectionString": {
+			"value": ""
+		},
+		"SynapseSQLPool1_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorageExport_connectionString": {
+			"value": ""
+		},
+		"AzureBlob_imafs_storage_general_connectionString": {
+			"value": ""
+		},
+		"AzureDevIMAFS_CANROY_JAN_2024_connectionString": {
+			"value": ""
+		},
+		"AzureDevPreProd2_connectionString": {
+			"value": ""
+		},
+		"AzureProdCerrejon_connectionString": {
+			"value": ""
+		},
+		"API_Amman_PROD_AFIH_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_AUFK_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_AUSP_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EBAN 2021_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EBAN 2022 1_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EBAN 2022 2_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EBAN 2023_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EBAN_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EBAN_DELTA_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EINA_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EINE_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EKET_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EKKO_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EKPO 2021_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EKPO 2022 1_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EKPO 2022_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EKPO 2023 1_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EKPO 2023_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EKPO_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EKPO_DELTA_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EQUI_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_EXP_ITEMS_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_LFA1_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MAKT_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MARA_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MARC_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MARD 2021 1_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MARD 2021 2_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MARD 2021 3_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MARD 2021 31_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MARD 2021 32_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MARD 2021 4_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MARD 2022_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MARD 2023_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MARD_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MBEW 2021_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MBEW 2022_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MBEW 2023 1_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MBEW 2023 2_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MBEW 2023 3_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MBEW_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MDMA_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MKPF 2021_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MKPF 2022 1_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MKPF 2022 2_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MKPF 2022 3_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MKPF 2022 4_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MKPF 2022 5_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MKPF 2023 1_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MKPF 2023 2_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MKPF 2023 3_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MKPF_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_MSEG_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_RESB 2021_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_RESB 2022_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_RESB 2023_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_RESB_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_RESB_DELTA_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_S032_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_T023T_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_T025T_password": {
+			"value": ""
+		},
+		"API_Amman_PROD_TCURR_password": {
+			"value": ""
+		},
+		"AzureBlobAmman_connectionString": {
+			"value": ""
+		},
+		"AzureBlobCerrejonBlob_connectionString": {
+			"value": ""
+		},
+		"AzureBlobMachineLearningImport_connectionString": {
+			"value": ""
+		},
+		"AzureBlob_AI_Digit_AMT_AI_connectionString": {
+			"value": ""
+		},
+		"AzureDatabricksTrial_accessToken": {
+			"value": ""
+		},
+		"AzureDevAMT_AI_connectionString": {
+			"value": ""
+		},
+		"AzureDevCanROy_Test_Forecast_connectionString": {
+			"value": ""
+		},
+		"AzureDevDemo_connectionString": {
+			"value": ""
+		},
+		"AzureDevIMAFS_STATS_connectionString": {
+			"value": ""
+		},
+		"AzureDevIOC_after_ME_connectionString": {
+			"value": ""
+		},
+		"AzureDevMaster_connectionString": {
+			"value": ""
+		},
+		"AzureDevPreprod_connectionString": {
+			"value": ""
+		},
+		"AzureDev_IMAFS_AI_STORAGE_connectionString": {
+			"value": ""
+		},
+		"AzureDev_IMAFS_CANROY_JAN_2024_connectionString": {
+			"value": ""
+		},
+		"AzureProdAmman_connectionString": {
+			"value": ""
+		},
+		"AzureProdCanRoy_connectionString": {
+			"value": ""
+		},
+		"AzureProdCoeur_connectionString": {
+			"value": ""
+		},
+		"AzureQAAmman_connectionString": {
+			"value": ""
+		},
+		"AzureQACerrejon_connectionString": {
+			"value": ""
+		},
+		"AzureSQLAmman_connectionString": {
+			"value": ""
+		},
+		"AzureSQLCanRoy_connectionString": {
+			"value": ""
+		},
+		"AzureSQLCerrejon_connectionString": {
+			"value": ""
+		},
+		"AzureSQLCoeur_connectionString": {
+			"value": ""
+		},
+		"AzureSQLIOC_connectionString": {
+			"value": ""
+		},
+		"AzureSQLRTC_connectionString": {
+			"value": ""
+		},
+		"AzureSQLRobex_connectionString": {
+			"value": ""
+		},
+		"AzureSQLSTO_connectionString": {
+			"value": ""
+		},
+		"AzureSQLSayona_connectionString": {
+			"value": ""
+		},
+		"AzureSQLVegPro2_connectionString": {
+			"value": ""
+		},
+		"AzureSqlMalartic_connectionString": {
+			"value": ""
+		},
+		"Blob_Test_connectionString": {
+			"value": ""
+		},
+		"DatabricksTrial_accessToken": {
+			"value": ""
+		},
+		"SFTP_IOC_password": {
+			"value": ""
+		},
+		"SQL_PROD_MTL_connectionString": {
+			"value": ""
+		},
+		"linkedServiceBlobStorageGeneral_connectionString": {
+			"value": ""
+		},
+		"API_Amman_PROD_AFIH_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=afih"
+		},
+		"API_Amman_PROD_AFIH_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_AUFK_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=aufk"
+		},
+		"API_Amman_PROD_AUFK_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_AUSP_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=ausp"
+		},
+		"API_Amman_PROD_AUSP_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EBAN 2021_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=eban&datefrom=20210101&dateto=20211231"
+		},
+		"API_Amman_PROD_EBAN 2021_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EBAN 2022 1_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=eban&datefrom=20220101&dateto=20220701"
+		},
+		"API_Amman_PROD_EBAN 2022 1_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EBAN 2022 2_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=eban&datefrom=20220702&dateto=20221231"
+		},
+		"API_Amman_PROD_EBAN 2022 2_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EBAN 2023_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=eban&datefrom=20230101&dateto=20231231"
+		},
+		"API_Amman_PROD_EBAN 2023_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EBAN_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=eban&datefrom=20220101&dateto=20221231"
+		},
+		"API_Amman_PROD_EBAN_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EBAN_DELTA_properties_typeProperties_url": {
+			"value": "@{linkedService().BaseUrlParameter}"
+		},
+		"API_Amman_PROD_EBAN_DELTA_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EINA_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=eina"
+		},
+		"API_Amman_PROD_EINA_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EINE_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=eine"
+		},
+		"API_Amman_PROD_EINE_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EKET_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=eket&ebeln="
+		},
+		"API_Amman_PROD_EKET_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EKKO_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=ekko"
+		},
+		"API_Amman_PROD_EKKO_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EKPO 2021_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=ekpo&datefrom=20210101&dateto=20211231"
+		},
+		"API_Amman_PROD_EKPO 2021_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EKPO 2022 1_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=ekpo&datefrom=20220702&dateto=20221231"
+		},
+		"API_Amman_PROD_EKPO 2022 1_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EKPO 2022_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=ekpo&datefrom=20220101&dateto=20220701"
+		},
+		"API_Amman_PROD_EKPO 2022_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EKPO 2023 1_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=ekpo&datefrom=20230602&dateto=20231231"
+		},
+		"API_Amman_PROD_EKPO 2023 1_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EKPO 2023_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=ekpo&datefrom=20230101&dateto=20230601"
+		},
+		"API_Amman_PROD_EKPO 2023_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EKPO_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=ekpo&datefrom=20230101&dateto=20231231"
+		},
+		"API_Amman_PROD_EKPO_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EKPO_DELTA_properties_typeProperties_url": {
+			"value": "@linkedService().BaseUrlParameter"
+		},
+		"API_Amman_PROD_EKPO_DELTA_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EQUI_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=equi"
+		},
+		"API_Amman_PROD_EQUI_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_EXP_ITEMS_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300"
+		},
+		"API_Amman_PROD_EXP_ITEMS_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_LFA1_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=lfa1"
+		},
+		"API_Amman_PROD_LFA1_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MAKT_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=makt"
+		},
+		"API_Amman_PROD_MAKT_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MARA_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mara"
+		},
+		"API_Amman_PROD_MARA_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MARC_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=marc"
+		},
+		"API_Amman_PROD_MARC_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MARD 2021 1_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mard&datefrom=20210101&dateto=20210701"
+		},
+		"API_Amman_PROD_MARD 2021 1_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MARD 2021 2_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mard&datefrom=20210702&dateto=20210801"
+		},
+		"API_Amman_PROD_MARD 2021 2_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MARD 2021 3_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mard&datefrom=20210802&dateto=20210807"
+		},
+		"API_Amman_PROD_MARD 2021 3_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MARD 2021 31_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mard&datefrom=20210808&dateto=20210815"
+		},
+		"API_Amman_PROD_MARD 2021 31_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MARD 2021 32_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mard&datefrom=20210816&dateto=20210901"
+		},
+		"API_Amman_PROD_MARD 2021 32_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MARD 2021 4_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mard&datefrom=20210902&dateto=20211231"
+		},
+		"API_Amman_PROD_MARD 2021 4_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MARD 2022_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mard&datefrom=20220101&dateto=20221231"
+		},
+		"API_Amman_PROD_MARD 2022_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MARD 2023_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mard&datefrom=20230101&dateto=20231231"
+		},
+		"API_Amman_PROD_MARD 2023_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MARD_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mard&werks=2011"
+		},
+		"API_Amman_PROD_MARD_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MBEW 2021_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mbew&datefrom=20210101&dateto=20211231"
+		},
+		"API_Amman_PROD_MBEW 2021_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MBEW 2022_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mbew&datefrom=20220101&dateto=20221231"
+		},
+		"API_Amman_PROD_MBEW 2022_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MBEW 2023 1_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mbew&datefrom=20230101&dateto=20230701&bwkey=2011"
+		},
+		"API_Amman_PROD_MBEW 2023 1_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MBEW 2023 2_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mbew&datefrom=20230702&dateto=20231231&bwkey=2011"
+		},
+		"API_Amman_PROD_MBEW 2023 2_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MBEW 2023 3_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mbew&datefrom=20230101&dateto=20231231&bwkey=2013"
+		},
+		"API_Amman_PROD_MBEW 2023 3_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MBEW_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mbew"
+		},
+		"API_Amman_PROD_MBEW_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MDMA_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mdma"
+		},
+		"API_Amman_PROD_MDMA_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MKPF 2021_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mkpf&datefrom=20210101&dateto=20211231"
+		},
+		"API_Amman_PROD_MKPF 2021_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MKPF 2022 1_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mkpf&datefrom=20220101&dateto=20220131"
+		},
+		"API_Amman_PROD_MKPF 2022 1_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MKPF 2022 2_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mkpf&datefrom=20220201&dateto=20220401"
+		},
+		"API_Amman_PROD_MKPF 2022 2_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MKPF 2022 3_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mkpf&datefrom=20220402&dateto=20220701"
+		},
+		"API_Amman_PROD_MKPF 2022 3_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MKPF 2022 4_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mkpf&datefrom=20220702&dateto=20221001"
+		},
+		"API_Amman_PROD_MKPF 2022 4_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MKPF 2022 5_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mkpf&datefrom=20221002&dateto=20221231"
+		},
+		"API_Amman_PROD_MKPF 2022 5_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MKPF 2023 1_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mkpf&datefrom=20230101&dateto=20230501"
+		},
+		"API_Amman_PROD_MKPF 2023 1_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MKPF 2023 2_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mkpf&datefrom=20230502&dateto=20230701"
+		},
+		"API_Amman_PROD_MKPF 2023 2_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MKPF 2023 3_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mkpf&datefrom=20230702&dateto=20231231"
+		},
+		"API_Amman_PROD_MKPF 2023 3_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MKPF_properties_typeProperties_url": {
+			"value": "@{linkedService().BaseUrlParameter}"
+		},
+		"API_Amman_PROD_MKPF_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_MSEG_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mseg"
+		},
+		"API_Amman_PROD_MSEG_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_RESB 2021_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=resb&datefrom=20110101&dateto=20211231"
+		},
+		"API_Amman_PROD_RESB 2021_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_RESB 2022_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=resb&datefrom=20220101&dateto=20221231"
+		},
+		"API_Amman_PROD_RESB 2022_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_RESB 2023_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=resb&datefrom=20230101&dateto=20401231"
+		},
+		"API_Amman_PROD_RESB 2023_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_RESB_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=resb"
+		},
+		"API_Amman_PROD_RESB_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_RESB_DELTA_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=resb&changedatge=20231004"
+		},
+		"API_Amman_PROD_RESB_DELTA_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_S032_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=s032&werks="
+		},
+		"API_Amman_PROD_S032_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_T023T_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=t023t"
+		},
+		"API_Amman_PROD_T023T_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_T025T_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=t025t"
+		},
+		"API_Amman_PROD_T025T_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_Amman_PROD_TCURR_properties_typeProperties_url": {
+			"value": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=tcurr"
+		},
+		"API_Amman_PROD_TCURR_properties_typeProperties_userName": {
+			"value": "SCP-USER"
+		},
+		"API_DEV_IMAFS_IMP_ITEMS_properties_typeProperties_url": {
+			"value": "https://prod-20.canadacentral.logic.azure.com:443/workflows/c08688c2c59e46e39aa02172ef1cb9c5/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=lbMSVIKisyvXsJY8ZzprX4mchrZqe1GWrg2LO1LS7KE&client=canroy"
+		},
+		"DatabricksTrial_properties_typeProperties_existingClusterId": {
+			"value": "0130-184436-ylsbtzwy"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"value": "https://imafptamanstorage.blob.core.windows.net/"
+		},
+		"SFTP_IOC_properties_typeProperties_host": {
+			"value": "sft.riotinto.com"
+		},
+		"SFTP_IOC_properties_typeProperties_userName": {
+			"value": "imafs"
+		},
+		"Test_API_properties_typeProperties_url": {
+			"value": "https://prod-06.canadacentral.logic.azure.com:443/workflows/b94277aa1e1043059e0ea29c2a571201/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=fuiPIhdEQY9XQbX0E4iikIzAp9V80Qbn2Vuo91245ns"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
