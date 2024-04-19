@@ -6,7 +6,7 @@
 		"pipelines": [
 			{
 				"pipelineReference": {
-					"referenceName": "INTERFACE_PROD_VEGPRO_2",
+					"referenceName": "INTERFACE_VEGPRO_2",
 					"type": "PipelineReference"
 				}
 			}

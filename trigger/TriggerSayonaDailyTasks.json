@@ -6,7 +6,7 @@
 		"pipelines": [
 			{
 				"pipelineReference": {
-					"referenceName": "INTERFACE_PROD_SAYONA",
+					"referenceName": "INTERFACE_SAYONA",
 					"type": "PipelineReference"
 				}
 			}
