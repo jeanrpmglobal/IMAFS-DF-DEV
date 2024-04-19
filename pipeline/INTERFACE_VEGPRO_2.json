@@ -1,13 +1,20 @@
 {
-	"name": "INTERFACE_PROD_COEUR",
+	"name": "INTERFACE_VEGPRO_2",
 	"properties": {
 		"activities": [
 			{
 				"name": "Interface_ITEMS",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Count Nb Items IMAFS_IMP_ITEMS",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
 				"policy": {
-					"timeout": "7.00:00:00",
+					"timeout": "0.12:00:00",
 					"retry": 0,
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
@@ -18,7 +25,7 @@
 					"storedProcedureName": "[dbo].[Interface_ITEMS]"
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureProdCoeur",
+					"referenceName": "AzureProdVegPro2",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -34,7 +41,7 @@
 					}
 				],
 				"policy": {
-					"timeout": "7.00:00:00",
+					"timeout": "0.12:00:00",
 					"retry": 0,
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
@@ -45,7 +52,7 @@
 					"storedProcedureName": "[dbo].[Interface_EXP_ITEMS]"
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureProdCoeur",
+					"referenceName": "AzureProdVegPro2",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -61,7 +68,7 @@
 					}
 				],
 				"policy": {
-					"timeout": "7.00:00:00",
+					"timeout": "0.12:00:00",
 					"retry": 0,
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
@@ -72,39 +79,12 @@
 					"storedProcedureName": "[dbo].[QA_QS_ANALYSIS_DEMAND_0_12_MONTHS]"
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureProdCoeur",
+					"referenceName": "AzureProdVegPro2",
 					"type": "LinkedServiceReference"
 				}
 			},
 			{
 				"name": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "QA_SP_LIST_MAIN_TEMP",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "1.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[dbo].[QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW]"
-				},
-				"linkedServiceName": {
-					"referenceName": "AzureProdCoeur",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "QA_SP_LIST_MAIN_TEMP",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
@@ -115,7 +95,7 @@
 					}
 				],
 				"policy": {
-					"timeout": "7.00:00:00",
+					"timeout": "0.12:00:00",
 					"retry": 0,
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
@@ -123,10 +103,10 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[QA_SP_LIST_MAIN_TEMP]"
+					"storedProcedureName": "[dbo].[QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW]"
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureProdCoeur",
+					"referenceName": "AzureProdVegPro2",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -156,7 +136,7 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Coeur has completed with error - QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\"\n}",
+						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro2 has completed with error  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro2  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\"\n}",
 						"type": "Expression"
 					}
 				}
@@ -187,7 +167,7 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Coeur has completed with error - Interface_ITEMS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in Interface_ITEMS\"\n}",
+						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro2 has completed with error - Interface ITEMS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro2 - Interface ITEMS\"\n}",
 						"type": "Expression"
 					}
 				}
@@ -218,7 +198,7 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Coeur has completed with error - Interface_EXP_ITEMS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in Interface_EXP_ITEMS\"\n}",
+						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro2 has completed with error - Interface EXP Items\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro2 - Interface EXP Items\"\n}",
 						"type": "Expression"
 					}
 				}
@@ -249,17 +229,114 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Coeur has completed with error - QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\"\n}",
+						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro2 has completed with error  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro2  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy4",
+				"name": "Count Nb Items IMAFS_IMP_ITEMS",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "Declare @CountNbItems int\nexec QS_COUNT_IMAFS_IMP_ITEMS  @CountNbItems output\nselect @CountNbItems as NbItems",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "StoredProc_PROD_VEGPRO2",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Count Nb Items IMAFS_IMP_ITEMS",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@equals(activity('Count Nb Items IMAFS_IMP_ITEMS').output.firstRow.NbItems,0)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Send email True_copy1",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"headers": {
+									"Content-Type": "application/json"
+								},
+								"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+								"body": {
+									"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} VEGPRO2 IMAFS_IMP_ITEMS table is empty\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"No records in VEGPRO2 IMAFS_IMP_ITEMS table\"\n}",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Update_DHP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Count Nb Items IMAFS_IMP_ITEMS",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[_VEGPRO_IMPORT_IMAFS_IMP_DHP]"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureProdVegPro2",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Send email error Update DHP",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
-						"activity": "QA_SP_LIST_MAIN_TEMP",
+						"activity": "Update_DHP",
 						"dependencyConditions": [
 							"Failed"
 						]
@@ -280,7 +357,7 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Coeur has completed with error - QA_SP_LIST_MAIN_TEMP\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QA_SP_LIST_MAIN_TEMP\"\n}",
+						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro2 has completed with error - Update DHP\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro2 - Update DHP\"\n}",
 						"type": "Expression"
 					}
 				}
@@ -290,7 +367,7 @@
 			"name": "Interfaces"
 		},
 		"annotations": [],
-		"lastPublishTime": "2024-01-09T14:18:24Z"
+		"lastPublishTime": "2024-02-02T16:04:30Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

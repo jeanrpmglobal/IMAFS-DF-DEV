@@ -6,7 +6,7 @@
 		"pipelines": [
 			{
 				"pipelineReference": {
-					"referenceName": "INTERFACE_PROD_COEUR_EXPORT",
+					"referenceName": "INTERFACE_COEUR_EXPORT",
 					"type": "PipelineReference"
 				}
 			}
