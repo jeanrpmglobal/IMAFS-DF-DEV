@@ -13,6 +13,34 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/TriggerVegProDailyTasks')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2022-11-17T14:31:00",
+						"timeZone": "Eastern Standard Time",
+						"schedule": {
+							"minutes": [
+								45
+							],
+							"hours": [
+								2
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/IMAFS_Forecast_Prophet_Arima_Only')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -4100,249 +4128,6 @@
 				},
 				"annotations": [],
 				"lastPublishTime": "2024-03-14T14:56:44Z"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_VEGPRO')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Interface_ITEMS",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[Interface_ITEMS]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdVegPro",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Interface_EXP_ITEMS",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Interface_ITEMS",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[Interface_EXP_ITEMS]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdVegPro",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Interface_EXP_ITEMS",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[QA_QS_ANALYSIS_DEMAND_0_12_MONTHS]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdVegPro",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdVegPro",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Send email",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro\"\n}",
-								"type": "Expression"
-							}
-						}
-					},
-					{
-						"name": "Send email_copy1",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "Interface_ITEMS",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro\"\n}",
-								"type": "Expression"
-							}
-						}
-					},
-					{
-						"name": "Send email_copy2",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "Interface_EXP_ITEMS",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro\"\n}",
-								"type": "Expression"
-							}
-						}
-					},
-					{
-						"name": "Send email_copy3",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-							"body": {
-								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface VegPro has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface VegPro\"\n}",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "Interfaces"
-				},
-				"annotations": [],
-				"lastPublishTime": "2023-10-19T13:55:12Z"
 			},
 			"dependsOn": []
 		}

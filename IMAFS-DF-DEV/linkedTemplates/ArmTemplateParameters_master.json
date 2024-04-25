@@ -314,6 +314,9 @@
 		"AzureSQLSayona_connectionString": {
 			"value": ""
 		},
+		"AzureSQLTest_connectionString": {
+			"value": ""
+		},
 		"AzureSQLVegPro2_connectionString": {
 			"value": ""
 		},
@@ -706,6 +709,9 @@
 		},
 		"API_Amman_PROD_TCURR_properties_typeProperties_userName": {
 			"value": "SCP-USER"
+		},
+		"AzureKeyVaultIMAFS_properties_typeProperties_baseUrl": {
+			"value": "https://IMAFS-Dev-Key-Vault.vault.azure.net/"
 		},
 		"DatabricksTrial_properties_typeProperties_existingClusterId": {
 			"value": "0130-184436-ylsbtzwy"

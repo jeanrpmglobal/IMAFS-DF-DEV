@@ -13,6 +13,45 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Amman_MARA_MAKT')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/Blob"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "MARA_0.json",
+						"folderPath": "import",
+						"container": "root"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"AUFNR": {
+							"type": "string"
+						},
+						"KTEXT": {
+							"type": "string"
+						},
+						"AUART": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Blob_Amman_MARC')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -648,40 +687,6 @@
 					"location": {
 						"type": "AzureBlobStorageLocation",
 						"fileName": "IMAFS_IMAF170.TXT",
-						"folderPath": "import",
-						"container": "root"
-					},
-					"columnDelimiter": "\t",
-					"escapeChar": "",
-					"firstRowAsHeader": true,
-					"quoteChar": ""
-				},
-				"schema": [
-					{
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Ellipse180')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobCerrejonBlob",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IMAFS_IMAF180.TXT",
 						"folderPath": "import",
 						"container": "root"
 					},

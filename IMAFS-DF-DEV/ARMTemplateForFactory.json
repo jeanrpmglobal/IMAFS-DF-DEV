@@ -419,6 +419,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSQLSayona'"
 		},
+		"AzureSQLTest_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSQLTest'"
+		},
 		"AzureSQLVegPro2_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSQLVegPro2'"
@@ -942,6 +946,10 @@
 		"API_Amman_PROD_TCURR_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "SCP-USER"
+		},
+		"AzureKeyVaultIMAFS_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://IMAFS-Dev-Key-Vault.vault.azure.net/"
 		},
 		"DatabricksTrial_properties_typeProperties_existingClusterId": {
 			"type": "string",
@@ -1634,63 +1642,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Copy Arima Qty Forecasted')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy Arima Qty Forecasted to Blob",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [
-							{
-								"name": "Source",
-								"value": "default.arima_forecast_qty_export"
-							},
-							{
-								"name": "Destination",
-								"value": "machine-learning-export//"
-							}
-						],
-						"typeProperties": {
-							"source": {
-								"type": "AzureDatabricksDeltaLakeSource",
-								"exportSettings": {
-									"type": "AzureDatabricksDeltaLakeExportCommand"
-								}
-							},
-							"enableStaging": true,
-							"stagingSettings": {
-								"linkedServiceName": {
-									"referenceName": "AzureBlobMachineLearningImport",
-									"type": "LinkedServiceReference"
-								}
-							}
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "Machine Learning"
-				},
-				"annotations": [],
-				"lastPublishTime": "2024-04-16T15:04:35Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobMachineLearningImport')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/Copy Arima Qty from Azure Dev to IMAFS AI Prod MTL')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -2117,71 +2068,6 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/SourceDataset_DHP_CanRoy_Non_Intermittent')]",
 				"[concat(variables('factoryId'), '/datasets/CSVBlobTransfer')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Export Forecast Data Lake to Blob to SQL')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy Arima Qty to Blob",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [
-							{
-								"name": "Source",
-								"value": "default.arima_forecast_qty_export"
-							},
-							{
-								"name": "Destination",
-								"value": "machine-learning-export//"
-							}
-						],
-						"typeProperties": {
-							"source": {
-								"type": "AzureDatabricksDeltaLakeSource",
-								"exportSettings": {
-									"type": "AzureDatabricksDeltaLakeExportCommand"
-								}
-							},
-							"enableStaging": true,
-							"stagingSettings": {
-								"linkedServiceName": {
-									"referenceName": "AzureBlobMachineLearningImport",
-									"type": "LinkedServiceReference"
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "DataBricks_Arima_Forecast_Qty_Export",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "Month End Process"
-				},
-				"annotations": [],
-				"lastPublishTime": "2024-04-16T15:04:35Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DataBricks_Arima_Forecast_Qty_Export')]",
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobMachineLearningImport')]"
 			]
 		},
 		{
@@ -78651,6 +78537,19 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureKeyVaultIMAFS')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('AzureKeyVaultIMAFS_properties_typeProperties_baseUrl')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AzureProdAmman')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -78945,6 +78844,19 @@
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
 					"connectionString": "[parameters('AzureSQLSayona_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSQLTest')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureSQLTest_connectionString')]"
 				}
 			},
 			"dependsOn": []
@@ -79565,7 +79477,7 @@
 					"recurrence": {
 						"frequency": "Day",
 						"interval": 1,
-						"startTime": "2023-12-20T21:00:00",
+						"startTime": "2023-12-21T22:00:00",
 						"timeZone": "Eastern Standard Time"
 					}
 				}

@@ -13,6 +13,41 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/SQL_SAP_MKPF_AMMAN_QA')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureQAAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL/QA"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AUFNR",
+						"type": "varchar"
+					},
+					{
+						"name": "KTEXT",
+						"type": "varchar"
+					},
+					{
+						"name": "AUART",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_SAP_MKPF"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/SQL_SAP_MSEG_AMMAN')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -674,51 +709,6 @@
 					"schema": "dbo",
 					"table": "_SAP_TCURR"
 				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SourceDataset_DHP_CanRoy_Non_Intermittent')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureProdCanRoy",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Others"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "item_id",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "date",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "qty",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "hits",
-						"type": "smallint",
-						"precision": 5
-					},
-					{
-						"name": "real_data_flag",
-						"type": "bit"
-					}
-				],
-				"typeProperties": {}
 			},
 			"dependsOn": []
 		}

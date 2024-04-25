@@ -83,9 +83,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureQAAmman'"
 		},
-		"AzureQACerrejon_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureQACerrejon'"
+		"AzureKeyVaultIMAFS_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://IMAFS-Dev-Key-Vault.vault.azure.net/"
 		}
 	},
 	"variables": {
@@ -176,6 +176,19 @@
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
 					"connectionString": "[parameters('AzureDev_IMAFS_CANROY_JAN_2024_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureKeyVaultIMAFS')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('AzureKeyVaultIMAFS_properties_typeProperties_baseUrl')]"
 				}
 			},
 			"dependsOn": []
@@ -345,19 +358,6 @@
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
 					"connectionString": "[parameters('AzureQAAmman_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureQACerrejon')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureQACerrejon_connectionString')]"
 				}
 			},
 			"dependsOn": []

@@ -419,6 +419,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSQLSayona'"
 		},
+		"AzureSQLTest_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSQLTest'"
+		},
 		"AzureSQLVegPro2_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSQLVegPro2'"
@@ -942,6 +946,10 @@
 		"API_Amman_PROD_TCURR_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "SCP-USER"
+		},
+		"AzureKeyVaultIMAFS_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://IMAFS-Dev-Key-Vault.vault.azure.net/"
 		},
 		"DatabricksTrial_properties_typeProperties_existingClusterId": {
 			"type": "string",
@@ -1715,8 +1723,8 @@
 					"AzureQAAmman_connectionString": {
 						"value": "[parameters('AzureQAAmman_connectionString')]"
 					},
-					"AzureQACerrejon_connectionString": {
-						"value": "[parameters('AzureQACerrejon_connectionString')]"
+					"AzureKeyVaultIMAFS_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVaultIMAFS_properties_typeProperties_baseUrl')]"
 					}
 				}
 			},
@@ -1737,6 +1745,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"AzureQACerrejon_connectionString": {
+						"value": "[parameters('AzureQACerrejon_connectionString')]"
 					},
 					"AzureSQLAmman_connectionString": {
 						"value": "[parameters('AzureSQLAmman_connectionString')]"
@@ -1764,6 +1775,9 @@
 					},
 					"AzureSQLSayona_connectionString": {
 						"value": "[parameters('AzureSQLSayona_connectionString')]"
+					},
+					"AzureSQLTest_connectionString": {
+						"value": "[parameters('AzureSQLTest_connectionString')]"
 					},
 					"AzureSQLVegPro2_connectionString": {
 						"value": "[parameters('AzureSQLVegPro2_connectionString')]"

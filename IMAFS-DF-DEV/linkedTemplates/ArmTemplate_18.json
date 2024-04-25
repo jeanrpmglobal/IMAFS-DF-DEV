@@ -13,6 +13,41 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/SQL_SAP_AFIH_AMMAN_PROD')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureProdAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AUFNR",
+						"type": "varchar"
+					},
+					{
+						"name": "KTEXT",
+						"type": "varchar"
+					},
+					{
+						"name": "AUART",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_SAP_AFIH"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/SQL_SAP_AFIH_AMMAN_QA')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -653,41 +688,6 @@
 				},
 				"folder": {
 					"name": "Amman/SQL"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "AUFNR",
-						"type": "varchar"
-					},
-					{
-						"name": "KTEXT",
-						"type": "varchar"
-					},
-					{
-						"name": "AUART",
-						"type": "varchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "_SAP_EKET"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SQL_SAP_EKET_AMMAN_QA')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureQAAmman",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Amman/SQL/QA"
 				},
 				"annotations": [],
 				"type": "AzureSqlTable",
