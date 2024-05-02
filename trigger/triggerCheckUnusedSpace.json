@@ -1,0 +1,24 @@
+{
+	"name": "triggerCheckUnusedSpace",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Perc_Unused_Space_Db",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2024-05-03T08:00:00",
+				"timeZone": "Eastern Standard Time"
+			}
+		}
+	}
+}
