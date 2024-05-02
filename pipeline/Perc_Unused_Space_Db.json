@@ -1,0 +1,36 @@
+{
+	"name": "Perc_Unused_Space_Db",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0)\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "StoredProc_DEV_PREPROD",
+						"type": "DatasetReference"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "DBA Jobs"
+		},
+		"annotations": []
+	}
+}
