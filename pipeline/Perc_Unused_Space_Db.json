@@ -1,0 +1,921 @@
+{
+	"name": "Perc_Unused_Space_Db",
+	"properties": {
+		"activities": [
+			{
+				"name": "Dev_Preprod",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "StoredProc_DEV_PREPROD",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Dev Preprod",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Dev_Preprod",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@less(activity('Dev_Preprod').output.firstRow.Perc_Unused,25)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Send email True_copy1",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"headers": {
+									"Content-Type": "application/json"
+								},
+								"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+								"body": {
+									"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} IMAFS DEV PREPROD less than 25% space unused\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"IMAFS DEV PREPROD less than 25% space unused\"\n}",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Demo",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "StoredProc_DEV_DEMO",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Dev Demo",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Demo",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@less(activity('Demo').output.firstRow.Perc_Unused,25)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Send email True 2",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"headers": {
+									"Content-Type": "application/json"
+								},
+								"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+								"body": {
+									"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} IMAFS DEMO less than 25% space unused\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"IMAFS DEMO less than 25% space unused\"\n}",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "sqldb-amman-mineral-imafs",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "StoredProc_PROD_AMMAN",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "sqldb-amman-mineral-imafs-",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "sqldb-amman-mineral-imafs",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@less(activity('sqldb-amman-mineral-imafs').output.firstRow.Perc_Unused,25)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Send email True 2_copy1",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"headers": {
+									"Content-Type": "application/json"
+								},
+								"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+								"body": {
+									"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} amman-mineral less than 25% space unused\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"amman-mineral less than 25% space unused\"\n}",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "sqldb-canroy-imafs",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "StoredProc_CANROY",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "sqldb-canroy-imafs-",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "sqldb-canroy-imafs",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@less(activity('sqldb-canroy-imafs').output.firstRow.Perc_Unused,25)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Send email True",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"headers": {
+									"Content-Type": "application/json"
+								},
+								"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+								"body": {
+									"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} canroy less than 25% space unused\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"canroy less than 25% space unused\"\n}",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "sqldb-cerrejon-imafs",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "StoredProc_CERREJON",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "sqlsqldb-cerrejon-imafs",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "sqldb-cerrejon-imafs",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@less(activity('sqldb-cerrejon-imafs').output.firstRow.Perc_Unused,25)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Send email True 3",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"headers": {
+									"Content-Type": "application/json"
+								},
+								"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+								"body": {
+									"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} cerrejon less than 25% space unused\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"cerrejon less than 25% space unused\"\n}",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "sqldb-coeur-imafs",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "StoredProc_COEUR",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "sqldb-coeur-imafs_1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "sqldb-coeur-imafs",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@less(activity('sqldb-coeur-imafs').output.firstRow.Perc_Unused,25)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Send email True 4",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"headers": {
+									"Content-Type": "application/json"
+								},
+								"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+								"body": {
+									"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} coeur less than 25% space unused\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"coeur less than 25% space unused\"\n}",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "sqldb-ioc-imafs",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "StoredProc_IOC",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "sqldb-ioc-imafs_1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "sqldb-ioc-imafs",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@less(activity('sqldb-ioc-imafs').output.firstRow.Perc_Unused,25)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Send email True 5",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"headers": {
+									"Content-Type": "application/json"
+								},
+								"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+								"body": {
+									"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} ioc less than 25% space unused\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"ioc less than 25% space unused\"\n}",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "sqldb-malartic-imafs",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "StoredProc_MALARTIC",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "sqldb-malartic-imafs_1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "sqldb-malartic-imafs",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@less(activity('sqldb-malartic-imafs').output.firstRow.Perc_Unused,25)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Send email True 6",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"headers": {
+									"Content-Type": "application/json"
+								},
+								"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+								"body": {
+									"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} malartic less than 25% space unused\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"malartic less than 25% space unused\"\n}",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "sqldb-robex-IMAFS",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "StoredProc_PROD_ROBEX",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "sqldb-robex-IMAFS_1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "sqldb-robex-IMAFS",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@less(activity('sqldb-robex-IMAFS').output.firstRow.Perc_Unused,25)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Send email True 7",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"headers": {
+									"Content-Type": "application/json"
+								},
+								"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+								"body": {
+									"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} robex less than 25% space unused\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"robex less than 25% space unused\"\n}",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "sqldb-rtc-imafs",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "StoredProc_PROD_RTC",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "sqldb-rtc-imafs_1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "sqldb-rtc-imafs",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@less(activity('sqldb-rtc-imafs').output.firstRow.Perc_Unused,25)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Send email True 8",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"headers": {
+									"Content-Type": "application/json"
+								},
+								"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+								"body": {
+									"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} rtc less than 25% space unused\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"rtc less than 25% space unused\"\n}",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "sqldb-sayona-lan-imafs",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "StoredProc_PROD_SAYONA",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "sqldb-sayona-lan-imafs_1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "sqldb-sayona-lan-imafs",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@less(activity('sqldb-sayona-lan-imafs').output.firstRow.Perc_Unused,25)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Send email True 9",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"headers": {
+									"Content-Type": "application/json"
+								},
+								"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+								"body": {
+									"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} sayona less than 25% space unused\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"sayona less than 25% space unused\"\n}",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "sqldb-sto-imafs",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "StoredProc_PROD_STO",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "sqldb-sto-imafs_1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "sqldb-sto-imafs",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@less(activity('sqldb-sto-imafs').output.firstRow.Perc_Unused,25)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Send email True 10",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"headers": {
+									"Content-Type": "application/json"
+								},
+								"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+								"body": {
+									"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} sto less than 25% space unused\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"sto less than 25% space unused\"\n}",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "sqldb-vegpro2-imafs",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "StoredProc_PROD_VEGPRO2",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "sqldb-vegpro2-imafs_1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "sqldb-vegpro2-imafs",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@less(activity('sqldb-vegpro2-imafs').output.firstRow.Perc_Unused,25)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Send email True 11",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"headers": {
+									"Content-Type": "application/json"
+								},
+								"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+								"body": {
+									"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} vegpro2 less than 25% space unused\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"vegpro2 less than 25% space unused\"\n}",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"folder": {
+			"name": "DBA Jobs"
+		},
+		"annotations": []
+	}
+}
