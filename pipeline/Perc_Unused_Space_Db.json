@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Dev Preprod",
+				"name": "Dev_Preprod",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -28,11 +28,11 @@
 				}
 			},
 			{
-				"name": "If Condition1",
+				"name": "Dev Preprod",
 				"type": "IfCondition",
 				"dependsOn": [
 					{
-						"activity": "Dev Preprod",
+						"activity": "Dev_Preprod",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -70,6 +70,31 @@
 							}
 						}
 					]
+				}
+			},
+			{
+				"name": "Dev Preprod_copy1",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "StoredProc_DEV_PREPROD",
+						"type": "DatasetReference"
+					}
 				}
 			}
 		],
