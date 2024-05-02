@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Perc_Dev_Preprod",
+				"name": "Perc_Unused_Perc_Space",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -22,12 +22,12 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "Declare @PercUnused float\nexecute  QS_DB_PERC_UNUSED @PercUnused output\nselect @PercUnused",
+						"sqlReaderQuery": "SELECT TOP 1\n    DB_NAME() AS DatabaseName,\n    ROUND(SUM(size * 8 / 1024),0) AS TotalSizeMB,\n    ROUND(SUM(CAST(FILEPROPERTY(name, 'SpaceUsed') AS float) * 8 / 1024),0) AS UsedSpaceMB,\n    ROUND(SUM(size * 8 / 1024) - SUM(CAST(FILEPROPERTY(name, 'SpaceUsed') AS float) * 8 / 1024),0) AS UnusedSpaceMB,\n    ROUND((SUM(size * 8 / 1024) - SUM(CAST(FILEPROPERTY(name, 'SpaceUsed') AS float) * 8 / 1024)) / SUM(size * 8 / 1024) * 100,0) AS UnusedPercent\nFROM\n    sys.database_files\nGROUP BY\n    type_desc\nORDER BY\n    TotalSizeMB DESC;",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "SQL_PREPROD_IMAFS_IMP_ITEMS",
+						"referenceName": "StoredProc_PROD_VEGPRO2",
 						"type": "DatasetReference"
 					}
 				}
