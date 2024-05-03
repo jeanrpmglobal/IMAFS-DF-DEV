@@ -18811,7 +18811,7 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+								"sqlReaderQuery": "\tSELECT \r\n\t100-(ROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0)) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
@@ -18882,7 +18882,7 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+								"sqlReaderQuery": "\tSELECT \r\n\t100-(ROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0)) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
@@ -18953,7 +18953,7 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+								"sqlReaderQuery": "\tSELECT \r\n\t100-(ROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0)) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
@@ -19024,7 +19024,7 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+								"sqlReaderQuery": "\tSELECT \r\n\t100-(ROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0)) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
@@ -19095,7 +19095,7 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+								"sqlReaderQuery": "\tSELECT \r\n\t100-(ROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0)) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
@@ -19166,7 +19166,7 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+								"sqlReaderQuery": "\tSELECT \r\n\t100-(ROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0)) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
@@ -19237,7 +19237,7 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+								"sqlReaderQuery": "\tSELECT \r\n\t100-(ROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0)) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
@@ -19308,7 +19308,7 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+								"sqlReaderQuery": "\tSELECT \r\n\t100-(ROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0)) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
@@ -19379,7 +19379,7 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+								"sqlReaderQuery": "\tSELECT \r\n\t100-(ROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0)) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
@@ -19450,7 +19450,7 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+								"sqlReaderQuery": "\tSELECT \r\n\t100-(ROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0)) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
@@ -19521,7 +19521,7 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+								"sqlReaderQuery": "\tSELECT \r\n\t100-(ROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0)) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
@@ -19592,7 +19592,7 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+								"sqlReaderQuery": "\tSELECT \r\n\t100-(ROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0)) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
@@ -19663,7 +19663,7 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"sqlReaderQuery": "\tSELECT \r\n\tROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
+								"sqlReaderQuery": "\tSELECT \r\n\t100-(ROUND(SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS float)/128.0)/\tSUM(size/128.0)\t * 100.0 ,0)) as Perc_Unused\r\n\tFROM sys.database_files\r\n\tGROUP BY type_desc\r\n\tHAVING type_desc = 'ROWS';",
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
