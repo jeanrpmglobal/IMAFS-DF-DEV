@@ -3457,7 +3457,7 @@
 							"method": "POST",
 							"headers": {},
 							"url": "https://prod-26.canadacentral.logic.azure.com:443/workflows/110fcadbac2d4e34bdcd71bbd2912b8e/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=5MwQ1kqkNPqOaNS3SmU90XcgJNIod8zxTsb5Hvw5uL4",
-							"body": "{1}"
+							"body": {}
 						}
 					},
 					{
