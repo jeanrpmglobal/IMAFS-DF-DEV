@@ -4,6 +4,7 @@
 		"activities": [
 			{
 				"name": "Call Logic Apps to send EXP_ITEMS",
+				"description": "Logic Apps : \nIMAFS-API-PROD-AMMAN-IMAFS-EXP-ITEMS",
 				"type": "WebActivity",
 				"dependsOn": [],
 				"policy": {
