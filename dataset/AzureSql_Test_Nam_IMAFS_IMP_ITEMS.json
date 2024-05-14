@@ -5,6 +5,9 @@
 			"referenceName": "AzureDevPreprod",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Tests"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [
