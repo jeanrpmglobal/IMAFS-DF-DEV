@@ -1,0 +1,86 @@
+{
+	"name": "Blob_Json_Tests_NAM_Items",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedServiceBlobStorageGeneral",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Tests"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "IMAFS_IMP_ITEMS_JSON.json",
+				"container": "tests"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"ID": {
+					"type": "integer"
+				},
+				"ORGANIZATION_ID": {
+					"type": "string"
+				},
+				"WAREHOUSE_DESCRP": {
+					"type": "string"
+				},
+				"INVENTORY_ITEM_ID": {
+					"type": "string"
+				},
+				"DEMAND_MONTH": {
+					"type": "string"
+				},
+				"NB_TRANSACTIONS_GOLD": {
+					"type": "number"
+				},
+				"NB_TRANSACTIONS_REG": {
+					"type": "number"
+				},
+				"NB_TRANSACTIONS_PROMO": {
+					"type": "number"
+				},
+				"NB_TRANSACTIONS_PROJECT": {
+					"type": "number"
+				},
+				"MTHLY_DEMAND_GOLD": {
+					"type": "number"
+				},
+				"MTHLY_DEMAND_REG": {
+					"type": "number"
+				},
+				"MTHLY_DEMAND_PROMO": {
+					"type": "number"
+				},
+				"MTHLY_DEMAND_PROJECT": {
+					"type": "number"
+				},
+				"NB_TRANSACTIONS_GOLD_BO": {
+					"type": "number"
+				},
+				"NB_TRANSACTIONS_REG_BO": {
+					"type": "number"
+				},
+				"MTHLY_DEMAND_GOLD_BO": {
+					"type": "number"
+				},
+				"MTHLY_DEMAND_REG_BO": {
+					"type": "number"
+				},
+				"BATCH_NO": {
+					"type": "null"
+				},
+				"EVENT_FLAG": {
+					"type": "boolean"
+				},
+				"EVENT_DESCRIPTION": {
+					"type": "null"
+				}
+			}
+		}
+	}
+}
