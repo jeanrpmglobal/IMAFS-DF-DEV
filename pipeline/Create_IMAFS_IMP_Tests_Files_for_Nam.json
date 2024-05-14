@@ -229,10 +229,9 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "-- TRUNCATE TABLE IMAFS_IMP_TRANSACTIONS_NAM",
+						"preCopyScript": "TRUNCATE TABLE IMAFS_IMP_TRANSACTIONS_NAM",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
-						"tableOption": "autoCreate",
 						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
