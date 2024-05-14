@@ -56,6 +56,8 @@
 			{
 				"name": "IMAFS_IMP_SUPPLIERS",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -74,7 +76,56 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "-- TRUNCATE TABLE IMAFS_IMP_SUPPLIERS_NAM",
+						"preCopyScript": "TRUNCATE TABLE IMAFS_IMP_SUPPLIERS_NAM",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "StoredProc_COEUR",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSql_Test_Nam_IMAFS_IMP_SUPPLIERS",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "IMAFS_IMP_DHP",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT * FROM [IMAFS_IMP_DHP_TOTAL]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "-- TRUNCATE TABLE IMAFS_IMP_DHP_NAM",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
@@ -98,7 +149,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSql_Test_Nam_IMAFS_IMP_SUPPLIERS",
+						"referenceName": "AzureSql_Test_Nam_IMAFS_IMP_DHP",
 						"type": "DatasetReference"
 					}
 				]
