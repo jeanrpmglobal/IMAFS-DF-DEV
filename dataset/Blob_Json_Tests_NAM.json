@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "IMAFS_IMP_ITEMS_JSON.json",
+				"fileName": "IMAFS_IMP_SUPPLIERS_JSON.json",
 				"container": "tests"
 			}
 		},
