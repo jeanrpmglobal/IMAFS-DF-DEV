@@ -485,8 +485,6 @@
 			{
 				"name": "Json_Copy_Suppliers_Json_to_Logic_App",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -527,7 +525,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Blob_Json_Tests_NAM_Transactions",
+						"referenceName": "Http_Logic_App_Tests_Nam_Suppliers",
 						"type": "DatasetReference"
 					}
 				]
