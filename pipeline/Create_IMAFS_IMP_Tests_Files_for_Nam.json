@@ -485,6 +485,8 @@
 			{
 				"name": "Json_Copy_Suppliers_Json_to_Logic_App",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -529,6 +531,64 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "LookupBlob",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": "https://prod-06.canadacentral.logic.azure.com:443/workflows/12f2da51b7ab4cd9aee01e9c9effddf9/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=2w0JR4s1i_ahl9Hta6GfwSf1VXlM81HUKUckTAonXnk",
+					"body": {
+						"value": "activity('LookupBlob').output.pipelineReturnValue",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "LookupBlob",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "Blob_Json_Tests_NAM_Suppliers",
+						"type": "DatasetReference"
+					}
+				}
 			}
 		],
 		"folder": {
