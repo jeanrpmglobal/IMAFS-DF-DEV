@@ -555,7 +555,7 @@
 					"method": "POST",
 					"url": "https://prod-06.canadacentral.logic.azure.com:443/workflows/12f2da51b7ab4cd9aee01e9c9effddf9/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=2w0JR4s1i_ahl9Hta6GfwSf1VXlM81HUKUckTAonXnk",
 					"body": {
-						"value": "@json(activity('LookupBlob').output.value)",
+						"value": "@json(string(activity('LookupBlob').output))",
 						"type": "Expression"
 					}
 				}
@@ -587,7 +587,8 @@
 					"dataset": {
 						"referenceName": "Blob_Json_Tests_NAM_Suppliers",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			}
 		],
