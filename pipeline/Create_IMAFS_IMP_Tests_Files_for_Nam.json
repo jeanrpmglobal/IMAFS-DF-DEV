@@ -724,8 +724,6 @@
 			{
 				"name": "LTH",
 				"type": "WebActivity",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "LookupBlobLTH",
@@ -754,8 +752,6 @@
 			{
 				"name": "LookupBlobLTH",
 				"type": "Lookup",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -787,6 +783,8 @@
 			{
 				"name": "TRANSACTIONS",
 				"type": "WebActivity",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "LookupBlobTRANSACTIONS",
@@ -815,6 +813,8 @@
 			{
 				"name": "LookupBlobTRANSACTIONS",
 				"type": "Lookup",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
