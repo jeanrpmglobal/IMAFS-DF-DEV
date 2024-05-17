@@ -598,8 +598,6 @@
 			{
 				"name": "Items",
 				"type": "WebActivity",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "LookupBlobItems",
@@ -628,8 +626,6 @@
 			{
 				"name": "LookupBlobItems",
 				"type": "Lookup",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -661,6 +657,8 @@
 			{
 				"name": "DHP",
 				"type": "WebActivity",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "LookupBlobDHP",
@@ -689,6 +687,8 @@
 			{
 				"name": "LookupBlobDHP",
 				"type": "Lookup",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
