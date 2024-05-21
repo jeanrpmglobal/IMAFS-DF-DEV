@@ -1,0 +1,23 @@
+{
+	"name": "AzureSql_Test_Nam_IMAFS_IMP_ITEMS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDevPreprod",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Tests"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "nchar"
+			}
+		],
+		"typeProperties": {
+			"table": "IMAFS_IMP_ITEMS_NAM"
+		}
+	}
+}
