@@ -13,6 +13,106 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_MBEW_2023_2')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "API_Amman_PROD_MBEW 2023 2",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/API"
+				},
+				"annotations": [],
+				"type": "RestResource",
+				"typeProperties": {
+					"relativeUrl": ""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_MBEW_2023_3')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "API_Amman_PROD_MBEW 2023 3",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/API"
+				},
+				"annotations": [],
+				"type": "RestResource",
+				"typeProperties": {
+					"relativeUrl": ""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_MDMA')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "API_Amman_PROD_MDMA",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/API"
+				},
+				"annotations": [],
+				"type": "RestResource",
+				"typeProperties": {
+					"relativeUrl": ""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_MKPF')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "API_Amman_PROD_MKPF",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"BaseUrlParameter": {
+							"value": "@concat('https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=mkpf&datefrom=',dataset().currentDate,\n'&dateto=',dataset().currentDateTo)",
+							"type": "Expression"
+						}
+					}
+				},
+				"parameters": {
+					"currentDate": {
+						"type": "string",
+						"defaultValue": "@formatDateTime(addDays(utcnow(), -7), 'yyyyMMdd')"
+					},
+					"currentDateTo": {
+						"type": "string",
+						"defaultValue": "@formatDateTime(addDays(utcnow(), 1), 'yyyyMMdd')"
+					}
+				},
+				"folder": {
+					"name": "Amman/API"
+				},
+				"annotations": [],
+				"type": "RestResource",
+				"typeProperties": {
+					"relativeUrl": ""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_MKPF_2021')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -356,88 +456,6 @@
 				"typeProperties": {
 					"relativeUrl": ""
 				},
-				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_T023T')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "API_Amman_PROD_T023T",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Amman/API"
-				},
-				"annotations": [],
-				"type": "RestResource",
-				"typeProperties": {
-					"relativeUrl": ""
-				},
-				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_T025T')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "API_Amman_PROD_T025T",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Amman/API"
-				},
-				"annotations": [],
-				"type": "RestResource",
-				"typeProperties": {
-					"relativeUrl": ""
-				},
-				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_TCURR')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "API_Amman_PROD_TCURR",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Amman/API"
-				},
-				"annotations": [],
-				"type": "RestResource",
-				"typeProperties": {
-					"relativeUrl": ""
-				},
-				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_exp_items')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "API_Amman_PROD_EXP_ITEMS",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Amman/API"
-				},
-				"annotations": [],
-				"type": "RestResource",
-				"typeProperties": {},
 				"schema": []
 			},
 			"dependsOn": []

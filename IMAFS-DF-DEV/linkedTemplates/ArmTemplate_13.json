@@ -13,6 +13,88 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_T023T')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "API_Amman_PROD_T023T",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/API"
+				},
+				"annotations": [],
+				"type": "RestResource",
+				"typeProperties": {
+					"relativeUrl": ""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_T025T')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "API_Amman_PROD_T025T",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/API"
+				},
+				"annotations": [],
+				"type": "RestResource",
+				"typeProperties": {
+					"relativeUrl": ""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_TCURR')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "API_Amman_PROD_TCURR",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/API"
+				},
+				"annotations": [],
+				"type": "RestResource",
+				"typeProperties": {
+					"relativeUrl": ""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_exp_items')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "API_Amman_PROD_EXP_ITEMS",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/API"
+				},
+				"annotations": [],
+				"type": "RestResource",
+				"typeProperties": {},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/API_Amman_RESB')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -435,302 +517,6 @@
 				"typeProperties": {
 					"schema": "dbo",
 					"table": "TasksLists"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/BlobForecastExport')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlob_imafs_storage_general",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Others"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "ArimaForecasted.csv",
-						"container": "machine-learning-export"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Blob_AMT_AI_Extract')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlob_AI_Digit_AMT_AI",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "AMT_AI"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "Task_AMT.json",
-						"container": "amt-gpt-extract"
-					}
-				},
-				"schema": {
-					"type": "object",
-					"properties": {
-						"Task": {
-							"type": "object",
-							"properties": {
-								"TaskNumber": {
-									"type": "string"
-								},
-								"Priority": {
-									"type": "string"
-								},
-								"Name": {
-									"type": "string"
-								},
-								"Strategy": {
-									"type": "string"
-								},
-								"ConstType": {
-									"type": "string"
-								},
-								"Usage": {
-									"type": "string"
-								},
-								"Status": {
-									"type": "string"
-								},
-								"Plant": {
-									"type": "string"
-								}
-							}
-						},
-						"Operation": {
-							"type": "object",
-							"properties": {
-								"OperationNumber": {
-									"type": "string"
-								},
-								"Description": {
-									"type": "string"
-								},
-								"Tasks": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"TaskName": {
-												"type": "string"
-											},
-											"Answer": {
-												"type": "string"
-											}
-										}
-									}
-								},
-								"WorkCenter": {
-									"type": "string"
-								},
-								"ControlKey": {
-									"type": "string"
-								},
-								"NumberOfPersons": {
-									"type": "string"
-								},
-								"Work": {
-									"type": "string"
-								},
-								"Duration": {
-									"type": "string"
-								}
-							}
-						},
-						"MaintenancePackage": {
-							"type": "object",
-							"properties": {
-								"PackageNumber": {
-									"type": "string"
-								},
-								"Frequency": {
-									"type": "string"
-								},
-								"Description": {
-									"type": "string"
-								}
-							}
-						}
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Blob_AMT_AI_TasksList_Extract')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlob_AI_Digit_AMT_AI",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "AMT_AI"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "TasksLLists_AMT.json",
-						"container": "amt-gpt-extract"
-					}
-				},
-				"schema": {
-					"type": "object",
-					"properties": {
-						"Task": {
-							"type": "object",
-							"properties": {
-								"TaskNumber": {
-									"type": "string"
-								},
-								"Priority": {
-									"type": "string"
-								},
-								"Name": {
-									"type": "string"
-								},
-								"Strategy": {
-									"type": "string"
-								},
-								"ConstType": {
-									"type": "string"
-								},
-								"Usage": {
-									"type": "string"
-								},
-								"Status": {
-									"type": "string"
-								},
-								"Plant": {
-									"type": "string"
-								}
-							}
-						},
-						"Operation": {
-							"type": "object",
-							"properties": {
-								"OperationNumber": {
-									"type": "string"
-								},
-								"Description": {
-									"type": "string"
-								},
-								"Tasks": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"TaskName": {
-												"type": "string"
-											},
-											"Answer": {
-												"type": "string"
-											}
-										}
-									}
-								},
-								"WorkCenter": {
-									"type": "string"
-								},
-								"ControlKey": {
-									"type": "string"
-								},
-								"NumberOfPersons": {
-									"type": "string"
-								},
-								"Work": {
-									"type": "string"
-								},
-								"Duration": {
-									"type": "string"
-								}
-							}
-						},
-						"MaintenancePackage": {
-							"type": "object",
-							"properties": {
-								"PackageNumber": {
-									"type": "string"
-								},
-								"Frequency": {
-									"type": "string"
-								},
-								"Description": {
-									"type": "string"
-								}
-							}
-						}
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Blob_Amman_AFIH')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobAmman",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Amman/Blob"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "AFIH_0.json",
-						"folderPath": "import",
-						"container": "root"
-					}
-				},
-				"schema": {
-					"type": "object",
-					"properties": {
-						"AUFNR": {
-							"type": "string"
-						},
-						"KTEXT": {
-							"type": "string"
-						},
-						"AUART": {
-							"type": "string"
-						}
-					}
 				}
 			},
 			"dependsOn": []

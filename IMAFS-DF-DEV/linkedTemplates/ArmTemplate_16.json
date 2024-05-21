@@ -13,6 +13,719 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Json_Tests_NAM_DHP')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "linkedServiceBlobStorageGeneral",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFS_IMP_DHP_JSON.json",
+						"container": "tests"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"ID": {
+							"type": "integer"
+						},
+						"ORGANIZATION_ID": {
+							"type": "string"
+						},
+						"WAREHOUSE_DESCRP": {
+							"type": "string"
+						},
+						"INVENTORY_ITEM_ID": {
+							"type": "string"
+						},
+						"DEMAND_MONTH": {
+							"type": "string"
+						},
+						"NB_TRANSACTIONS_GOLD": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROMO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROJECT": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROMO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROJECT": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_GOLD_BO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG_BO": {
+							"type": "number"
+						},
+						"BATCH_NO": {
+							"type": "null"
+						},
+						"EVENT_FLAG": {
+							"type": "boolean"
+						},
+						"EVENT_DESCRIPTION": {
+							"type": "null"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Json_Tests_NAM_Items')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "linkedServiceBlobStorageGeneral",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFS_IMP_ITEMS_JSON.json",
+						"container": "tests"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"ID": {
+							"type": "integer"
+						},
+						"ORGANIZATION_ID": {
+							"type": "string"
+						},
+						"WAREHOUSE_DESCRP": {
+							"type": "string"
+						},
+						"INVENTORY_ITEM_ID": {
+							"type": "string"
+						},
+						"DEMAND_MONTH": {
+							"type": "string"
+						},
+						"NB_TRANSACTIONS_GOLD": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROMO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROJECT": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROMO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROJECT": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_GOLD_BO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG_BO": {
+							"type": "number"
+						},
+						"BATCH_NO": {
+							"type": "null"
+						},
+						"EVENT_FLAG": {
+							"type": "boolean"
+						},
+						"EVENT_DESCRIPTION": {
+							"type": "null"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Json_Tests_NAM_LTH')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "linkedServiceBlobStorageGeneral",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFS_IMP_LTH_JSON.json",
+						"container": "tests"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"ID": {
+							"type": "integer"
+						},
+						"ORGANIZATION_ID": {
+							"type": "string"
+						},
+						"WAREHOUSE_DESCRP": {
+							"type": "string"
+						},
+						"INVENTORY_ITEM_ID": {
+							"type": "string"
+						},
+						"DEMAND_MONTH": {
+							"type": "string"
+						},
+						"NB_TRANSACTIONS_GOLD": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROMO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROJECT": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROMO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROJECT": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_GOLD_BO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG_BO": {
+							"type": "number"
+						},
+						"BATCH_NO": {
+							"type": "null"
+						},
+						"EVENT_FLAG": {
+							"type": "boolean"
+						},
+						"EVENT_DESCRIPTION": {
+							"type": "null"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Json_Tests_NAM_Suppliers')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "linkedServiceBlobStorageGeneral",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFS_IMP_SUPPLIERS_JSON.json",
+						"container": "tests"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"ID": {
+							"type": "integer"
+						},
+						"ORGANIZATION_ID": {
+							"type": "string"
+						},
+						"WAREHOUSE_DESCRP": {
+							"type": "string"
+						},
+						"INVENTORY_ITEM_ID": {
+							"type": "string"
+						},
+						"DEMAND_MONTH": {
+							"type": "string"
+						},
+						"NB_TRANSACTIONS_GOLD": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROMO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROJECT": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROMO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROJECT": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_GOLD_BO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG_BO": {
+							"type": "number"
+						},
+						"BATCH_NO": {
+							"type": "null"
+						},
+						"EVENT_FLAG": {
+							"type": "boolean"
+						},
+						"EVENT_DESCRIPTION": {
+							"type": "null"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Json_Tests_NAM_Transactions')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "linkedServiceBlobStorageGeneral",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFS_IMP_TRANSACTIONS_JSON.json",
+						"container": "tests"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"ID": {
+							"type": "integer"
+						},
+						"ORGANIZATION_ID": {
+							"type": "string"
+						},
+						"WAREHOUSE_DESCRP": {
+							"type": "string"
+						},
+						"INVENTORY_ITEM_ID": {
+							"type": "string"
+						},
+						"DEMAND_MONTH": {
+							"type": "string"
+						},
+						"NB_TRANSACTIONS_GOLD": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROMO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROJECT": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROMO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROJECT": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_GOLD_BO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG_BO": {
+							"type": "number"
+						},
+						"BATCH_NO": {
+							"type": "null"
+						},
+						"EVENT_FLAG": {
+							"type": "boolean"
+						},
+						"EVENT_DESCRIPTION": {
+							"type": "null"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_open_ai_imafs')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlob_imafs_storage_general",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Others"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "Demo_ITEMS_JSON",
+						"container": "open-ai-imafs"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_open_ai_imafs_items_table_in_txt')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlob_imafs_storage_general",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Others"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "Demo_ITEMS_TXT",
+						"container": "open-ai-imafs"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CSVBlobTransfer')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "linkedServiceBlobStorageGeneral",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Others"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "imafsstoragegeneral"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CSV_Forecast_Transfer')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "linkedServiceBlobStorageGeneral",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Others"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "test.csv",
+						"container": "machine-learning-export"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CerrejonExportDaily')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobCerrejonBlob",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Others"
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFS_ITEMS_EXPORT.TXT",
+						"folderPath": "export",
+						"container": "root"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DataBricks_Arima_Forecast_Qty_Export')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricksTrial",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Others"
+				},
+				"annotations": [],
+				"type": "AzureDatabricksDeltaLakeDataset",
+				"typeProperties": {
+					"database": "default",
+					"table": "arima_forecast_qty_export"
+				},
+				"schema": [
+					{
+						"name": "ds",
+						"type": "timestamp"
+					},
+					{
+						"name": "AutoARIMA",
+						"type": "float"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Ellipse10H')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobCerrejonBlob",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Ellipse"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFS_IMAF10H.TXT",
+						"folderPath": "import",
+						"container": "root"
+					},
+					"columnDelimiter": "\t",
+					"escapeChar": "",
+					"firstRowAsHeader": true,
+					"quoteChar": ""
+				},
+				"schema": [
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Ellipse170')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobCerrejonBlob",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Ellipse"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFS_IMAF170.TXT",
+						"folderPath": "import",
+						"container": "root"
+					},
+					"columnDelimiter": "\t",
+					"escapeChar": "",
+					"firstRowAsHeader": true,
+					"quoteChar": ""
+				},
+				"schema": [
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Ellipse180')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobCerrejonBlob",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Ellipse"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFS_IMAF180.TXT",
+						"folderPath": "import",
+						"container": "root"
+					},
+					"columnDelimiter": "\t",
+					"escapeChar": "",
+					"firstRowAsHeader": true,
+					"quoteChar": ""
+				},
+				"schema": [
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Ellipse1CS')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -214,488 +927,6 @@
 						"type": "String"
 					}
 				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Ellipse918')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobCerrejonBlob",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IMAFS_IMAF918.TXT",
-						"folderPath": "import",
-						"container": "root"
-					},
-					"columnDelimiter": "\t",
-					"escapeChar": "",
-					"firstRowAsHeader": true,
-					"quoteChar": ""
-				},
-				"schema": [
-					{
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Ellipse919')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobCerrejonBlob",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IMAFS_IMAF919.TXT",
-						"folderPath": "import",
-						"container": "root"
-					},
-					"columnDelimiter": "\t",
-					"escapeChar": "",
-					"firstRowAsHeader": true,
-					"quoteChar": ""
-				},
-				"schema": [
-					{
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Ellipse920')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobCerrejonBlob",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IMAFS_IMAF920.TXT",
-						"folderPath": "import",
-						"container": "root"
-					},
-					"columnDelimiter": "\t",
-					"escapeChar": "",
-					"firstRowAsHeader": true,
-					"quoteChar": ""
-				},
-				"schema": [
-					{
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Ellipse921')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobCerrejonBlob",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IMAFS_IMAF921.TXT",
-						"folderPath": "import",
-						"container": "root"
-					},
-					"columnDelimiter": "\t",
-					"escapeChar": "",
-					"firstRowAsHeader": true,
-					"quoteChar": ""
-				},
-				"schema": [
-					{
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Ellipse922')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobCerrejonBlob",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IMAFS_IMAF922.TXT",
-						"folderPath": "import",
-						"container": "root"
-					},
-					"columnDelimiter": "\t",
-					"escapeChar": "",
-					"firstRowAsHeader": true,
-					"quoteChar": ""
-				},
-				"schema": [
-					{
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Ellipse923')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobCerrejonBlob",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IMAFS_IMAF923.TXT",
-						"folderPath": "import",
-						"container": "root"
-					},
-					"columnDelimiter": "\t",
-					"escapeChar": "",
-					"firstRowAsHeader": true,
-					"quoteChar": ""
-				},
-				"schema": [
-					{
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Ellipse_1E1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobCerrejonBlob",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IMAFS_IMAF1E1.TXT",
-						"folderPath": "import",
-						"container": "root"
-					},
-					"columnDelimiter": "\t",
-					"escapeChar": "",
-					"firstRowAsHeader": true,
-					"quoteChar": ""
-				},
-				"schema": [
-					{
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Ellipse_1HD')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobCerrejonBlob",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IMAFS_IMAF1HD.TXT",
-						"folderPath": "import",
-						"container": "root"
-					},
-					"columnDelimiter": "\t",
-					"escapeChar": "",
-					"firstRowAsHeader": true,
-					"quoteChar": ""
-				},
-				"schema": [
-					{
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Ellise010')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobCerrejonBlob",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IMAFS_IMAF010.TXT",
-						"folderPath": "import",
-						"container": "root"
-					},
-					"columnDelimiter": "\t",
-					"escapeChar": "",
-					"firstRowAsHeader": true,
-					"quoteChar": ""
-				},
-				"schema": [
-					{
-						"name": "TABLE_TYPE",
-						"type": "String"
-					},
-					{
-						"name": "TABLE_CODE",
-						"type": "String"
-					},
-					{
-						"name": "TABLE_DESC",
-						"type": "String"
-					},
-					{
-						"name": "ASSOC_REC",
-						"type": "String"
-					},
-					{
-						"name": "ACTIVE_FLAG",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/IMAFS_IMP_DHP_PREPROD_JSON')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlob_imafs_storage_general",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Others"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "dbo.IMAFS_IMP_DHP.json",
-						"container": "imafsstoragegeneral"
-					}
-				},
-				"schema": {}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Machine_Learning_Blob')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobMachineLearningImport",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Machine Learning"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "test_1.csv",
-						"container": "machine-learning-import"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ParquetBlobTransfer')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "linkedServiceBlobStorageGeneral",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Machine Learning"
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "data_09bf7bed-220e-4bac-b090-6dff911cf577_943e1c63-cc46-4164-b62a-748765386d28.parquet",
-						"container": "imafsstoragegeneral"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": [
-					{
-						"name": "item_id",
-						"type": "INT64"
-					},
-					{
-						"name": "MONTHDATE",
-						"type": "DATE"
-					},
-					{
-						"name": "qty",
-						"type": "DOUBLE"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ParquetTestFlatFile')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobCerrejonBlob",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Machine Learning"
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"folderPath": "import",
-						"container": "root"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/RestTestLogicAppAPI')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "Test_API",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Others"
-				},
-				"annotations": [],
-				"type": "RestResource",
-				"typeProperties": {},
-				"schema": []
 			},
 			"dependsOn": []
 		}

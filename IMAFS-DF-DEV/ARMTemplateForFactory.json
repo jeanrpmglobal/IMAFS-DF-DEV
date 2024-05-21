@@ -435,6 +435,11 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'DatabricksTrial'"
 		},
+		"IMAFSLinkedService_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'IMAFSLinkedService'",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=@(linkedService().ServerName);Initial Catalog=@(linkedService().DBName)"
+		},
 		"SFTP_IOC_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'SFTP_IOC'"
@@ -949,11 +954,15 @@
 		},
 		"AzureKeyVaultIMAFS_properties_typeProperties_baseUrl": {
 			"type": "string",
-			"defaultValue": "https://IMAFS-Dev-Key-Vault.vault.azure.net/"
+			"defaultValue": "https://IMAFS-KEYVAULT.vault.azure.net/"
 		},
 		"DatabricksTrial_properties_typeProperties_existingClusterId": {
 			"type": "string",
 			"defaultValue": "0130-184436-ylsbtzwy"
+		},
+		"Http_Logic_App_Test_Nam_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://prod-06.canadacentral.logic.azure.com:443/workflows/12f2da51b7ab4cd9aee01e9c9effddf9/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=2w0JR4s1i_ahl9Hta6GfwSf1VXlM81HUKUckTAonXnk"
 		},
 		"SFTP_IOC_properties_typeProperties_host": {
 			"type": "string",
@@ -2012,6 +2021,910 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/SourceDataset_DHP_CanRoy_Non_Intermittent')]",
 				"[concat(variables('factoryId'), '/datasets/CSVBlobTransfer')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Create_IMAFS_IMP_Tests_Files_for_Nam')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "IMAFS_IMP_ITEMS",
+						"type": "Copy",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": "SELECT [ID]\r\n      ,[ORGANIZATION_ID]\r\n      ,[WAREHOUSE_DESCRP]\r\n      ,[INVENTORY_ITEM_ID]\r\n      ,[PRODUCT_CAT]\r\n      ,[PRODUCT_SUB_CAT]\r\n      ,[ITEM_NUMBER]\r\n      ,[CLASS]\r\n      ,[CRITICALITY_CODE]\r\n      ,[NATURE_CODE]\r\n      ,[CREATION_DATE]\r\n      ,[DESCRIPTION]\r\n      ,[STOCKABLE]\r\n      ,[ALIAS]\r\n      ,[AUTO_REAPRO]\r\n      ,[TEAM]\r\n      ,[ANNUAL_DEMAND]\r\n      ,[PREFERRED_SHIPPING]\r\n      ,[NB_UNITS_PER_USAGE]\r\n      ,[UNIT_OF_MEASURE]\r\n      ,[PRIMARY_UOM_QTY]\r\n      ,[MANUFACTURER_PART_NUM]\r\n      ,[MANUFACTURER_NAME]\r\n      ,[MIN_MINMAX]\r\n      ,[MAX_MINMAX]\r\n      ,[STATUS]\r\n      ,[PREFERRED_VENDOR_ID]\r\n      ,[VALUE_PER_REORD]\r\n      ,[MIN_QTY_TO_ORDER]\r\n      ,[AVG_COST_INV]\r\n      ,[CURRENT_COST]\r\n      ,[LEAD_TIME]\r\n      ,[FAMILY]\r\n      ,[USED_EQUIPMENT]\r\n      ,[PROMO_NUMBER]\r\n      ,[PROMO_START_DATE]\r\n      ,[PROMO_END_DATE]\r\n      ,[PROMO_FORECAST_QTY]\r\n      ,[PROJECT_NUMBER]\r\n      ,[PROJECT_START_DATE]\r\n      ,[PROJECT_END_DATE]\r\n      ,[PROJECT_FORECAST_QTY]\r\n      ,[QTY_NET]\r\n      ,[QOH_QTY]\r\n      ,[PO_QTY]\r\n      ,[TRANSFERT_CODE]\r\n      ,[REQ_QTY]\r\n      ,[RECV_QTY]\r\n      ,[RESERVED_QTY]\r\n      ,[TRANSFERT_QTY]\r\n      ,[ATP_QTY]\r\n      ,[FUTUR_DMD_QTY]\r\n      ,[EXP_RESERVED_QTY]\r\n      ,[EXP_PROMISED_QTY]\r\n      ,[ANTICIPATED_QTY]\r\n      ,[REQUIREMENT_DATE]\r\n      ,[COMPLETED_QTY]\r\n      ,[PROMISED_QTY]\r\n      ,[STD_PACK_MULTIPLE]\r\n      ,[CONSIGNMENT]\r\n      ,[BUYER]\r\n      ,[ANALYSTE]\r\n      ,[BATCH_NO]\r\n      ,[EQUIP_LINK]\r\n      ,[CONTRACT]\r\n      ,[MAX_SHELF]\r\n      ,[STRAT_COMM]\r\n      ,[SERVICE_LEVEL_3M]\r\n      ,[SERVICE_LEVEL_6M]\r\n      ,[SERVICE_LEVEL_12M]\r\n      ,[FLEX_FIELD_1]\r\n      ,[FLEX_FIELD_2]\r\n      ,[FLEX_FIELD_3]\r\n      ,[FLEX_FIELD_4]\r\n      ,[FLEX_FIELD_5]\r\n      ,[FLEX_FIELD_6]\r\n      ,[FLEX_FIELD_7]\r\n      ,[FLEX_FIELD_8]\r\n      ,[FLEX_FIELD_9]\r\n      ,[FLEX_FIELD_10]\r\n      ,[SUBSTITUTED_PART_NO]\r\n      ,[PCT_SUBSTITUTION]\r\n  FROM [dbo].[IMAFS_IMP_ITEMS_TEMP]",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE IMAFS_IMP_ITEMS_NAM",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "StoredProc_COEUR",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureSql_Test_Nam_IMAFS_IMP_ITEMS",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "IMAFS_IMP_SUPPLIERS",
+						"type": "Copy",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": "SELECT * FROM [IMAFS_IMP_SUPPLIERS_TEMP]",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE IMAFS_IMP_SUPPLIERS_NAM",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "StoredProc_COEUR",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureSql_Test_Nam_IMAFS_IMP_SUPPLIERS",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "IMAFS_IMP_DHP",
+						"type": "Copy",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": "SELECT * FROM [IMAFS_IMP_DHP_TOTAL]",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE IMAFS_IMP_DHP_NAM",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "StoredProc_COEUR",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureSql_Test_Nam_IMAFS_IMP_DHP",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "IMAFS_IMP_LTH",
+						"type": "Copy",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": "SELECT * FROM [IMAFS_IMP_LTH_TOTAL]",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE IMAFS_IMP_LTH_NAM",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "StoredProc_COEUR",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureSql_Test_Nam_IMAFS_IMP_LTH",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "IMAFS_IMP_TRANSACTIONS",
+						"type": "Copy",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": "SELECT * FROM [IMAFS_IMP_TRANSACTIONS]",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE IMAFS_IMP_TRANSACTIONS_NAM",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "StoredProc_COEUR",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureSql_Test_Nam_IMAFS_IMP_TRANSACTIONS",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Json_Copy_IMAFS_IMP_ITEMS",
+						"type": "Copy",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": "SELECT *\n  FROM [dbo].[IMAFS_IMP_ITEMS_NAM]",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "JsonSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "JsonWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "StoredProc_DEV_PREPROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Blob_Json_Tests_NAM_Items",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Json_Copy_IMAFS_IMP_SUPPLIERS",
+						"type": "Copy",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": "SELECT *\n  FROM [dbo].[IMAFS_IMP_SUPPLIERS_NAM]",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "JsonSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "JsonWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "StoredProc_DEV_PREPROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Blob_Json_Tests_NAM_Suppliers",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Json_Copy_IMAFS_IMP_DHP",
+						"type": "Copy",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": "SELECT *\n  FROM [dbo].[IMAFS_IMP_DHP_NAM]",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "JsonSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "JsonWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "StoredProc_DEV_PREPROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Blob_Json_Tests_NAM_DHP",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Json_Copy_IMAFS_IMP_LTH",
+						"type": "Copy",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": "SELECT *\n  FROM [dbo].[IMAFS_IMP_LTH_NAM]",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "JsonSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "JsonWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "StoredProc_DEV_PREPROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Blob_Json_Tests_NAM_LTH",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Json_Copy_IMAFS_IMP_Transactions",
+						"type": "Copy",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": "SELECT *\n  FROM [dbo].[IMAFS_IMP_TRANSACTIONS_NAM]",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "JsonSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "JsonWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "StoredProc_DEV_PREPROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Blob_Json_Tests_NAM_Transactions",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Json_Copy_Suppliers_Json_to_Logic_App",
+						"type": "Copy",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "JsonReadSettings"
+								}
+							},
+							"sink": {
+								"type": "JsonSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "JsonWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "Blob_Json_Tests_NAM_Suppliers",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Http_Logic_App_Tests_Nam_Suppliers",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Suppliers",
+						"type": "WebActivity",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [
+							{
+								"activity": "LookupBlobSuppliers",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {},
+							"url": "https://prod-06.canadacentral.logic.azure.com:443/workflows/12f2da51b7ab4cd9aee01e9c9effddf9/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=2w0JR4s1i_ahl9Hta6GfwSf1VXlM81HUKUckTAonXnk",
+							"body": {
+								"value": "@json(string(activity('LookupBlobSuppliers').output))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "LookupBlobSuppliers",
+						"type": "Lookup",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "JsonReadSettings"
+								}
+							},
+							"dataset": {
+								"referenceName": "Blob_Json_Tests_NAM_Suppliers",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "Items",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "LookupBlobItems",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {},
+							"url": "https://prod-06.canadacentral.logic.azure.com:443/workflows/12f2da51b7ab4cd9aee01e9c9effddf9/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=2w0JR4s1i_ahl9Hta6GfwSf1VXlM81HUKUckTAonXnk",
+							"body": {
+								"value": "@json(string(activity('LookupBlobItems').output))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "LookupBlobItems",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "JsonReadSettings"
+								}
+							},
+							"dataset": {
+								"referenceName": "Blob_Json_Tests_NAM_Items",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "DHP",
+						"type": "WebActivity",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [
+							{
+								"activity": "LookupBlobDHP",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {},
+							"url": "https://prod-06.canadacentral.logic.azure.com:443/workflows/12f2da51b7ab4cd9aee01e9c9effddf9/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=2w0JR4s1i_ahl9Hta6GfwSf1VXlM81HUKUckTAonXnk",
+							"body": {
+								"value": "@json(string(activity('LookupBlobDHP').output))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "LookupBlobDHP",
+						"type": "Lookup",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "JsonReadSettings"
+								}
+							},
+							"dataset": {
+								"referenceName": "Blob_Json_Tests_NAM_DHP",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "LTH",
+						"type": "WebActivity",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [
+							{
+								"activity": "LookupBlobLTH",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {},
+							"url": "https://prod-06.canadacentral.logic.azure.com:443/workflows/12f2da51b7ab4cd9aee01e9c9effddf9/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=2w0JR4s1i_ahl9Hta6GfwSf1VXlM81HUKUckTAonXnk",
+							"body": {
+								"value": "@json(string(activity('LookupBlobLTH').output))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "LookupBlobLTH",
+						"type": "Lookup",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "JsonReadSettings"
+								}
+							},
+							"dataset": {
+								"referenceName": "Blob_Json_Tests_NAM_LTH",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "TRANSACTIONS",
+						"type": "WebActivity",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [
+							{
+								"activity": "LookupBlobTRANSACTIONS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {},
+							"url": "https://prod-06.canadacentral.logic.azure.com:443/workflows/12f2da51b7ab4cd9aee01e9c9effddf9/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=2w0JR4s1i_ahl9Hta6GfwSf1VXlM81HUKUckTAonXnk",
+							"body": {
+								"value": "@json(string(activity('LookupBlobTRANSACTIONS').output))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "LookupBlobTRANSACTIONS",
+						"type": "Lookup",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "JsonReadSettings"
+								}
+							},
+							"dataset": {
+								"referenceName": "Blob_Json_Tests_NAM_Transactions",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/StoredProc_COEUR')]",
+				"[concat(variables('factoryId'), '/datasets/AzureSql_Test_Nam_IMAFS_IMP_ITEMS')]",
+				"[concat(variables('factoryId'), '/datasets/AzureSql_Test_Nam_IMAFS_IMP_SUPPLIERS')]",
+				"[concat(variables('factoryId'), '/datasets/AzureSql_Test_Nam_IMAFS_IMP_DHP')]",
+				"[concat(variables('factoryId'), '/datasets/AzureSql_Test_Nam_IMAFS_IMP_LTH')]",
+				"[concat(variables('factoryId'), '/datasets/AzureSql_Test_Nam_IMAFS_IMP_TRANSACTIONS')]",
+				"[concat(variables('factoryId'), '/datasets/StoredProc_DEV_PREPROD')]",
+				"[concat(variables('factoryId'), '/datasets/Blob_Json_Tests_NAM_Items')]",
+				"[concat(variables('factoryId'), '/datasets/Blob_Json_Tests_NAM_Suppliers')]",
+				"[concat(variables('factoryId'), '/datasets/Blob_Json_Tests_NAM_DHP')]",
+				"[concat(variables('factoryId'), '/datasets/Blob_Json_Tests_NAM_LTH')]",
+				"[concat(variables('factoryId'), '/datasets/Blob_Json_Tests_NAM_Transactions')]",
+				"[concat(variables('factoryId'), '/datasets/Http_Logic_App_Tests_Nam_Suppliers')]"
 			]
 		},
 		{
@@ -3436,6 +4349,7 @@
 					},
 					{
 						"name": "Call Logic Apps to send EXP_ITEMS",
+						"description": "Logic Apps : \nIMAFS-API-PROD-AMMAN-IMAFS-EXP-ITEMS-V2",
 						"type": "WebActivity",
 						"dependsOn": [
 							{
@@ -3710,6 +4624,7 @@
 				"activities": [
 					{
 						"name": "Call Logic Apps to send EXP_ITEMS",
+						"description": "Logic Apps : \nIMAFS-API-PROD-AMMAN-IMAFS-EXP-ITEMS-V2",
 						"type": "WebActivity",
 						"dependsOn": [],
 						"policy": {
@@ -67200,6 +68115,146 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureSql_Test_Nam_IMAFS_IMP_DHP')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDevPreprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "ID",
+						"type": "nchar"
+					}
+				],
+				"typeProperties": {
+					"table": "IMAFS_IMP_DHP_NAM"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDevPreprod')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSql_Test_Nam_IMAFS_IMP_ITEMS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDevPreprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "ID",
+						"type": "nchar"
+					}
+				],
+				"typeProperties": {
+					"table": "IMAFS_IMP_ITEMS_NAM"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDevPreprod')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSql_Test_Nam_IMAFS_IMP_LTH')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDevPreprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "ID",
+						"type": "nchar"
+					}
+				],
+				"typeProperties": {
+					"table": "IMAFS_IMP_LTH_NAM"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDevPreprod')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSql_Test_Nam_IMAFS_IMP_SUPPLIERS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDevPreprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "ID",
+						"type": "nchar"
+					}
+				],
+				"typeProperties": {
+					"table": "IMAFS_IMP_SUPPLIERS_NAM"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDevPreprod')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSql_Test_Nam_IMAFS_IMP_TRANSACTIONS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDevPreprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "ID",
+						"type": "nchar"
+					}
+				],
+				"typeProperties": {
+					"table": "IMAFS_IMP_TRANSACTIONS_NAM"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDevPreprod')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/BlobForecastExport')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -68863,6 +69918,461 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Json_Tests_NAM_DHP')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "linkedServiceBlobStorageGeneral",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFS_IMP_DHP_JSON.json",
+						"container": "tests"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"ID": {
+							"type": "integer"
+						},
+						"ORGANIZATION_ID": {
+							"type": "string"
+						},
+						"WAREHOUSE_DESCRP": {
+							"type": "string"
+						},
+						"INVENTORY_ITEM_ID": {
+							"type": "string"
+						},
+						"DEMAND_MONTH": {
+							"type": "string"
+						},
+						"NB_TRANSACTIONS_GOLD": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROMO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROJECT": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROMO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROJECT": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_GOLD_BO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG_BO": {
+							"type": "number"
+						},
+						"BATCH_NO": {
+							"type": "null"
+						},
+						"EVENT_FLAG": {
+							"type": "boolean"
+						},
+						"EVENT_DESCRIPTION": {
+							"type": "null"
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/linkedServiceBlobStorageGeneral')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Json_Tests_NAM_Items')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "linkedServiceBlobStorageGeneral",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFS_IMP_ITEMS_JSON.json",
+						"container": "tests"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"ID": {
+							"type": "integer"
+						},
+						"ORGANIZATION_ID": {
+							"type": "string"
+						},
+						"WAREHOUSE_DESCRP": {
+							"type": "string"
+						},
+						"INVENTORY_ITEM_ID": {
+							"type": "string"
+						},
+						"DEMAND_MONTH": {
+							"type": "string"
+						},
+						"NB_TRANSACTIONS_GOLD": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROMO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROJECT": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROMO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROJECT": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_GOLD_BO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG_BO": {
+							"type": "number"
+						},
+						"BATCH_NO": {
+							"type": "null"
+						},
+						"EVENT_FLAG": {
+							"type": "boolean"
+						},
+						"EVENT_DESCRIPTION": {
+							"type": "null"
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/linkedServiceBlobStorageGeneral')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Json_Tests_NAM_LTH')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "linkedServiceBlobStorageGeneral",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFS_IMP_LTH_JSON.json",
+						"container": "tests"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"ID": {
+							"type": "integer"
+						},
+						"ORGANIZATION_ID": {
+							"type": "string"
+						},
+						"WAREHOUSE_DESCRP": {
+							"type": "string"
+						},
+						"INVENTORY_ITEM_ID": {
+							"type": "string"
+						},
+						"DEMAND_MONTH": {
+							"type": "string"
+						},
+						"NB_TRANSACTIONS_GOLD": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROMO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROJECT": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROMO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROJECT": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_GOLD_BO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG_BO": {
+							"type": "number"
+						},
+						"BATCH_NO": {
+							"type": "null"
+						},
+						"EVENT_FLAG": {
+							"type": "boolean"
+						},
+						"EVENT_DESCRIPTION": {
+							"type": "null"
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/linkedServiceBlobStorageGeneral')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Json_Tests_NAM_Suppliers')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "linkedServiceBlobStorageGeneral",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFS_IMP_SUPPLIERS_JSON.json",
+						"container": "tests"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"ID": {
+							"type": "integer"
+						},
+						"ORGANIZATION_ID": {
+							"type": "string"
+						},
+						"WAREHOUSE_DESCRP": {
+							"type": "string"
+						},
+						"INVENTORY_ITEM_ID": {
+							"type": "string"
+						},
+						"DEMAND_MONTH": {
+							"type": "string"
+						},
+						"NB_TRANSACTIONS_GOLD": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROMO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROJECT": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROMO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROJECT": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_GOLD_BO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG_BO": {
+							"type": "number"
+						},
+						"BATCH_NO": {
+							"type": "null"
+						},
+						"EVENT_FLAG": {
+							"type": "boolean"
+						},
+						"EVENT_DESCRIPTION": {
+							"type": "null"
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/linkedServiceBlobStorageGeneral')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Json_Tests_NAM_Transactions')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "linkedServiceBlobStorageGeneral",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFS_IMP_TRANSACTIONS_JSON.json",
+						"container": "tests"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"ID": {
+							"type": "integer"
+						},
+						"ORGANIZATION_ID": {
+							"type": "string"
+						},
+						"WAREHOUSE_DESCRP": {
+							"type": "string"
+						},
+						"INVENTORY_ITEM_ID": {
+							"type": "string"
+						},
+						"DEMAND_MONTH": {
+							"type": "string"
+						},
+						"NB_TRANSACTIONS_GOLD": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROMO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_PROJECT": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROMO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_PROJECT": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_GOLD_BO": {
+							"type": "number"
+						},
+						"NB_TRANSACTIONS_REG_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_GOLD_BO": {
+							"type": "number"
+						},
+						"MTHLY_DEMAND_REG_BO": {
+							"type": "number"
+						},
+						"BATCH_NO": {
+							"type": "null"
+						},
+						"EVENT_FLAG": {
+							"type": "boolean"
+						},
+						"EVENT_DESCRIPTION": {
+							"type": "null"
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/linkedServiceBlobStorageGeneral')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Blob_open_ai_imafs')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -69704,6 +71214,32 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureBlobCerrejonBlob')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Http_Logic_App_Tests_Nam_Suppliers')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Http_Logic_App_Test_Nam",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation",
+						"relativeUrl": "https://prod-06.canadacentral.logic.azure.com:443/workflows/12f2da51b7ab4cd9aee01e9c9effddf9/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=2w0JR4s1i_ahl9Hta6GfwSf1VXlM81HUKUckTAonXnk"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Http_Logic_App_Test_Nam')]"
 			]
 		},
 		{
@@ -79627,6 +81163,42 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/Http_Logic_App_Test_Nam')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "HttpServer",
+				"typeProperties": {
+					"url": "[parameters('Http_Logic_App_Test_Nam_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Anonymous"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/IMAFSLinkedService')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"parameters": {
+					"ServerName": {
+						"type": "string"
+					},
+					"DBName": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('IMAFSLinkedService_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/SFTP_IOC')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -79708,15 +81280,7 @@
 			"properties": {
 				"annotations": [],
 				"runtimeState": "Stopped",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "INTERFACE_AMMAN_AMT_IMPORT_CSV",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
+				"pipelines": [],
 				"type": "ScheduleTrigger",
 				"typeProperties": {
 					"recurrence": {
@@ -79727,9 +81291,7 @@
 					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/INTERFACE_AMMAN_AMT_IMPORT_CSV')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/TriggerAmmanDailyTasks')]",
@@ -79737,16 +81299,8 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "INTERFACE_AMMAN",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
+				"runtimeState": "Stopped",
+				"pipelines": [],
 				"type": "ScheduleTrigger",
 				"typeProperties": {
 					"recurrence": {
@@ -79757,9 +81311,7 @@
 					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/INTERFACE_AMMAN')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/TriggerCanRoyDailyTasks')]",

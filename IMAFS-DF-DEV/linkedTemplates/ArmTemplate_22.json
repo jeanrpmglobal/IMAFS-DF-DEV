@@ -13,6 +13,541 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/SQL_SAP_RESB_AMMAN')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSQLAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AUFNR",
+						"type": "varchar"
+					},
+					{
+						"name": "KTEXT",
+						"type": "varchar"
+					},
+					{
+						"name": "AUART",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_SAP_RESB"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_SAP_RESB_AMMAN_DELTA')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSQLAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AUFNR",
+						"type": "varchar"
+					},
+					{
+						"name": "KTEXT",
+						"type": "varchar"
+					},
+					{
+						"name": "AUART",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_SAP_RESB_TEMP"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_SAP_RESB_AMMAN_PROD')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureProdAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AUFNR",
+						"type": "varchar"
+					},
+					{
+						"name": "KTEXT",
+						"type": "varchar"
+					},
+					{
+						"name": "AUART",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_SAP_RESB"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_SAP_RESB_AMMAN_PROD_DELTA')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureProdAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AUFNR",
+						"type": "varchar"
+					},
+					{
+						"name": "KTEXT",
+						"type": "varchar"
+					},
+					{
+						"name": "AUART",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_SAP_RESB_TEMP"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_SAP_RESB_AMMAN_QA')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureQAAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL/QA"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AUFNR",
+						"type": "varchar"
+					},
+					{
+						"name": "KTEXT",
+						"type": "varchar"
+					},
+					{
+						"name": "AUART",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_SAP_RESB"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_SAP_T023T_AMMAN')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSQLAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AUFNR",
+						"type": "varchar"
+					},
+					{
+						"name": "KTEXT",
+						"type": "varchar"
+					},
+					{
+						"name": "AUART",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_SAP_T023T"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_SAP_T023T_AMMAN_PROD')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureProdAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AUFNR",
+						"type": "varchar"
+					},
+					{
+						"name": "KTEXT",
+						"type": "varchar"
+					},
+					{
+						"name": "AUART",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_SAP_T023T"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_SAP_T023T_AMMAN_QA')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureQAAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL/QA"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AUFNR",
+						"type": "varchar"
+					},
+					{
+						"name": "KTEXT",
+						"type": "varchar"
+					},
+					{
+						"name": "AUART",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_SAP_T023T"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_SAP_T025T_AMMAN')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSQLAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AUFNR",
+						"type": "varchar"
+					},
+					{
+						"name": "KTEXT",
+						"type": "varchar"
+					},
+					{
+						"name": "AUART",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_SAP_T025T"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_SAP_T025T_AMMAN_PROD')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureProdAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AUFNR",
+						"type": "varchar"
+					},
+					{
+						"name": "KTEXT",
+						"type": "varchar"
+					},
+					{
+						"name": "AUART",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_SAP_T025T"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_SAP_T025T_AMMAN_QA')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureQAAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL/QA"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AUFNR",
+						"type": "varchar"
+					},
+					{
+						"name": "KTEXT",
+						"type": "varchar"
+					},
+					{
+						"name": "AUART",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_SAP_T025T"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_SAP_TCURR_AMMAN')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSQLAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AUFNR",
+						"type": "varchar"
+					},
+					{
+						"name": "KTEXT",
+						"type": "varchar"
+					},
+					{
+						"name": "AUART",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_SAP_TCURR"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_SAP_TCURR_AMMAN_PROD')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureProdAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AUFNR",
+						"type": "varchar"
+					},
+					{
+						"name": "KTEXT",
+						"type": "varchar"
+					},
+					{
+						"name": "AUART",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_SAP_TCURR"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_SAP_TCURR_AMMAN_QA')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureQAAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL/QA"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AUFNR",
+						"type": "varchar"
+					},
+					{
+						"name": "KTEXT",
+						"type": "varchar"
+					},
+					{
+						"name": "AUART",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "_SAP_TCURR"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SourceDataset_DHP_CanRoy_Non_Intermittent')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureProdCanRoy",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Others"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "item_id",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "date",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "qty",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "hits",
+						"type": "smallint",
+						"precision": 5
+					},
+					{
+						"name": "real_data_flag",
+						"type": "bit"
+					}
+				],
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/SqlAMTImport')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -243,941 +778,6 @@
 				"typeProperties": {
 					"schema": "dbo",
 					"table": "IMAFS_IMP_AMT_FORECAST_TEMP"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlAMT_No_Temp')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureQACerrejon",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Others"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "ID",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "ORGANIZATION_ID",
-						"type": "nvarchar"
-					},
-					{
-						"name": "WAREHOUSE_DESCRP",
-						"type": "nvarchar"
-					},
-					{
-						"name": "INVENTORY_ITEM_ID",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FORECAST_MONTH",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "FORECAST_QTY",
-						"type": "float",
-						"precision": 15
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "IMAFS_IMP_AMT_FORECAST"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlEllipse010')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureProdCerrejon",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "TABLE_TYPE",
-						"type": "varchar"
-					},
-					{
-						"name": "TABLE_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "TABLE_DESC",
-						"type": "varchar"
-					},
-					{
-						"name": "ASSOC_REC",
-						"type": "varchar"
-					},
-					{
-						"name": "ACTIVE_FLAG",
-						"type": "varchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "_ELLIPSE_MSF010_TEMP"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlEllipse010_QA')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureQACerrejon",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "TABLE_TYPE",
-						"type": "varchar"
-					},
-					{
-						"name": "TABLE_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "TABLE_DESC",
-						"type": "varchar"
-					},
-					{
-						"name": "ASSOC_REC",
-						"type": "varchar"
-					},
-					{
-						"name": "ACTIVE_FLAG",
-						"type": "varchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "_ELLIPSE_MSF010_TEMP"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlEllipse10H')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureProdCerrejon",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "STOCK_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CATEG_ID",
-						"type": "varchar"
-					},
-					{
-						"name": "STOCK_STATUS",
-						"type": "varchar"
-					},
-					{
-						"name": "STOCK_SECTIONX6",
-						"type": "varchar"
-					},
-					{
-						"name": "REF_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "STK_DESC",
-						"type": "varchar"
-					},
-					{
-						"name": "PART_NO",
-						"type": "varchar"
-					},
-					{
-						"name": "MNEMONIC",
-						"type": "varchar"
-					},
-					{
-						"name": "DSTRCT_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "STOCK_TYPE",
-						"type": "varchar"
-					},
-					{
-						"name": "CREATION_DATE",
-						"type": "varchar"
-					},
-					{
-						"name": "UNIT_OF_ISSUE",
-						"type": "varchar"
-					},
-					{
-						"name": "ROP",
-						"type": "varchar"
-					},
-					{
-						"name": "ROQ",
-						"type": "varchar"
-					},
-					{
-						"name": "CURR_SUPPLIER",
-						"type": "varchar"
-					},
-					{
-						"name": "INVENT_COST_PR",
-						"type": "varchar"
-					},
-					{
-						"name": "FRT_IN_I_PRICE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUST_IN_I_PRICE",
-						"type": "varchar"
-					},
-					{
-						"name": "INV_REV_DAYS",
-						"type": "varchar"
-					},
-					{
-						"name": "PUR_REV_DAYS",
-						"type": "varchar"
-					},
-					{
-						"name": "INVT_CONTROLLR",
-						"type": "varchar"
-					},
-					{
-						"name": "PURCH_OFFICER",
-						"type": "varchar"
-					},
-					{
-						"name": "ORIGIN_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "INVT_STAT_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CLASS",
-						"type": "varchar"
-					},
-					{
-						"name": "EXP_ELEMENT",
-						"type": "varchar"
-					},
-					{
-						"name": "PRICE_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "INVENTORY_FLAG",
-						"type": "varchar"
-					},
-					{
-						"name": "CONSIGN_WS_IND",
-						"type": "varchar"
-					},
-					{
-						"name": "LAST_REC_DATE",
-						"type": "varchar"
-					},
-					{
-						"name": "LAST_ISS_DATE",
-						"type": "varchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "_ELLIPSE_MSF10H_TEMP"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlEllipse10H_QA')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureQACerrejon",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "STOCK_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CATEG_ID",
-						"type": "varchar"
-					},
-					{
-						"name": "STOCK_STATUS",
-						"type": "varchar"
-					},
-					{
-						"name": "STOCK_SECTIONX6",
-						"type": "varchar"
-					},
-					{
-						"name": "REF_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "STK_DESC",
-						"type": "varchar"
-					},
-					{
-						"name": "PART_NO",
-						"type": "varchar"
-					},
-					{
-						"name": "MNEMONIC",
-						"type": "varchar"
-					},
-					{
-						"name": "DSTRCT_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "STOCK_TYPE",
-						"type": "varchar"
-					},
-					{
-						"name": "CREATION_DATE",
-						"type": "varchar"
-					},
-					{
-						"name": "UNIT_OF_ISSUE",
-						"type": "varchar"
-					},
-					{
-						"name": "ROP",
-						"type": "varchar"
-					},
-					{
-						"name": "ROQ",
-						"type": "varchar"
-					},
-					{
-						"name": "CURR_SUPPLIER",
-						"type": "varchar"
-					},
-					{
-						"name": "INVENT_COST_PR",
-						"type": "varchar"
-					},
-					{
-						"name": "FRT_IN_I_PRICE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUST_IN_I_PRICE",
-						"type": "varchar"
-					},
-					{
-						"name": "INV_REV_DAYS",
-						"type": "varchar"
-					},
-					{
-						"name": "PUR_REV_DAYS",
-						"type": "varchar"
-					},
-					{
-						"name": "INVT_CONTROLLR",
-						"type": "varchar"
-					},
-					{
-						"name": "PURCH_OFFICER",
-						"type": "varchar"
-					},
-					{
-						"name": "ORIGIN_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "INVT_STAT_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CLASS",
-						"type": "varchar"
-					},
-					{
-						"name": "EXP_ELEMENT",
-						"type": "varchar"
-					},
-					{
-						"name": "PRICE_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "INVENTORY_FLAG",
-						"type": "varchar"
-					},
-					{
-						"name": "CONSIGN_WS_IND",
-						"type": "varchar"
-					},
-					{
-						"name": "LAST_REC_DATE",
-						"type": "varchar"
-					},
-					{
-						"name": "LAST_ISS_DATE",
-						"type": "varchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "_ELLIPSE_MSF10H_TEMP"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlEllipse170')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureProdCerrejon",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "STOCK_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CATEG_ID",
-						"type": "varchar"
-					},
-					{
-						"name": "STOCK_STATUS",
-						"type": "varchar"
-					},
-					{
-						"name": "STOCK_SECTIONX6",
-						"type": "varchar"
-					},
-					{
-						"name": "REF_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "STK_DESC",
-						"type": "varchar"
-					},
-					{
-						"name": "PART_NO",
-						"type": "varchar"
-					},
-					{
-						"name": "MNEMONIC",
-						"type": "varchar"
-					},
-					{
-						"name": "DSTRCT_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "STOCK_TYPE",
-						"type": "varchar"
-					},
-					{
-						"name": "CREATION_DATE",
-						"type": "varchar"
-					},
-					{
-						"name": "UNIT_OF_ISSUE",
-						"type": "varchar"
-					},
-					{
-						"name": "ROP",
-						"type": "varchar"
-					},
-					{
-						"name": "ROQ",
-						"type": "varchar"
-					},
-					{
-						"name": "CURR_SUPPLIER",
-						"type": "varchar"
-					},
-					{
-						"name": "INVENT_COST_PR",
-						"type": "varchar"
-					},
-					{
-						"name": "FRT_IN_I_PRICE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUST_IN_I_PRICE",
-						"type": "varchar"
-					},
-					{
-						"name": "INV_REV_DAYS",
-						"type": "varchar"
-					},
-					{
-						"name": "PUR_REV_DAYS",
-						"type": "varchar"
-					},
-					{
-						"name": "INVT_CONTROLLR",
-						"type": "varchar"
-					},
-					{
-						"name": "PURCH_OFFICER",
-						"type": "varchar"
-					},
-					{
-						"name": "ORIGIN_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "INVT_STAT_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CLASS",
-						"type": "varchar"
-					},
-					{
-						"name": "EXP_ELEMENT",
-						"type": "varchar"
-					},
-					{
-						"name": "PRICE_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "INVENTORY_FLAG",
-						"type": "varchar"
-					},
-					{
-						"name": "CONSIGN_WS_IND",
-						"type": "varchar"
-					},
-					{
-						"name": "LAST_REC_DATE",
-						"type": "varchar"
-					},
-					{
-						"name": "LAST_ISS_DATE",
-						"type": "varchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "_ELLIPSE_MSF170_TEMP"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlEllipse170_QA')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureQACerrejon",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "STOCK_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CATEG_ID",
-						"type": "varchar"
-					},
-					{
-						"name": "STOCK_STATUS",
-						"type": "varchar"
-					},
-					{
-						"name": "STOCK_SECTIONX6",
-						"type": "varchar"
-					},
-					{
-						"name": "REF_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "STK_DESC",
-						"type": "varchar"
-					},
-					{
-						"name": "PART_NO",
-						"type": "varchar"
-					},
-					{
-						"name": "MNEMONIC",
-						"type": "varchar"
-					},
-					{
-						"name": "DSTRCT_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "STOCK_TYPE",
-						"type": "varchar"
-					},
-					{
-						"name": "CREATION_DATE",
-						"type": "varchar"
-					},
-					{
-						"name": "UNIT_OF_ISSUE",
-						"type": "varchar"
-					},
-					{
-						"name": "ROP",
-						"type": "varchar"
-					},
-					{
-						"name": "ROQ",
-						"type": "varchar"
-					},
-					{
-						"name": "CURR_SUPPLIER",
-						"type": "varchar"
-					},
-					{
-						"name": "INVENT_COST_PR",
-						"type": "varchar"
-					},
-					{
-						"name": "FRT_IN_I_PRICE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUST_IN_I_PRICE",
-						"type": "varchar"
-					},
-					{
-						"name": "INV_REV_DAYS",
-						"type": "varchar"
-					},
-					{
-						"name": "PUR_REV_DAYS",
-						"type": "varchar"
-					},
-					{
-						"name": "INVT_CONTROLLR",
-						"type": "varchar"
-					},
-					{
-						"name": "PURCH_OFFICER",
-						"type": "varchar"
-					},
-					{
-						"name": "ORIGIN_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "INVT_STAT_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CLASS",
-						"type": "varchar"
-					},
-					{
-						"name": "EXP_ELEMENT",
-						"type": "varchar"
-					},
-					{
-						"name": "PRICE_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "INVENTORY_FLAG",
-						"type": "varchar"
-					},
-					{
-						"name": "CONSIGN_WS_IND",
-						"type": "varchar"
-					},
-					{
-						"name": "LAST_REC_DATE",
-						"type": "varchar"
-					},
-					{
-						"name": "LAST_ISS_DATE",
-						"type": "varchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "_ELLIPSE_MSF170_TEMP"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlEllipse180')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureProdCerrejon",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "_ELLIPSE_MSF180_TEMP"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlEllipse180_QA')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureQACerrejon",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "_ELLIPSE_MSF180_TEMP"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlEllipse1CS')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureProdCerrejon",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "DSTRCT_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "WHOUSE_ID",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTODIAN_ID",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTODIAN_TYPE",
-						"type": "varchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "_ELLIPSE_MSF1cs_TEMP"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlEllipse1CS_QA')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureQACerrejon",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "DSTRCT_CODE",
-						"type": "varchar"
-					},
-					{
-						"name": "WHOUSE_ID",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTODIAN_ID",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTODIAN_TYPE",
-						"type": "varchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "_ELLIPSE_MSF1cs_TEMP"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlEllipse1E1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureProdCerrejon",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "_ELLIPSE_MSF1E1_TEMP"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlEllipse1E1_QA')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureQACerrejon",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "_ELLIPSE_MSF1E1_TEMP"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlEllipse1HD')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureProdCerrejon",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "_ELLIPSE_MSF1HD_TEMP"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlEllipse1HD_QA')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureQACerrejon",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "_ELLIPSE_MSF1HD_TEMP"
 				}
 			},
 			"dependsOn": []

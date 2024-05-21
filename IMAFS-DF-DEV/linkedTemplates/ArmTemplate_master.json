@@ -435,6 +435,11 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'DatabricksTrial'"
 		},
+		"IMAFSLinkedService_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'IMAFSLinkedService'",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=@(linkedService().ServerName);Initial Catalog=@(linkedService().DBName)"
+		},
 		"SFTP_IOC_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'SFTP_IOC'"
@@ -949,11 +954,15 @@
 		},
 		"AzureKeyVaultIMAFS_properties_typeProperties_baseUrl": {
 			"type": "string",
-			"defaultValue": "https://IMAFS-Dev-Key-Vault.vault.azure.net/"
+			"defaultValue": "https://IMAFS-KEYVAULT.vault.azure.net/"
 		},
 		"DatabricksTrial_properties_typeProperties_existingClusterId": {
 			"type": "string",
 			"defaultValue": "0130-184436-ylsbtzwy"
+		},
+		"Http_Logic_App_Test_Nam_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://prod-06.canadacentral.logic.azure.com:443/workflows/12f2da51b7ab4cd9aee01e9c9effddf9/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=2w0JR4s1i_ahl9Hta6GfwSf1VXlM81HUKUckTAonXnk"
 		},
 		"SFTP_IOC_properties_typeProperties_host": {
 			"type": "string",
@@ -1788,6 +1797,9 @@
 					"DatabricksTrial_accessToken": {
 						"value": "[parameters('DatabricksTrial_accessToken')]"
 					},
+					"IMAFSLinkedService_connectionString": {
+						"value": "[parameters('IMAFSLinkedService_connectionString')]"
+					},
 					"SFTP_IOC_password": {
 						"value": "[parameters('SFTP_IOC_password')]"
 					},
@@ -1797,11 +1809,11 @@
 					"SynapseSQLPool1_connectionString": {
 						"value": "[parameters('SynapseSQLPool1_connectionString')]"
 					},
-					"linkedServiceBlobStorageGeneral_connectionString": {
-						"value": "[parameters('linkedServiceBlobStorageGeneral_connectionString')]"
-					},
 					"DatabricksTrial_properties_typeProperties_existingClusterId": {
 						"value": "[parameters('DatabricksTrial_properties_typeProperties_existingClusterId')]"
+					},
+					"Http_Logic_App_Test_Nam_properties_typeProperties_url": {
+						"value": "[parameters('Http_Logic_App_Test_Nam_properties_typeProperties_url')]"
 					},
 					"SFTP_IOC_properties_typeProperties_host": {
 						"value": "[parameters('SFTP_IOC_properties_typeProperties_host')]"
@@ -1831,6 +1843,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"linkedServiceBlobStorageGeneral_connectionString": {
+						"value": "[parameters('linkedServiceBlobStorageGeneral_connectionString')]"
 					}
 				}
 			},
@@ -2276,6 +2291,26 @@
 			},
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/deployments', 'IMAFS-DF-DEV_ArmTemplate_27')]"
+			]
+		},
+		{
+			"name": "IMAFS-DF-DEV_ArmTemplate_29",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_29.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'IMAFS-DF-DEV_ArmTemplate_28')]"
 			]
 		}
 	]

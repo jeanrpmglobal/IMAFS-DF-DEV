@@ -326,6 +326,9 @@
 		"DatabricksTrial_accessToken": {
 			"value": ""
 		},
+		"IMAFSLinkedService_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=@(linkedService().ServerName);Initial Catalog=@(linkedService().DBName)"
+		},
 		"SFTP_IOC_password": {
 			"value": ""
 		},
@@ -711,10 +714,13 @@
 			"value": "SCP-USER"
 		},
 		"AzureKeyVaultIMAFS_properties_typeProperties_baseUrl": {
-			"value": "https://IMAFS-Dev-Key-Vault.vault.azure.net/"
+			"value": "https://IMAFS-KEYVAULT.vault.azure.net/"
 		},
 		"DatabricksTrial_properties_typeProperties_existingClusterId": {
 			"value": "0130-184436-ylsbtzwy"
+		},
+		"Http_Logic_App_Test_Nam_properties_typeProperties_url": {
+			"value": "https://prod-06.canadacentral.logic.azure.com:443/workflows/12f2da51b7ab4cd9aee01e9c9effddf9/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=2w0JR4s1i_ahl9Hta6GfwSf1VXlM81HUKUckTAonXnk"
 		},
 		"SFTP_IOC_properties_typeProperties_host": {
 			"value": "sft.riotinto.com"

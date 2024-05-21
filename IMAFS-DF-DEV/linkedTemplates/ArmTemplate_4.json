@@ -85,7 +85,7 @@
 		},
 		"AzureKeyVaultIMAFS_properties_typeProperties_baseUrl": {
 			"type": "string",
-			"defaultValue": "https://IMAFS-Dev-Key-Vault.vault.azure.net/"
+			"defaultValue": "https://IMAFS-KEYVAULT.vault.azure.net/"
 		}
 	},
 	"variables": {
