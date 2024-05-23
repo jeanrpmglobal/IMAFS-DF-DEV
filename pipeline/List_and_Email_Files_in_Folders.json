@@ -129,6 +129,8 @@
 			{
 				"name": "Get_Amman_AMT_List",
 				"type": "GetMetadata",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -160,6 +162,8 @@
 			{
 				"name": "Send email Amman",
 				"type": "WebActivity",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Get_Amman_AMT_List",

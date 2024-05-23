@@ -1,0 +1,21 @@
+{
+	"name": "Blob_MS_Access_Test_General_Storage",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlob_imafs_storage_general",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Tests"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "tblimport.accdb",
+				"container": "imafsstoragegeneral"
+			}
+		}
+	}
+}
