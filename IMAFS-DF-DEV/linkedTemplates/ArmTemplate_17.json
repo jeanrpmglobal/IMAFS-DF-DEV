@@ -13,6 +13,40 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/Ellipse900')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobCerrejonBlob",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Ellipse"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFS_IMAF900.TXT",
+						"folderPath": "import",
+						"container": "root"
+					},
+					"columnDelimiter": "\t",
+					"escapeChar": "",
+					"firstRowAsHeader": true,
+					"quoteChar": ""
+				},
+				"schema": [
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Ellipse918')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -716,89 +750,6 @@
 				"typeProperties": {
 					"schema": "dbo",
 					"table": "DEMAND_HIST_PERIOD"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SQL_CANROY_PROD_DemandHistPeriod_To_Forecast')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureProdCanRoy",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Others"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "item_id",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "MONTHDATE",
-						"type": "date"
-					},
-					{
-						"name": "qty",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "qty_adj",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "Intermittent",
-						"type": "bit"
-					},
-					{
-						"name": "saisonalite",
-						"type": "bit"
-					},
-					{
-						"name": "class",
-						"type": "nvarchar"
-					},
-					{
-						"name": "family_descrp",
-						"type": "char"
-					},
-					{
-						"name": "criticality",
-						"type": "smallint",
-						"precision": 5
-					},
-					{
-						"name": "Nb_Month_Zero_Demand",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "lead_time",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "CONTRACT",
-						"type": "smallint",
-						"precision": 5
-					},
-					{
-						"name": "preferred_tr_mode",
-						"type": "smallint",
-						"precision": 5
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "DEMAND_TEMP_DATASET_AI_AZURE"
 				}
 			},
 			"dependsOn": []

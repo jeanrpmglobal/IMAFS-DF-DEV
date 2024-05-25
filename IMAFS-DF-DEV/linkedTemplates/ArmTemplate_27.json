@@ -13,6 +13,2520 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_AMMAN_PHASE_1')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy AUFK",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_AUFK",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['AUFNR']"
+										},
+										"sink": {
+											"name": "AUFNR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['KTEXT']"
+										},
+										"sink": {
+											"name": "KTEXT",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['AUART']"
+										},
+										"sink": {
+											"name": "AUART",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['ERDAT']"
+										},
+										"sink": {
+											"name": "ERDAT",
+											"type": "String"
+										}
+									}
+								],
+								"collectionReference": ""
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_AUFK",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_AUFK_AMMAN_PROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Copy AUSP",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy AUFK",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_AUSP",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['OBJEK']"
+										},
+										"sink": {
+											"name": "OBJEK",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['ATINN']"
+										},
+										"sink": {
+											"name": "ATINN",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['ATWRT']"
+										},
+										"sink": {
+											"name": "ATWRT",
+											"type": "String"
+										}
+									}
+								],
+								"collectionReference": ""
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_AUSP",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_AUSP_AMMAN_PROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Copy EINA",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy EBAN DELTA",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_EINA",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_EINA",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_EINA_AMMAN_PROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Copy EKKO",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy EINA",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_EKKO",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['EBELN']"
+										},
+										"sink": {
+											"name": "EBELN",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['BSART']"
+										},
+										"sink": {
+											"name": "BSART",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['LOEKZ']"
+										},
+										"sink": {
+											"name": "LOEKZ",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['LIFNR']"
+										},
+										"sink": {
+											"name": "LIFNR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['AEDAT']"
+										},
+										"sink": {
+											"name": "AEDAT",
+											"type": "String"
+										}
+									}
+								],
+								"collectionReference": ""
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_EKKO",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_EKKO_AMMAN_PROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Copy EQUI",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy EKKO",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_EQUI",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_EQUI",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_EQUI_AMMAN_PROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Copy LAF1",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy EQUI",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_LFA1",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_LFA1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_LFA1_AMMAN_PROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Copy MARA",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy LAF1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_MARA_MAKT",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['MATNR']"
+										},
+										"sink": {
+											"name": "MATNR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['SPRAS']"
+										},
+										"sink": {
+											"name": "SPRAS",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['MAKTX']"
+										},
+										"sink": {
+											"name": "MAKTX",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['MTART']"
+										},
+										"sink": {
+											"name": "MTART",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['MATKL']"
+										},
+										"sink": {
+											"name": "MATKL",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['MEINS']"
+										},
+										"sink": {
+											"name": "MEINS",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['WRKST']"
+										},
+										"sink": {
+											"name": "WRKST",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['NORMT']"
+										},
+										"sink": {
+											"name": "NORMT",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['MFRPN']"
+										},
+										"sink": {
+											"name": "MFRPN",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['MFRNR']"
+										},
+										"sink": {
+											"name": "MFRNR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['BISMT']"
+										},
+										"sink": {
+											"name": "BISMT",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['BMATN']"
+										},
+										"sink": {
+											"name": "BMATN",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['ERSDA']"
+										},
+										"sink": {
+											"name": "ERSDA",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['MSTAE']"
+										},
+										"sink": {
+											"name": "MSTAE"
+										}
+									}
+								],
+								"collectionReference": ""
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_MARA",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_MARA_AMMAN_PROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Copy MARC",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy MARA",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_MARC",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_MARC",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_MARC_AMMAN_PROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Copy T023T",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy MARC",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_T023T",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_T023T",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_T023T_AMMAN_PROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Copy T025T",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy T023T",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_T025T",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_T025T",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_T025T_AMMAN_PROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Copy TCURR",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy T025T",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_TCURR",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_TCURR",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_TCURR_AMMAN_PROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Copy MARD",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy TCURR",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_MARD",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['MATNR']"
+										},
+										"sink": {
+											"name": "MATNR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['WERKS']"
+										},
+										"sink": {
+											"name": "WERKS",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['LGORT']"
+										},
+										"sink": {
+											"name": "LGORT",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['LVORM']"
+										},
+										"sink": {
+											"name": "LVORM",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['DISKZ']"
+										},
+										"sink": {
+											"name": "DISKZ",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['LGPBE']"
+										},
+										"sink": {
+											"name": "LGPBE",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['ERSDA']"
+										},
+										"sink": {
+											"name": "ERSDA",
+											"type": "String"
+										}
+									}
+								],
+								"collectionReference": ""
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_MARD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_MARD_AMMAN_PROD_DELTA",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Copy EINE",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy RESB DELTA",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_EINE",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_EINE",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_EINE_AMMAN_PROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Copy AFIH",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy EINE",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_AFIH",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['AUFNR']"
+										},
+										"sink": {
+											"name": "AUFNR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['EQUNR']"
+										},
+										"sink": {
+											"name": "EQUNR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['ADDAT']"
+										},
+										"sink": {
+											"name": "ADDAT",
+											"type": "String"
+										}
+									}
+								],
+								"collectionReference": ""
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_AFIH",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_AFIH_AMMAN_PROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Send email",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy AUFK",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Copy MBEW",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy AFIH",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_MBEW",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_MBEW",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_MBEW_AMMAN_PROD",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Send email_copy1",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy EBAN DELTA",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy2",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy AUSP",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1_copy1",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy EQUI",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1_copy2",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy EKKO",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1_copy3",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy EINA",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1_copy1_copy1",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy T023T",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1_copy1_copy2",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy MARC",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1_copy1_copy3",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy MARA",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1_copy1_copy4",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy LAF1",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1_copy1_copy1_copy1",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy RESB DELTA",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1_copy1_copy1_copy2",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy MARD",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1_copy1_copy1_copy3",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy TCURR",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1_copy1_copy1_copy4",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy T025T",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1_copy1_copy1_copy1_copy1",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy MBEW",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1_copy1_copy1_copy1_copy2",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy AFIH",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1_copy1_copy1_copy1_copy3",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy EINE",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1_copy1_copy1_copy1_copy1_copy1",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy MKPF to MSEG DELTA",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1_copy1_copy1_copy1_copy1_copy2",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy EKPO DELTA",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Copy MKPF to MSEG DELTA",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy EKPO DELTA",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_MSEG_TEMP",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['MBLNR']"
+										},
+										"sink": {
+											"name": "MBLNR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['MJAHR']"
+										},
+										"sink": {
+											"name": "MJAHR",
+											"type": "Int64"
+										}
+									},
+									{
+										"source": {
+											"path": "$['BUDAT']"
+										},
+										"sink": {
+											"name": "MKPF_BUDAT"
+										}
+									},
+									{
+										"source": {
+											"path": "$['ZEILE']"
+										},
+										"sink": {
+											"name": "ZEILE",
+											"type": "Int64"
+										}
+									},
+									{
+										"source": {
+											"path": "$['LINE_ID']"
+										},
+										"sink": {
+											"name": "LINE_ID",
+											"type": "Int64"
+										}
+									},
+									{
+										"source": {
+											"path": "$['BWART']"
+										},
+										"sink": {
+											"name": "BWART",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['MATNR']"
+										},
+										"sink": {
+											"name": "MATNR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['WERKS']"
+										},
+										"sink": {
+											"name": "WERKS",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['LGORT']"
+										},
+										"sink": {
+											"name": "LGORT",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['LIFNR']"
+										},
+										"sink": {
+											"name": "LIFNR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['MENGE']"
+										},
+										"sink": {
+											"name": "MENGE",
+											"type": "Double"
+										}
+									},
+									{
+										"source": {
+											"path": "$['ERFMG']"
+										},
+										"sink": {
+											"name": "ERFMG",
+											"type": "Double"
+										}
+									},
+									{
+										"source": {
+											"path": "$['SHKZG']"
+										},
+										"sink": {
+											"name": "SHKZG",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['EBELN']"
+										},
+										"sink": {
+											"name": "EBELN",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['EBELP']"
+										},
+										"sink": {
+											"name": "EBELP",
+											"type": "Int64"
+										}
+									},
+									{
+										"source": {
+											"path": "$['SGTXT']"
+										},
+										"sink": {
+											"name": "SGTXT",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['AUFNR']"
+										},
+										"sink": {
+											"name": "AUFNR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['CPUDT_MKPF']"
+										},
+										"sink": {
+											"name": "CPUDT_MKPF",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['CPUTM_MKPF']"
+										},
+										"sink": {
+											"name": "CPUTM_MKPF",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['CHARG']"
+										},
+										"sink": {
+											"name": "CHARG",
+											"type": "String"
+										}
+									}
+								],
+								"collectionReference": ""
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_MKPF",
+								"type": "DatasetReference",
+								"parameters": {
+									"currentDate": "@formatDateTime(addDays(utcnow(), -7), 'yyyyMMdd')",
+									"currentDateTo": "@formatDateTime(addDays(utcnow(), 1), 'yyyyMMdd')"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_MSEG_AMMAN_PROD_DELTA",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Copy EBAN DELTA",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy AUSP",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_EBAN_TEMP",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['BANFN']"
+										},
+										"sink": {
+											"name": "BANFN",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['BNFPO']"
+										},
+										"sink": {
+											"name": "BNFPO",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['BADAT']"
+										},
+										"sink": {
+											"name": "BADAT",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"path": "$['MATNR']"
+										},
+										"sink": {
+											"name": "MATNR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['WERKS']"
+										},
+										"sink": {
+											"name": "WERKS",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['LGORT']"
+										},
+										"sink": {
+											"name": "LGORT",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['BSART']"
+										},
+										"sink": {
+											"name": "BSART",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['BSTYP']"
+										},
+										"sink": {
+											"name": "BSTYP",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['PSTYP']"
+										},
+										"sink": {
+											"name": "PSTYP",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['LOEKZ']"
+										},
+										"sink": {
+											"name": "LOEKZ",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['STATU']"
+										},
+										"sink": {
+											"name": "STATU",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['FRGKZ']"
+										},
+										"sink": {
+											"name": "FRGKZ",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['FRGZU']"
+										},
+										"sink": {
+											"name": "FRGZU",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['FRGDT']"
+										},
+										"sink": {
+											"name": "FRGDT",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"path": "$['MENGE']"
+										},
+										"sink": {
+											"name": "MENGE",
+											"type": "Decimal"
+										}
+									},
+									{
+										"source": {
+											"path": "$['MEINS']"
+										},
+										"sink": {
+											"name": "MEINS",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['ZZ_PRREQ']"
+										},
+										"sink": {
+											"name": "ZZ_PRREQ",
+											"type": "String"
+										}
+									}
+								],
+								"collectionReference": ""
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_EBAN_DELTA",
+								"type": "DatasetReference",
+								"parameters": {
+									"currentDate": "@formatDateTime(addDays(utcnow(), -7), 'yyyyMMdd')"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_EBAN_AMMAN_PROD_DELTA",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Copy RESB DELTA",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy MARD",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_RESB_TEMP",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_RESB_DELTA",
+								"type": "DatasetReference",
+								"parameters": {
+									"currentDate": "@formatDateTime(addDays(utcnow(), -7), 'yyyyMMdd')"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_RESB_AMMAN_PROD_DELTA",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Copy EKPO DELTA",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy MBEW",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 5,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:05:00",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE _SAP_EKET_EKPO_TEMP",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['EBELN']"
+										},
+										"sink": {
+											"name": "EBELN",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['EBELP']"
+										},
+										"sink": {
+											"name": "EBELP",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['LOEKZ']"
+										},
+										"sink": {
+											"name": "LOEKZ",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['AEDAT']"
+										},
+										"sink": {
+											"name": "AEDAT",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['MATNR']"
+										},
+										"sink": {
+											"name": "MATNR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['WERKS']"
+										},
+										"sink": {
+											"name": "WERKS",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['LGORT']"
+										},
+										"sink": {
+											"name": "LGORT",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['MENGE_PO']"
+										},
+										"sink": {
+											"name": "MENGE_PO",
+											"type": "Double"
+										}
+									},
+									{
+										"source": {
+											"path": "$['MEINS']"
+										},
+										"sink": {
+											"name": "MEINS",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['UMREZ']"
+										},
+										"sink": {
+											"name": "UMREZ",
+											"type": "Double"
+										}
+									},
+									{
+										"source": {
+											"path": "$['UMREN']"
+										},
+										"sink": {
+											"name": "UMREN",
+											"type": "Double"
+										}
+									},
+									{
+										"source": {
+											"path": "$['BSTYP']"
+										},
+										"sink": {
+											"name": "BSTYP",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['INCO1']"
+										},
+										"sink": {
+											"name": "INCO1",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['ZZ_BEDNR']"
+										},
+										"sink": {
+											"name": "ZZ_BEDNR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['ELIKZ']"
+										},
+										"sink": {
+											"name": "ELIKZ",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['EINDT']"
+										},
+										"sink": {
+											"name": "EINDT",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['MENGE']"
+										},
+										"sink": {
+											"name": "MENGE",
+											"type": "Decimal"
+										}
+									},
+									{
+										"source": {
+											"path": "$['WEMNG']"
+										},
+										"sink": {
+											"name": "WEMNG",
+											"type": "Decimal"
+										}
+									},
+									{
+										"source": {
+											"path": "$['BANFN']"
+										},
+										"sink": {
+											"name": "BANFN",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['BNFPO']"
+										},
+										"sink": {
+											"name": "BNFPO",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['BEDAT']"
+										},
+										"sink": {
+											"name": "BEDAT",
+											"type": "String"
+										}
+									}
+								],
+								"collectionReference": ""
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "API_Amman_PROD_EKPO_DELTA",
+								"type": "DatasetReference",
+								"parameters": {
+									"currentDate": "@formatDateTime(addDays(utcnow(), -7), 'yyyyMMdd')"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SQL_SAP_EKET_EKPO_AMMAN_PROD_DELTA",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Interfaces"
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-03-12T15:59:06Z"
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/INTERFACE_AMMAN_PHASE_1_Generic')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -37041,3060 +39555,6 @@
 				},
 				"annotations": [],
 				"lastPublishTime": "2023-03-10T14:04:42Z"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_PROD_CERREJON_4_APR_2023')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy_IMAFS_IMAF010",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Truncate TEMP tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink",
-								"writeBehavior": "insert",
-								"sqlWriterUseTableLock": false,
-								"disableMetricsCollection": false
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "TABLE_TYPE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "TABLE_TYPE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "TABLE_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "TABLE_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "TABLE_DESC",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "TABLE_DESC",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "ASSOC_REC",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ASSOC_REC",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "ACTIVE_FLAG",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ACTIVE_FLAG",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Ellise010",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SqlEllipse010",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Copy_IMAFS_IMAF180",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Copy_IMAFS_IMAF010",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink",
-								"writeBehavior": "insert",
-								"sqlWriterUseTableLock": false
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "DSTRCT_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "DSTRCT_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "STOCK_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "STOCK_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "WHOUSE_ID",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "WHOUSE_ID",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "MIN_STOCK_LVL",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "MIN_STOCK_LVL",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "MAX_STOCK_LVL",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "MAX_STOCK_LVL",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "DUES_IN",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "DUES_IN",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "DUES_OUT",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "DUES_OUT",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "WHOUSE_PICKED",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "WHOUSE_PICKED",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "IN_TRANSIT",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "IN_TRANSIT",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "RESERVED",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "RESERVED",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "PURCH_XFER_WH",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PURCH_XFER_WH",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Ellipse180",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SqlEllipse180",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Copy_IMAFS_IMAF1CS",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Copy_IMAFS_IMAF180",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink",
-								"writeBehavior": "insert",
-								"sqlWriterUseTableLock": false
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "DSTRCT_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "DSTRCT_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "WHOUSE_ID",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "WHOUSE_ID",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "CUSTODIAN_ID",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CUSTODIAN_ID",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "CUSTODIAN_TYPE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CUSTODIAN_TYPE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Ellipse1CS",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SqlEllipse1CS",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Copy_IMAFS_IMAF200",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Copy_IMAFS_IMAF1CS",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink",
-								"writeBehavior": "insert",
-								"sqlWriterUseTableLock": false
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "SUPPLIER_NO",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "SUPPLIER_NO",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "SUPPLIER_NAME",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "SUPPLIER_NAME",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "ORDER_ADDR_3",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ORDER_ADDR_3",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "DSTRCT_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "DSTRCT_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "TAX_FILE_NO",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "TAX_FILE_NO",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Ellipse200",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SqlEllipse200",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Copy_IMAFS_IMAF210",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Copy_IMAFS_IMAF200",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink",
-								"writeBehavior": "insert",
-								"sqlWriterUseTableLock": false
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "DSTRCT_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "DSTRCT_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "STOCK_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "STOCK_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "SUPPLIER_NO",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "SUPPLIER_NO",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "PRICE_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PRICE_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "FREIGHT_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "FREIGHT_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "STD_PACK",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "STD_PACK",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "SUPP_ACT_IND",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "SUPP_ACT_IND",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "SUPP_LEAD_TIME",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "SUPP_LEAD_TIME",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "LAST_ACT_LEAD",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "LAST_ACT_LEAD",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "MIN_ORD_QTY",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "MIN_ORD_QTY",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "GROSS_PRICE_I",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "GROSS_PRICE_I",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "FPA_REC_TYPE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "FPA_REC_TYPE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "CONV_FACTOR",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CONV_FACTOR",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Ellipse210",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SqlEllipse_210",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Copy_IMAFS_IMAF220",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Copy_IMAFS_IMAF210",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink",
-								"writeBehavior": "insert",
-								"sqlWriterUseTableLock": false
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "DSTRCT_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "DSTRCT_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "SUPPLIER_NO",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "SUPPLIER_NO",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "ORDER_DATE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ORDER_DATE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "FREIGHT_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "FREIGHT_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "PO_NO",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PO_NO",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "PO_ITEM_NO",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PO_ITEM_NO",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "PO_ITEM_TYPE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PO_ITEM_TYPE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "PREQ_STK_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PREQ_STK_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "ACTIVITY_CTR",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ACTIVITY_CTR",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "DUE_SITE_DATE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "DUE_SITE_DATE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "CURR_QTY_I",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CURR_QTY_I",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "ORIGIN_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ORIGIN_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Ellipse220",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SqlEllipse220",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Copy_IMAFS_IMAF620",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Copy_IMAFS_IMAF220",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink",
-								"writeBehavior": "insert",
-								"sqlWriterUseTableLock": false
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "DSTRCT_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "DSTRCT_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "WORK_ORDER",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "WORK_ORDER",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "WO_DESC",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "WO_DESC",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "WO_TYPE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "WO_TYPE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "EQUIP_NO",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "EQUIP_NO",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Ellipse620",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SqlEllipse620",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Copy_IMAFS_IMAF900",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Copy_IMAFS_IMAF620",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink",
-								"writeBehavior": "insert",
-								"sqlWriterUseTableLock": false
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "DSTRCT_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "DSTRCT_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "SUPPLIER_NO",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "SUPPLIER_NO",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "PO_NO",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PO_NO",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "PO_ITEM_NO",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PO_ITEM_NO",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "WORK_ORDER",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "WORK_ORDER",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "PROCESS_DATE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PROCESS_DATE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "TRANSACTION_NO",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "TRANSACTION_NO",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "USERNO",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "USERNO",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "REC900_TYPE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "REC900_TYPE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "ITRAN_TYPE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ITRAN_TYPE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "TRAN_TYPE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "TRAN_TYPE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "GL_QUANTITY_ISS",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "GL_QUANTITY_ISS",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "QTY_RCV_UOI",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "QTY_RCV_UOI",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "WHOUSE_ID",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "WHOUSE_ID",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "STOCK_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "STOCK_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "FULL_PERIOD",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "FULL_PERIOD",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Ellipse900",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SqlEllipse900",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Truncate TEMP tables",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[_ELLIPSE_TRUNCATE_TEMP_FILES]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdCerrejon",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Copy_IMAFS_IMAF1E1",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Copy_IMAFS_IMAF900",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink",
-								"writeBehavior": "insert",
-								"sqlWriterUseTableLock": false
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "CATEG_ID",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CATEG_ID",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "CATEG_NAME",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CATEG_NAME",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Ellipse_1E1",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SqlEllipse1E1",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Copy_IMAFS_IMAF170",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Copy_IMAFS_IMAF1HD",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink",
-								"writeBehavior": "insert",
-								"sqlWriterUseTableLock": false
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "STOCK_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "STOCK_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "CATEG_ID",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CATEG_ID",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "STOCK_STATUS",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "STOCK_STATUS",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "STOCK_SECTIONX6",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "STOCK_SECTIONX6",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "REF_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "REF_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "STK_DESC",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "STK_DESC",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "PART_NO",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PART_NO",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "MNEMONIC",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "MNEMONIC",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "DSTRCT_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "DSTRCT_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "STOCK_TYPE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "STOCK_TYPE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "CREATION_DATE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CREATION_DATE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "UNIT_OF_ISSUE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "UNIT_OF_ISSUE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "ROP",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ROP",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "ROQ",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ROQ",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "CURR_SUPPLIER",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CURR_SUPPLIER",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "INVENT_COST_PR",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "INVENT_COST_PR",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "FRT_IN_I_PRICE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "FRT_IN_I_PRICE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "CUST_IN_I_PRICE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CUST_IN_I_PRICE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "INV_REV_DAYS",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "INV_REV_DAYS",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "PUR_REV_DAYS",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PUR_REV_DAYS",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "INVT_CONTROLLR",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "INVT_CONTROLLR",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "PURCH_OFFICER",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PURCH_OFFICER",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "ORIGIN_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ORIGIN_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "INVT_STAT_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "INVT_STAT_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "CLASS",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CLASS",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "EXP_ELEMENT",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "EXP_ELEMENT",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "PRICE_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PRICE_CODE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "INVENTORY_FLAG",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "INVENTORY_FLAG",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "CONSIGN_WS_IND",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CONSIGN_WS_IND",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "LAST_REC_DATE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "LAST_REC_DATE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "LAST_ISS_DATE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "LAST_ISS_DATE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "DUES_IN",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "DUES_IN",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "DUES_OUT",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "DUES_OUT",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "TOTAL_PICKED",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "TOTAL_PICKED",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "HOME_WHOUSE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "HOME_WHOUSE",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Ellipse170",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SqlEllipse170",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Copy_IMAFS_IMAF10H",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Copy_IMAFS_IMAF170",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink",
-								"writeBehavior": "insert",
-								"sqlWriterUseTableLock": false,
-								"disableMetricsCollection": false
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "STOCK_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "STOCK_CODE",
-											"type": "String",
-											"physicalType": "varchar"
-										}
-									},
-									{
-										"source": {
-											"name": "HIST_CHANGE_TYPE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "HIST_CHANGE_TYPE"
-										}
-									},
-									{
-										"source": {
-											"name": "HIST_DATA_TYPE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "HIST_DATA_TYPE"
-										}
-									},
-									{
-										"source": {
-											"name": "CHANGE_DATE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CHANGE_DATE"
-										}
-									},
-									{
-										"source": {
-											"name": "CHANGE_TIME",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CHANGE_TIME"
-										}
-									},
-									{
-										"source": {
-											"name": "NEW_CHARACTER",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "NEW_CHARACTER"
-										}
-									},
-									{
-										"source": {
-											"name": "OLD_CHARACTER",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "OLD_CHARACTER"
-										}
-									},
-									{
-										"source": {
-											"name": "NEW_NUMERIC",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "NEW_NUMERIC"
-										}
-									},
-									{
-										"source": {
-											"name": "OLD_NUMERIC",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "OLD_NUMERIC"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Ellipse10H",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SqlEllipse10H",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Copy Temp to No Temp",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Copy_IMAFS_IMAF10H",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[_CERREJON_COPY_ELLIPSE_TABLES]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdCerrejon",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Copy_IMAFS_IMAF1HD",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Copy_IMAFS_IMAF1E1",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink",
-								"writeBehavior": "insert",
-								"sqlWriterUseTableLock": false,
-								"disableMetricsCollection": false
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "HOLDING_ID",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "HOLDING_ID",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "STOCK_CODE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "STOCK_CODE",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "CUSTODIAN_ID",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CUSTODIAN_ID",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "STK_OWNERSHP_IND",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "STK_OWNERSHP_IND",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "HOLDING_TYPE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "HOLDING_TYPE",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "SOH",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "SOH",
-											"type": "String",
-											"physicalType": "String"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Ellipse_1HD",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SqlEllipse1HD",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Create Imp Suppliers",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Copy Temp to No Temp",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[_CERREJON_IMPORT_IMAFS_IMP_SUPPLIERS]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdCerrejon",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Create Imp Items",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Create Imp Suppliers",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[_CERREJON_IMPORT_IMAFS_IMP_ITEMS]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdCerrejon",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Create Imp DHP",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Create Imp Items",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[_CERREJON_IMPORT_IMAFS_IMP_DHP]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdCerrejon",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Create Imp LTH",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Create Imp DHP",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[_CERREJON_IMPORT_IMAFS_IMP_LTH]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdCerrejon",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Interface Items",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Create Imp LTH",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[Interface_ITEMS]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdCerrejon",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Export Items",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Interface Items",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[Interface_EXP_ITEMS]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdCerrejon",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Copy data from SQL export to SFTP",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Delete Cerrejon IMAFS_EXP_ITEMS",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"queryTimeout": "02:00:00",
-								"partitionOption": "None"
-							},
-							"sink": {
-								"type": "DelimitedTextSink",
-								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings"
-								},
-								"formatSettings": {
-									"type": "DelimitedTextWriteSettings",
-									"quoteAllText": true,
-									"fileExtension": ".txt"
-								}
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "ID",
-											"type": "Int64",
-											"physicalType": "bigint"
-										},
-										"sink": {
-											"name": "ID",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "ORGANIZATION_ID",
-											"type": "String",
-											"physicalType": "nvarchar"
-										},
-										"sink": {
-											"name": "ORGANIZATION_ID",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "warehouse_descrp",
-											"type": "String",
-											"physicalType": "nvarchar"
-										},
-										"sink": {
-											"name": "warehouse_descrp",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "INVENTORY_ITEM_ID",
-											"type": "String",
-											"physicalType": "nvarchar"
-										},
-										"sink": {
-											"name": "INVENTORY_ITEM_ID",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "ITEM_NUMBER",
-											"type": "String",
-											"physicalType": "nvarchar"
-										},
-										"sink": {
-											"name": "ITEM_NUMBER",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "CLASS",
-											"type": "String",
-											"physicalType": "nvarchar"
-										},
-										"sink": {
-											"name": "CLASS",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "CLASS_DESCRIPTION",
-											"type": "String",
-											"physicalType": "nvarchar"
-										},
-										"sink": {
-											"name": "CLASS_DESCRIPTION",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "CRITICALITY",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "CRITICALITY",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "CRITICALITY_DESCRIPTION",
-											"type": "String",
-											"physicalType": "nvarchar"
-										},
-										"sink": {
-											"name": "CRITICALITY_DESCRIPTION",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "SAFETY_STOCK",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "SAFETY_STOCK",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "CALCULATED_SS",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "CALCULATED_SS",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "MANUAL_SS",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "MANUAL_SS",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "MIN_MINMAX",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "MIN_MINMAX",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "CALCULATED_MIN",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "CALCULATED_MIN",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "MANUAL_MIN",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "MANUAL_MIN",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "MAX_MINMAX",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "MAX_MINMAX",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "CALCULATED_MAX",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "CALCULATED_MAX",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "MANUAL_MAX",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "MANUAL_MAX",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "LOT_SIZE",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "LOT_SIZE",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "NBR_PER_REORD",
-											"type": "Single",
-											"physicalType": "real"
-										},
-										"sink": {
-											"name": "NBR_PER_REORD",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "CALCULATED_LEAD_TIME",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "CALCULATED_LEAD_TIME",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "MANUAL_LEAD_TIME",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "MANUAL_LEAD_TIME",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "FINAL_CALCULATED_LEAD_TIME",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "FINAL_CALCULATED_LEAD_TIME",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "TOTAL_DELAY_TIME",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "TOTAL_DELAY_TIME",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "INTERNAL_DELAY",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "INTERNAL_DELAY",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "SEASONAL_PRODUCT",
-											"type": "Boolean",
-											"physicalType": "bit"
-										},
-										"sink": {
-											"name": "SEASONAL_PRODUCT",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "MONTHLY_FORECAST",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "MONTHLY_FORECAST",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "NB_MONTHS_WITH_USAGE",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "NB_MONTHS_WITH_USAGE",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "FORECAST_NEXT_12_MONTHS",
-											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 0,
-											"precision": 18
-										},
-										"sink": {
-											"name": "FORECAST_NEXT_12_MONTHS",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "MAD",
-											"type": "Single",
-											"physicalType": "real"
-										},
-										"sink": {
-											"name": "MAD",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "MAPE",
-											"type": "Single",
-											"physicalType": "real"
-										},
-										"sink": {
-											"name": "MAPE",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "LAST_UPDATE_DATE",
-											"type": "DateTime",
-											"physicalType": "datetime"
-										},
-										"sink": {
-											"name": "LAST_UPDATE_DATE",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "BATCH_NO",
-											"type": "String",
-											"physicalType": "nvarchar"
-										},
-										"sink": {
-											"name": "BATCH_NO",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "Intermittent",
-											"type": "Boolean",
-											"physicalType": "bit"
-										},
-										"sink": {
-											"name": "Intermittent",
-											"type": "String",
-											"physicalType": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "demand_multiple",
-											"type": "Int32",
-											"physicalType": "int"
-										},
-										"sink": {
-											"name": "demand_multiple",
-											"type": "String",
-											"physicalType": "String"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "SqlImafsExpItemsCerrejon",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "TXT_IMAFS_ITEMS_EXPORT",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Interface Items",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 1,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[QA_QS_ANALYSIS_DEMAND_0_12_MONTHS]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdCerrejon",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 1,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureProdCerrejon",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Delete Cerrejon IMAFS_EXP_ITEMS",
-						"type": "Delete",
-						"dependsOn": [
-							{
-								"activity": "Export Items",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataset": {
-								"referenceName": "CerrejonExportDaily",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"enableLogging": false,
-							"storeSettings": {
-								"type": "AzureBlobStorageReadSettings",
-								"recursive": true,
-								"enablePartitionDiscovery": false
-							}
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "Versions Old"
-				},
-				"annotations": [],
-				"lastPublishTime": "2023-04-20T19:13:03Z"
 			},
 			"dependsOn": []
 		}
