@@ -1,6 +1,12 @@
 {
 	"name": "IMAFS-DF-DEV",
 	"properties": {
+		"globalParameters": {
+			"LogicAppKeyVaultSecretUrl": {
+				"type": "string",
+				"value": "https://kv-imafs-cc-qa.vault.azure.net/secrets/IMAFSLogicAppURL/124149ed86c141f7a956025ce7f82daf"
+			}
+		},
 		"globalConfigurations": {
 			"PipelineBillingEnabled": "false"
 		}
