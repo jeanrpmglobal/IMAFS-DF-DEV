@@ -3057,7 +3057,7 @@
 				}
 			},
 			{
-				"name": "Send email error",
+				"name": "Send email error QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -3082,13 +3082,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon has completed with error  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Cerrejon  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon has completed with error  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Cerrejon  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email error_copy2_copy1_copy1_copy1_copy1",
+				"name": "Send email error Create Imp Suppliers",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -3113,13 +3113,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Cerrejon\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Cerrejon\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email error_copy2_copy1_copy1_copy1_copy2",
+				"name": "Send email error Copy Temp to No Temp",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -3144,13 +3144,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Cerrejon\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Cerrejon\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email error_copy2_copy1_copy1_copy1_copy1_copy1",
+				"name": "Send email error Create Imp Items",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -3175,13 +3175,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Cerrejon\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Cerrejon\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email error_copy2_copy1_copy1_copy1_copy1_copy2",
+				"name": "Send email error Create Imp LTH",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -3206,13 +3206,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Cerrejon\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Cerrejon\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email error_copy2_copy1_copy1_copy1_copy1_copy3",
+				"name": "Send email errorCreate Imp DHP",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -3237,13 +3237,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Cerrejon\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Cerrejon\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email error_copy4",
+				"name": "Send email error QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -3268,12 +3268,18 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon has completed with error - QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon has completed with error - QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\"\n}",
 						"type": "Expression"
 					}
 				}
 			}
 		],
+		"variables": {
+			"EmailsList": {
+				"type": "String",
+				"defaultValue": "jmichaud@rpmglobal.com;vpotvin@rpmglobal.com"
+			}
+		},
 		"folder": {
 			"name": "Interfaces"
 		},
