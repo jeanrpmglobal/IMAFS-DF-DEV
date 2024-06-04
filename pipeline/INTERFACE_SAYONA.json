@@ -104,7 +104,7 @@
 				}
 			},
 			{
-				"name": "Send email",
+				"name": "Send email QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -129,13 +129,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Sayona has completed with error  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Sayona  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Sayona has completed with error  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Sayona  QA_RP_CLASS_MATRIX_TABLE_PIVOT_VIEW\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy1",
+				"name": "Send email Interface_ITEMS",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -160,13 +160,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Sayona has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Sayona\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Sayona has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in Interface_ITEMS\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy2",
+				"name": "Send email Interface_EXP_ITEMS",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -191,13 +191,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Sayona has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Sayona\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Sayona has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in Interface_EXP_ITEMS\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy3",
+				"name": "Send email QA_QS_ANALYSIS_DEMAND_0_12_MONTHS",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -222,12 +222,18 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Sayona has completed with error  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Sayona  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Sayona has completed with error  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Sayona  QA_QS_ANALYSIS_DEMAND_0_12_MONTHS\"\n}",
 						"type": "Expression"
 					}
 				}
 			}
 		],
+		"variables": {
+			"EmailsList": {
+				"type": "String",
+				"defaultValue": "jmichaud@rpmglobal.com;vpotvin@rpmglobal.com"
+			}
+		},
 		"folder": {
 			"name": "Interfaces"
 		},

@@ -377,7 +377,7 @@
 				]
 			},
 			{
-				"name": "Copy LAF1",
+				"name": "Copy LFA1",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -432,7 +432,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Copy LAF1",
+						"activity": "Copy LFA1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -1069,7 +1069,7 @@
 				]
 			},
 			{
-				"name": "Send email",
+				"name": "Send Copy AUFK",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -1094,7 +1094,7 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
@@ -1151,7 +1151,7 @@
 				]
 			},
 			{
-				"name": "Send email_copy1",
+				"name": "Send email Copy EBAN DELTA",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -1176,13 +1176,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy2",
+				"name": "Send email Copy AUSP",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -1207,13 +1207,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy1_copy1",
+				"name": "Send email Copy EQUI",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -1238,13 +1238,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy1_copy2",
+				"name": "Send email Copy EKKO",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -1269,13 +1269,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy1_copy3",
+				"name": "Send email Copy EINA",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -1300,13 +1300,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy1_copy1_copy1",
+				"name": "Send email Copy T023T",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -1331,13 +1331,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy1_copy1_copy2",
+				"name": "Send email Copy MARC",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -1362,13 +1362,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy1_copy1_copy3",
+				"name": "Send email Copy MARA",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -1393,17 +1393,17 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy1_copy1_copy4",
+				"name": "Send email Copy LFA1",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
-						"activity": "Copy LAF1",
+						"activity": "Copy LFA1",
 						"dependencyConditions": [
 							"Failed"
 						]
@@ -1424,13 +1424,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy1_copy1_copy1_copy1",
+				"name": "Send email Copy RESB DELTA",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -1455,13 +1455,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy1_copy1_copy1_copy2",
+				"name": "Send email Copy MARD",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -1486,13 +1486,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy1_copy1_copy1_copy3",
+				"name": "Send email Copy TCURR",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -1517,13 +1517,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy1_copy1_copy1_copy4",
+				"name": "Send email Copy T025T",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -1548,13 +1548,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy1_copy1_copy1_copy1_copy1",
+				"name": "Send email Copy MBEW",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -1579,13 +1579,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy1_copy1_copy1_copy1_copy2",
+				"name": "Send email Copy AFIH",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -1610,13 +1610,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy1_copy1_copy1_copy1_copy3",
+				"name": "Send email Copy EINE",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -1641,13 +1641,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy1_copy1_copy1_copy1_copy1_copy1",
+				"name": "Send email Copy MKPF to MSEG DELTA",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -1672,13 +1672,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy1_copy1_copy1_copy1_copy1_copy2",
+				"name": "Send email Copy EKPO DELTA",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -1703,7 +1703,7 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in the interface Amman\"\n}",
 						"type": "Expression"
 					}
 				}
@@ -2465,6 +2465,12 @@
 				]
 			}
 		],
+		"variables": {
+			"EmailsList": {
+				"type": "String",
+				"defaultValue": "jmichaud@rpmglobal.com;vpotvin@rpmglobal.com"
+			}
+		},
 		"folder": {
 			"name": "Interfaces"
 		},
