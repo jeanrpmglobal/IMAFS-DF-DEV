@@ -23,7 +23,7 @@
 				}
 			},
 			{
-				"name": "Send email",
+				"name": "Send email Import DHP",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
