@@ -55,14 +55,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'API_Amman_PROD_EKET'"
 		},
-		"API_Amman_PROD_EKKO_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'API_Amman_PROD_EKKO'"
-		},
-		"API_Amman_PROD_EKPO 2021_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'API_Amman_PROD_EKPO 2021'"
-		},
 		"API_Amman_PROD_AFIH_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=afih"
@@ -156,22 +148,6 @@
 			"defaultValue": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=eket&ebeln="
 		},
 		"API_Amman_PROD_EKET_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "SCP-USER"
-		},
-		"API_Amman_PROD_EKKO_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=ekko"
-		},
-		"API_Amman_PROD_EKKO_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "SCP-USER"
-		},
-		"API_Amman_PROD_EKPO 2021_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://metamorphosis.amman.co.id/zimafs/imafs?sap-client=300&table=ekpo&datefrom=20210101&dateto=20211231"
-		},
-		"API_Amman_PROD_EKPO 2021_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "SCP-USER"
 		}
@@ -359,7 +335,7 @@
 							"method": "GET",
 							"headers": {},
 							"url": {
-								"value": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+								"value": "@concat(pipeline().globalParameters.LogicAppKeyVaultSecretUrl,\n'?api-version=7.0'\n)",
 								"type": "Expression"
 							},
 							"authentication": {
@@ -484,7 +460,7 @@
 							"method": "GET",
 							"headers": {},
 							"url": {
-								"value": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+								"value": "@concat(pipeline().globalParameters.LogicAppKeyVaultSecretUrl,\n'?api-version=7.0'\n)",
 								"type": "Expression"
 							},
 							"authentication": {
@@ -513,6 +489,119 @@
 				},
 				"annotations": [],
 				"lastPublishTime": "2024-03-12T15:59:06Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Test_Keyvault_access')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Get Logic App URL from Key Vault",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": true,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "GET",
+							"headers": {},
+							"url": {
+								"value": "@concat(pipeline().globalParameters.LogicAppKeyVaultSecretUrl,\n'?api-version=7.0'\n)",
+								"type": "Expression"
+							},
+							"authentication": {
+								"type": "MSI",
+								"resource": "https://vault.azure.net"
+							}
+						}
+					},
+					{
+						"name": "Send email_copy1",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Coeur has completed with error - Interface_ITEMS\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in Interface_ITEMS\"\n}",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Test_Other')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Send email _AMMAN_DAILY_IMPORT_SAP_TABLES",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+							"body": {
+								"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error - _AMMAN_DAILY_IMPORT_SAP_TABLES\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in _AMMAN_DAILY_IMPORT_SAP_TABLES\"\n}",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"variables": {
+					"EmailsList": {
+						"type": "String",
+						"defaultValue": "jmichaud@rpmglobal.com;vpotvin@rpmglobal.com"
+					}
+				},
+				"folder": {
+					"name": "Tests"
+				},
+				"annotations": []
 			},
 			"dependsOn": []
 		},
@@ -757,46 +846,6 @@
 					"password": {
 						"type": "SecureString",
 						"value": "[parameters('API_Amman_PROD_EKET_password')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_EKKO')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "RestService",
-				"typeProperties": {
-					"url": "[parameters('API_Amman_PROD_EKKO_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": true,
-					"authenticationType": "Basic",
-					"userName": "[parameters('API_Amman_PROD_EKKO_properties_typeProperties_userName')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('API_Amman_PROD_EKKO_password')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/API_Amman_PROD_EKPO 2021')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "RestService",
-				"typeProperties": {
-					"url": "[parameters('API_Amman_PROD_EKPO 2021_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": true,
-					"authenticationType": "Basic",
-					"userName": "[parameters('API_Amman_PROD_EKPO 2021_properties_typeProperties_userName')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('API_Amman_PROD_EKPO 2021_password')]"
 					}
 				}
 			},

@@ -13,6 +13,50 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDev_Amt_AI_Task_Operations')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDevAMT_AI",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "AMT_AI"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Operations"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDev_Amt_AI_Tasks_Lists')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDevAMT_AI",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "AMT_AI"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "TasksLists"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AzureSql_Test_Nam_IMAFS_IMP_DHP')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -869,84 +913,6 @@
 					"location": {
 						"type": "AzureBlobStorageLocation",
 						"fileName": "EBAN_0.json",
-						"folderPath": "import",
-						"container": "root"
-					}
-				},
-				"schema": {
-					"type": "object",
-					"properties": {
-						"AUFNR": {
-							"type": "string"
-						},
-						"KTEXT": {
-							"type": "string"
-						},
-						"AUART": {
-							"type": "string"
-						}
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Blob_Amman_EINA')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobAmman",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Amman/Blob"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "EINA_0.json",
-						"folderPath": "import",
-						"container": "root"
-					}
-				},
-				"schema": {
-					"type": "object",
-					"properties": {
-						"AUFNR": {
-							"type": "string"
-						},
-						"KTEXT": {
-							"type": "string"
-						},
-						"AUART": {
-							"type": "string"
-						}
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Blob_Amman_EINE')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobAmman",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Amman/Blob"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "EINE_0.json",
 						"folderPath": "import",
 						"container": "root"
 					}

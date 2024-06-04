@@ -7,6 +7,14 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "IMAFS-DF-DEV"
 		},
+		"AzureDevIMAFS_CANROY_JAN_2024_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureDevIMAFS_CANROY_JAN_2024'"
+		},
+		"AzureDevIMAFS_STATS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureDevIMAFS_STATS'"
+		},
 		"AzureDevIOC_after_ME_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureDevIOC_after_ME'"
@@ -75,14 +83,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureProdVegPro'"
 		},
-		"AzureProdVegPro2_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdVegPro2'"
-		},
-		"AzureQAAmman_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureQAAmman'"
-		},
 		"AzureKeyVaultIMAFS_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://IMAFS-KEYVAULT.vault.azure.net/"
@@ -92,6 +92,32 @@
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDevIMAFS_CANROY_JAN_2024')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureDevIMAFS_CANROY_JAN_2024_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDevIMAFS_STATS')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureDevIMAFS_STATS_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/AzureDevIOC_after_ME')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
@@ -332,32 +358,6 @@
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
 					"connectionString": "[parameters('AzureProdVegPro_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdVegPro2')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdVegPro2_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureQAAmman')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureQAAmman_connectionString')]"
 				}
 			},
 			"dependsOn": []

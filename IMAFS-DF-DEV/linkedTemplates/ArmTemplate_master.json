@@ -1039,12 +1039,6 @@
 					"API_Amman_PROD_EKET_password": {
 						"value": "[parameters('API_Amman_PROD_EKET_password')]"
 					},
-					"API_Amman_PROD_EKKO_password": {
-						"value": "[parameters('API_Amman_PROD_EKKO_password')]"
-					},
-					"API_Amman_PROD_EKPO 2021_password": {
-						"value": "[parameters('API_Amman_PROD_EKPO 2021_password')]"
-					},
 					"API_Amman_PROD_AFIH_properties_typeProperties_url": {
 						"value": "[parameters('API_Amman_PROD_AFIH_properties_typeProperties_url')]"
 					},
@@ -1116,18 +1110,6 @@
 					},
 					"API_Amman_PROD_EKET_properties_typeProperties_userName": {
 						"value": "[parameters('API_Amman_PROD_EKET_properties_typeProperties_userName')]"
-					},
-					"API_Amman_PROD_EKKO_properties_typeProperties_url": {
-						"value": "[parameters('API_Amman_PROD_EKKO_properties_typeProperties_url')]"
-					},
-					"API_Amman_PROD_EKKO_properties_typeProperties_userName": {
-						"value": "[parameters('API_Amman_PROD_EKKO_properties_typeProperties_userName')]"
-					},
-					"API_Amman_PROD_EKPO 2021_properties_typeProperties_url": {
-						"value": "[parameters('API_Amman_PROD_EKPO 2021_properties_typeProperties_url')]"
-					},
-					"API_Amman_PROD_EKPO 2021_properties_typeProperties_userName": {
-						"value": "[parameters('API_Amman_PROD_EKPO 2021_properties_typeProperties_userName')]"
 					}
 				}
 			},
@@ -1146,6 +1128,12 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"API_Amman_PROD_EKKO_password": {
+						"value": "[parameters('API_Amman_PROD_EKKO_password')]"
+					},
+					"API_Amman_PROD_EKPO 2021_password": {
+						"value": "[parameters('API_Amman_PROD_EKPO 2021_password')]"
 					},
 					"API_Amman_PROD_EKPO 2022 1_password": {
 						"value": "[parameters('API_Amman_PROD_EKPO 2022 1_password')]"
@@ -1201,11 +1189,17 @@
 					"API_Amman_PROD_MARD 2021 4_password": {
 						"value": "[parameters('API_Amman_PROD_MARD 2021 4_password')]"
 					},
-					"API_Amman_PROD_MARD 2022_password": {
-						"value": "[parameters('API_Amman_PROD_MARD 2022_password')]"
+					"API_Amman_PROD_EKKO_properties_typeProperties_url": {
+						"value": "[parameters('API_Amman_PROD_EKKO_properties_typeProperties_url')]"
 					},
-					"API_Amman_PROD_MARD 2023_password": {
-						"value": "[parameters('API_Amman_PROD_MARD 2023_password')]"
+					"API_Amman_PROD_EKKO_properties_typeProperties_userName": {
+						"value": "[parameters('API_Amman_PROD_EKKO_properties_typeProperties_userName')]"
+					},
+					"API_Amman_PROD_EKPO 2021_properties_typeProperties_url": {
+						"value": "[parameters('API_Amman_PROD_EKPO 2021_properties_typeProperties_url')]"
+					},
+					"API_Amman_PROD_EKPO 2021_properties_typeProperties_userName": {
+						"value": "[parameters('API_Amman_PROD_EKPO 2021_properties_typeProperties_userName')]"
 					},
 					"API_Amman_PROD_EKPO 2022 1_properties_typeProperties_url": {
 						"value": "[parameters('API_Amman_PROD_EKPO 2022 1_properties_typeProperties_url')]"
@@ -1314,18 +1308,6 @@
 					},
 					"API_Amman_PROD_MARD 2021 4_properties_typeProperties_userName": {
 						"value": "[parameters('API_Amman_PROD_MARD 2021 4_properties_typeProperties_userName')]"
-					},
-					"API_Amman_PROD_MARD 2022_properties_typeProperties_url": {
-						"value": "[parameters('API_Amman_PROD_MARD 2022_properties_typeProperties_url')]"
-					},
-					"API_Amman_PROD_MARD 2022_properties_typeProperties_userName": {
-						"value": "[parameters('API_Amman_PROD_MARD 2022_properties_typeProperties_userName')]"
-					},
-					"API_Amman_PROD_MARD 2023_properties_typeProperties_url": {
-						"value": "[parameters('API_Amman_PROD_MARD 2023_properties_typeProperties_url')]"
-					},
-					"API_Amman_PROD_MARD 2023_properties_typeProperties_userName": {
-						"value": "[parameters('API_Amman_PROD_MARD 2023_properties_typeProperties_userName')]"
 					}
 				}
 			},
@@ -1346,6 +1328,12 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"API_Amman_PROD_MARD 2022_password": {
+						"value": "[parameters('API_Amman_PROD_MARD 2022_password')]"
+					},
+					"API_Amman_PROD_MARD 2023_password": {
+						"value": "[parameters('API_Amman_PROD_MARD 2023_password')]"
 					},
 					"API_Amman_PROD_MARD_password": {
 						"value": "[parameters('API_Amman_PROD_MARD_password')]"
@@ -1401,11 +1389,17 @@
 					"API_Amman_PROD_MKPF_password": {
 						"value": "[parameters('API_Amman_PROD_MKPF_password')]"
 					},
-					"API_Amman_PROD_MSEG_password": {
-						"value": "[parameters('API_Amman_PROD_MSEG_password')]"
+					"API_Amman_PROD_MARD 2022_properties_typeProperties_url": {
+						"value": "[parameters('API_Amman_PROD_MARD 2022_properties_typeProperties_url')]"
 					},
-					"API_Amman_PROD_RESB 2021_password": {
-						"value": "[parameters('API_Amman_PROD_RESB 2021_password')]"
+					"API_Amman_PROD_MARD 2022_properties_typeProperties_userName": {
+						"value": "[parameters('API_Amman_PROD_MARD 2022_properties_typeProperties_userName')]"
+					},
+					"API_Amman_PROD_MARD 2023_properties_typeProperties_url": {
+						"value": "[parameters('API_Amman_PROD_MARD 2023_properties_typeProperties_url')]"
+					},
+					"API_Amman_PROD_MARD 2023_properties_typeProperties_userName": {
+						"value": "[parameters('API_Amman_PROD_MARD 2023_properties_typeProperties_userName')]"
 					},
 					"API_Amman_PROD_MARD_properties_typeProperties_url": {
 						"value": "[parameters('API_Amman_PROD_MARD_properties_typeProperties_url')]"
@@ -1514,18 +1508,6 @@
 					},
 					"API_Amman_PROD_MKPF_properties_typeProperties_userName": {
 						"value": "[parameters('API_Amman_PROD_MKPF_properties_typeProperties_userName')]"
-					},
-					"API_Amman_PROD_MSEG_properties_typeProperties_url": {
-						"value": "[parameters('API_Amman_PROD_MSEG_properties_typeProperties_url')]"
-					},
-					"API_Amman_PROD_MSEG_properties_typeProperties_userName": {
-						"value": "[parameters('API_Amman_PROD_MSEG_properties_typeProperties_userName')]"
-					},
-					"API_Amman_PROD_RESB 2021_properties_typeProperties_url": {
-						"value": "[parameters('API_Amman_PROD_RESB 2021_properties_typeProperties_url')]"
-					},
-					"API_Amman_PROD_RESB 2021_properties_typeProperties_userName": {
-						"value": "[parameters('API_Amman_PROD_RESB 2021_properties_typeProperties_userName')]"
 					}
 				}
 			},
@@ -1546,6 +1528,12 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"API_Amman_PROD_MSEG_password": {
+						"value": "[parameters('API_Amman_PROD_MSEG_password')]"
+					},
+					"API_Amman_PROD_RESB 2021_password": {
+						"value": "[parameters('API_Amman_PROD_RESB 2021_password')]"
 					},
 					"API_Amman_PROD_RESB 2022_password": {
 						"value": "[parameters('API_Amman_PROD_RESB 2022_password')]"
@@ -1601,11 +1589,17 @@
 					"AzureDevDemo_connectionString": {
 						"value": "[parameters('AzureDevDemo_connectionString')]"
 					},
-					"AzureDevIMAFS_CANROY_JAN_2024_connectionString": {
-						"value": "[parameters('AzureDevIMAFS_CANROY_JAN_2024_connectionString')]"
+					"API_Amman_PROD_MSEG_properties_typeProperties_url": {
+						"value": "[parameters('API_Amman_PROD_MSEG_properties_typeProperties_url')]"
 					},
-					"AzureDevIMAFS_STATS_connectionString": {
-						"value": "[parameters('AzureDevIMAFS_STATS_connectionString')]"
+					"API_Amman_PROD_MSEG_properties_typeProperties_userName": {
+						"value": "[parameters('API_Amman_PROD_MSEG_properties_typeProperties_userName')]"
+					},
+					"API_Amman_PROD_RESB 2021_properties_typeProperties_url": {
+						"value": "[parameters('API_Amman_PROD_RESB 2021_properties_typeProperties_url')]"
+					},
+					"API_Amman_PROD_RESB 2021_properties_typeProperties_userName": {
+						"value": "[parameters('API_Amman_PROD_RESB 2021_properties_typeProperties_userName')]"
 					},
 					"API_Amman_PROD_RESB 2022_properties_typeProperties_url": {
 						"value": "[parameters('API_Amman_PROD_RESB 2022_properties_typeProperties_url')]"
@@ -1675,6 +1669,12 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"AzureDevIMAFS_CANROY_JAN_2024_connectionString": {
+						"value": "[parameters('AzureDevIMAFS_CANROY_JAN_2024_connectionString')]"
+					},
+					"AzureDevIMAFS_STATS_connectionString": {
+						"value": "[parameters('AzureDevIMAFS_STATS_connectionString')]"
+					},
 					"AzureDevIOC_after_ME_connectionString": {
 						"value": "[parameters('AzureDevIOC_after_ME_connectionString')]"
 					},
@@ -1726,12 +1726,6 @@
 					"AzureProdVegPro_connectionString": {
 						"value": "[parameters('AzureProdVegPro_connectionString')]"
 					},
-					"AzureProdVegPro2_connectionString": {
-						"value": "[parameters('AzureProdVegPro2_connectionString')]"
-					},
-					"AzureQAAmman_connectionString": {
-						"value": "[parameters('AzureQAAmman_connectionString')]"
-					},
 					"AzureKeyVaultIMAFS_properties_typeProperties_baseUrl": {
 						"value": "[parameters('AzureKeyVaultIMAFS_properties_typeProperties_baseUrl')]"
 					}
@@ -1754,6 +1748,12 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"AzureProdVegPro2_connectionString": {
+						"value": "[parameters('AzureProdVegPro2_connectionString')]"
+					},
+					"AzureQAAmman_connectionString": {
+						"value": "[parameters('AzureQAAmman_connectionString')]"
 					},
 					"AzureQACerrejon_connectionString": {
 						"value": "[parameters('AzureQACerrejon_connectionString')]"
@@ -1806,9 +1806,6 @@
 					"SQL_PROD_MTL_connectionString": {
 						"value": "[parameters('SQL_PROD_MTL_connectionString')]"
 					},
-					"SynapseSQLPool1_connectionString": {
-						"value": "[parameters('SynapseSQLPool1_connectionString')]"
-					},
 					"DatabricksTrial_properties_typeProperties_existingClusterId": {
 						"value": "[parameters('DatabricksTrial_properties_typeProperties_existingClusterId')]"
 					},
@@ -1820,9 +1817,6 @@
 					},
 					"SFTP_IOC_properties_typeProperties_userName": {
 						"value": "[parameters('SFTP_IOC_properties_typeProperties_userName')]"
-					},
-					"Test_API_properties_typeProperties_url": {
-						"value": "[parameters('Test_API_properties_typeProperties_url')]"
 					}
 				}
 			},
@@ -1844,8 +1838,14 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"SynapseSQLPool1_connectionString": {
+						"value": "[parameters('SynapseSQLPool1_connectionString')]"
+					},
 					"linkedServiceBlobStorageGeneral_connectionString": {
 						"value": "[parameters('linkedServiceBlobStorageGeneral_connectionString')]"
+					},
+					"Test_API_properties_typeProperties_url": {
+						"value": "[parameters('Test_API_properties_typeProperties_url')]"
 					}
 				}
 			},
