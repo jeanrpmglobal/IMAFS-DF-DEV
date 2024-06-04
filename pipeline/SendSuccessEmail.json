@@ -51,7 +51,7 @@
 				"typeProperties": {
 					"method": "GET",
 					"url": {
-						"value": "@concat(pipeline().globalParameters.LogicAppKeyVaultSecretUrl,\n'?api-version=7.0'\n)",
+						"value": "@concat(pipeline().globalParameters.LogicAppKeyVaultSecretUrl,\n'?api-version=7.0')",
 						"type": "Expression"
 					},
 					"authentication": {
