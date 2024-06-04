@@ -3,15 +3,22 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Send email _AMMAN_DAILY_IMPORT_SAP_TABLES",
+				"name": "Send Email On Pipeline Success",
 				"type": "WebActivity",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Get Logic App URL from Key Vault",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
-					"secureInput": false
+					"secureInput": true
 				},
 				"userProperties": [],
 				"typeProperties": {
@@ -19,10 +26,37 @@
 					"headers": {
 						"Content-Type": "application/json"
 					},
-					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
-					"body": {
-						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error - _AMMAN_DAILY_IMPORT_SAP_TABLES\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in _AMMAN_DAILY_IMPORT_SAP_TABLES\"\n}",
+					"url": {
+						"value": "@activity('Get Logic App URL from Key Vault').output.value",
 						"type": "Expression"
+					},
+					"body": {
+						"value": "{\n    \"EmailTo\": \"@{pipeline().parameters.EmailTo}\",\n    \"Subject\": \"@{pipeline().parameters.ParentPipelineName} has completed for @{pipeline().parameters.CustomerName}\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().parameters.ParentPipelineName}\",\n    \"ActivityName\": \"Send Email On Pipeline Success\",\n    \"Message\": \"The pipeline (@{pipeline().RunId}) was executed successfully\"\n}",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Get Logic App URL from Key Vault",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": true,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "GET",
+					"url": {
+						"value": "@concat(pipeline().globalParameters.LogicAppKeyVaultSecretUrl,\n'?api-version=7.0'\n)",
+						"type": "Expression"
+					},
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
 					}
 				}
 			}
