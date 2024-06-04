@@ -158,7 +158,7 @@
 				}
 			},
 			{
-				"name": "Send email",
+				"name": "Send email QU_IMAFS_IMP_AMT_TEMP",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -183,13 +183,13 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon AMT has completed with error - QU_IMAFS_IMP_AMT_TEMP\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QU_IMAFS_IMP_AMT_TEMP\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon AMT has completed with error - QU_IMAFS_IMP_AMT_TEMP\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QU_IMAFS_IMP_AMT_TEMP\"\n}",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Send email_copy1",
+				"name": "Send email Copy AMT CSV file to IMAFS",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -214,12 +214,18 @@
 					},
 					"url": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
 					"body": {
-						"value": "{\n    \"EmailTo\": \"jmichaud@rpmglobal.com;vpotvin@rpmglobal.com\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon AMT has completed with error - QU_IMAFS_IMP_AMT_TEMP\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QU_IMAFS_IMP_AMT_TEMP\"\n}",
+						"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Cerrejon AMT has completed with error - QU_IMAFS_IMP_AMT_TEMP\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in QU_IMAFS_IMP_AMT_TEMP\"\n}",
 						"type": "Expression"
 					}
 				}
 			}
 		],
+		"variables": {
+			"EmailsList": {
+				"type": "String",
+				"defaultValue": "jmichaud@rpmglobal.com;vpotvin@rpmglobal.com"
+			}
+		},
 		"folder": {
 			"name": "Interfaces"
 		},
