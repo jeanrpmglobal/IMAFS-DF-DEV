@@ -51,7 +51,7 @@
 				"typeProperties": {
 					"method": "GET",
 					"url": {
-						"value": "https://prod2-29.australiaeast.logic.azure.com:443/workflows/be6d6087b8fe4cc6a760eaa8afce4c69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XmDynxc0o1j0l2w3e4tb95kp7xV1TEHECC4IcCscgmg",
+						"value": "@concat(pipeline().globalParameters.LogicAppKeyVaultSecretUrl,\n'?api-version=7.0'\n)",
 						"type": "Expression"
 					},
 					"authentication": {
