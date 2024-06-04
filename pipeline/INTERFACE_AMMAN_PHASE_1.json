@@ -377,7 +377,7 @@
 				]
 			},
 			{
-				"name": "Copy LAF1",
+				"name": "Copy LFA1",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -432,7 +432,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Copy LAF1",
+						"activity": "Copy LFA1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -1403,7 +1403,7 @@
 				"type": "WebActivity",
 				"dependsOn": [
 					{
-						"activity": "Copy LAF1",
+						"activity": "Copy LFA1",
 						"dependencyConditions": [
 							"Failed"
 						]
