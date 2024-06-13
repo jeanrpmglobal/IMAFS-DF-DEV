@@ -1,0 +1,18 @@
+{
+	"name": "AzureSqlCoeur_QA_NT",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "sql-svr-imafs-ss-qa.database.windows.net",
+			"database": "sqldb-coeur-imafs-qa",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"hostNameInCertificate": "",
+			"authenticationType": "SQL",
+			"userName": "IMAFSQATempAdmin ",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDY1MEJGNzIzLUZDNjAtNDk1Ri05QTU4LTY4OUNDOTMxOTUwQ18wNDRmYmRjNC0yMDFlLTRlYWEtOGVmNy1kYmI5ZDhjZDg2ZjMiDQp9"
+		}
+	}
+}
