@@ -330,7 +330,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureProdAmman",
+					"referenceName": "AzureSqlCoeur_PR_NT",
 					"type": "LinkedServiceReference"
 				}
 			}
