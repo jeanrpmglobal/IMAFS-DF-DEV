@@ -1,0 +1,37 @@
+{
+	"name": "Test_Other_2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Run Amman SQL Maintenance Job",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[AzureSQLMaintenance]",
+					"storedProcedureParameters": {
+						"operation": {
+							"value": "ALL",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlCoeur_PR_NT",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Tests"
+		},
+		"annotations": []
+	}
+}
