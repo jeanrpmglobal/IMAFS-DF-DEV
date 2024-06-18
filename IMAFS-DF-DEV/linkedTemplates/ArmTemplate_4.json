@@ -79,13 +79,13 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureProdSTO'"
 		},
-		"AzureProdVegPro_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureProdVegPro'"
-		},
 		"AzureKeyVaultIMAFS_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://IMAFS-KEYVAULT.vault.azure.net/"
+		},
+		"AzureKeyVaultIMAFSDev_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://IMAFS-Dev-Key-Vault.vault.azure.net/"
 		}
 	},
 	"variables": {
@@ -220,6 +220,19 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureKeyVaultIMAFSDev')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('AzureKeyVaultIMAFSDev_properties_typeProperties_baseUrl')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AzureProdAmman')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -345,19 +358,6 @@
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
 					"connectionString": "[parameters('AzureProdSTO_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureProdVegPro')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureProdVegPro_connectionString')]"
 				}
 			},
 			"dependsOn": []

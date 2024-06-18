@@ -13,6 +13,53 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/SqlAMTImport_Amman')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSQLAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/SQL"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ORGANIZATION_ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "WAREHOUSE_DESCRP",
+						"type": "nvarchar"
+					},
+					{
+						"name": "INVENTORY_ITEM_ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FORECAST_MONTH",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FORECAST_QTY",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "IMAFS_IMP_AMT_FORECAST_TEMP"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/SqlAMTImport_PROD_Amman')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -1095,28 +1142,6 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "AzureProdCerrejon",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "_ELLIPSE_MSF200_TEMP"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlEllipse200_QA')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureQACerrejon",
 					"type": "LinkedServiceReference"
 				},
 				"folder": {

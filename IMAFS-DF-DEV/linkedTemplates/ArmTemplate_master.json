@@ -956,6 +956,10 @@
 			"type": "string",
 			"defaultValue": "https://IMAFS-KEYVAULT.vault.azure.net/"
 		},
+		"AzureKeyVaultIMAFSDev_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://IMAFS-Dev-Key-Vault.vault.azure.net/"
+		},
 		"DatabricksTrial_properties_typeProperties_existingClusterId": {
 			"type": "string",
 			"defaultValue": "0130-184436-ylsbtzwy"
@@ -1723,11 +1727,11 @@
 					"AzureProdSTO_connectionString": {
 						"value": "[parameters('AzureProdSTO_connectionString')]"
 					},
-					"AzureProdVegPro_connectionString": {
-						"value": "[parameters('AzureProdVegPro_connectionString')]"
-					},
 					"AzureKeyVaultIMAFS_properties_typeProperties_baseUrl": {
 						"value": "[parameters('AzureKeyVaultIMAFS_properties_typeProperties_baseUrl')]"
+					},
+					"AzureKeyVaultIMAFSDev_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVaultIMAFSDev_properties_typeProperties_baseUrl')]"
 					}
 				}
 			},
@@ -1748,6 +1752,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"AzureProdVegPro_connectionString": {
+						"value": "[parameters('AzureProdVegPro_connectionString')]"
 					},
 					"AzureProdVegPro2_connectionString": {
 						"value": "[parameters('AzureProdVegPro2_connectionString')]"
@@ -1803,9 +1810,6 @@
 					"SFTP_IOC_password": {
 						"value": "[parameters('SFTP_IOC_password')]"
 					},
-					"SQL_PROD_MTL_connectionString": {
-						"value": "[parameters('SQL_PROD_MTL_connectionString')]"
-					},
 					"DatabricksTrial_properties_typeProperties_existingClusterId": {
 						"value": "[parameters('DatabricksTrial_properties_typeProperties_existingClusterId')]"
 					},
@@ -1837,6 +1841,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"SQL_PROD_MTL_connectionString": {
+						"value": "[parameters('SQL_PROD_MTL_connectionString')]"
 					},
 					"SynapseSQLPool1_connectionString": {
 						"value": "[parameters('SynapseSQLPool1_connectionString')]"

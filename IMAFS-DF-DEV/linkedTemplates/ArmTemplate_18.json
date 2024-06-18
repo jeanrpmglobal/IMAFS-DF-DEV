@@ -13,6 +13,45 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/SQL_Arima_Forecast_Qty_Dev')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDev_IMAFS_AI_STORAGE",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Others"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "unique_id",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "ds",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "AutoARIMA",
+						"type": "real",
+						"precision": 7
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "FORECAST_RESULT_ARIMA_QTY"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/SQL_Arima_Qty_Prod_MTL')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -1604,41 +1643,6 @@
 				"typeProperties": {
 					"schema": "dbo",
 					"table": "_SAP_AFIH"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SQL_SAP_AUFK_AMMAN')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureSQLAmman",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Amman/SQL"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "AUFNR",
-						"type": "varchar"
-					},
-					{
-						"name": "KTEXT",
-						"type": "varchar"
-					},
-					{
-						"name": "AUART",
-						"type": "varchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "_SAP_AUFK"
 				}
 			},
 			"dependsOn": []

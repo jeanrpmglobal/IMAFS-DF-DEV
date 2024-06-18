@@ -13,6 +13,45 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Amman_TCURR')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/Blob"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "TCURR_0.json",
+						"folderPath": "import",
+						"container": "root"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"AUFNR": {
+							"type": "string"
+						},
+						"KTEXT": {
+							"type": "string"
+						},
+						"AUART": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Blob_Arima_Forecast_Qty_Export')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -869,40 +908,6 @@
 					"location": {
 						"type": "AzureBlobStorageLocation",
 						"fileName": "IMAFS_IMAF200.TXT",
-						"folderPath": "import",
-						"container": "root"
-					},
-					"columnDelimiter": "\t",
-					"escapeChar": "",
-					"firstRowAsHeader": true,
-					"quoteChar": ""
-				},
-				"schema": [
-					{
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Ellipse210')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobCerrejonBlob",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Ellipse"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IMAFS_IMAF210.TXT",
 						"folderPath": "import",
 						"container": "root"
 					},

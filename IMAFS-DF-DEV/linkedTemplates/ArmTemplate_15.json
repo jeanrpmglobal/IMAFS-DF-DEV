@@ -13,6 +13,45 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/Blob_Amman_EBAN')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobAmman",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Amman/Blob"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "EBAN_0.json",
+						"folderPath": "import",
+						"container": "root"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"AUFNR": {
+							"type": "string"
+						},
+						"KTEXT": {
+							"type": "string"
+						},
+						"AUART": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Blob_Amman_EINA')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -730,45 +769,6 @@
 					"location": {
 						"type": "AzureBlobStorageLocation",
 						"fileName": "T025T_0.json",
-						"folderPath": "import",
-						"container": "root"
-					}
-				},
-				"schema": {
-					"type": "object",
-					"properties": {
-						"AUFNR": {
-							"type": "string"
-						},
-						"KTEXT": {
-							"type": "string"
-						},
-						"AUART": {
-							"type": "string"
-						}
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Blob_Amman_TCURR')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobAmman",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Amman/Blob"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "TCURR_0.json",
 						"folderPath": "import",
 						"container": "root"
 					}

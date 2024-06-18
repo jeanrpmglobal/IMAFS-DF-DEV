@@ -716,6 +716,9 @@
 		"AzureKeyVaultIMAFS_properties_typeProperties_baseUrl": {
 			"value": "https://IMAFS-KEYVAULT.vault.azure.net/"
 		},
+		"AzureKeyVaultIMAFSDev_properties_typeProperties_baseUrl": {
+			"value": "https://IMAFS-Dev-Key-Vault.vault.azure.net/"
+		},
 		"DatabricksTrial_properties_typeProperties_existingClusterId": {
 			"value": "0130-184436-ylsbtzwy"
 		},

@@ -13,6 +13,28 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDev_Amt_AI_Task')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDevAMT_AI",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "AMT_AI"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Tasks"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AzureSqlDev_Amt_AI_Task_Operations')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -874,45 +896,6 @@
 					"location": {
 						"type": "AzureBlobStorageLocation",
 						"fileName": "AUSP_0.json",
-						"folderPath": "import",
-						"container": "root"
-					}
-				},
-				"schema": {
-					"type": "object",
-					"properties": {
-						"AUFNR": {
-							"type": "string"
-						},
-						"KTEXT": {
-							"type": "string"
-						},
-						"AUART": {
-							"type": "string"
-						}
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Blob_Amman_EBAN')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobAmman",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Amman/Blob"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "EBAN_0.json",
 						"folderPath": "import",
 						"container": "root"
 					}

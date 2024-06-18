@@ -567,7 +567,14 @@
 					{
 						"name": "Send email _AMMAN_DAILY_IMPORT_SAP_TABLES",
 						"type": "WebActivity",
-						"dependsOn": [],
+						"dependsOn": [
+							{
+								"activity": "Get Logic App URL from Key Vault",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
 						"policy": {
 							"timeout": "0.12:00:00",
 							"retry": 0,
@@ -585,6 +592,31 @@
 							"body": {
 								"value": "{\n    \"EmailTo\": \"@{variables('EmailsList')}\",\n    \"Subject\": \"@{pipeline().Pipeline} Interface Amman has completed with error - _AMMAN_DAILY_IMPORT_SAP_TABLES\",\n    \"FactoryName\": \"@{pipeline().DataFactory}\",\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"ActivityName\": \"Send Email On Error\",\n    \"Message\": \"Error in _AMMAN_DAILY_IMPORT_SAP_TABLES\"\n}",
 								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Get Logic App URL from Key Vault",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": true,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "GET",
+							"headers": {},
+							"url": {
+								"value": "@concat(pipeline().globalParameters.LogicAppKeyVaultSecretUrl,\n'?api-version=7.0'\n)",
+								"type": "Expression"
+							},
+							"authentication": {
+								"type": "MSI",
+								"resource": "https://vault.azure.net"
 							}
 						}
 					}

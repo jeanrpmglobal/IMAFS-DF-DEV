@@ -13,6 +13,40 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/Ellipse210')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobCerrejonBlob",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Ellipse"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IMAFS_IMAF210.TXT",
+						"folderPath": "import",
+						"container": "root"
+					},
+					"columnDelimiter": "\t",
+					"escapeChar": "",
+					"firstRowAsHeader": true,
+					"quoteChar": ""
+				},
+				"schema": [
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Ellipse220')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -640,45 +674,6 @@
 						"fileName": "tblimport.accdb",
 						"folderPath": "/Home/imafs"
 					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SQL_Arima_Forecast_Qty_Dev')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDev_IMAFS_AI_STORAGE",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Others"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "unique_id",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "ds",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "AutoARIMA",
-						"type": "real",
-						"precision": 7
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "FORECAST_RESULT_ARIMA_QTY"
 				}
 			},
 			"dependsOn": []

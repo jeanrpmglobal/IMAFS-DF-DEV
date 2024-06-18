@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "IMAFS-DF-DEV"
 		},
+		"AzureProdVegPro_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureProdVegPro'"
+		},
 		"AzureProdVegPro2_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureProdVegPro2'"
@@ -80,10 +84,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'SFTP_IOC'"
 		},
-		"SQL_PROD_MTL_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'SQL_PROD_MTL'"
-		},
 		"DatabricksTrial_properties_typeProperties_existingClusterId": {
 			"type": "string",
 			"defaultValue": "0130-184436-ylsbtzwy"
@@ -105,6 +105,19 @@
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureProdVegPro')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureProdVegPro_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/AzureProdVegPro2')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
@@ -371,19 +384,6 @@
 						"type": "SecureString",
 						"value": "[parameters('SFTP_IOC_password')]"
 					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SQL_PROD_MTL')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "SqlServer",
-				"typeProperties": {
-					"connectionString": "[parameters('SQL_PROD_MTL_connectionString')]"
 				}
 			},
 			"dependsOn": []
