@@ -1057,7 +1057,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/INTERFACE_DHP')]",
+			"name": "[concat(parameters('factoryName'), '/INTERFACE_COEUR_DHP')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
