@@ -6,7 +6,7 @@
 		"pipelines": [
 			{
 				"pipelineReference": {
-					"referenceName": "INTERFACE_DHP",
+					"referenceName": "INTERFACE_COEUR_DHP",
 					"type": "PipelineReference"
 				}
 			}
